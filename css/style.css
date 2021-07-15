@@ -647,6 +647,7 @@ section {
 	width: 100%;
 	position: fixed;
 	z-index: 99999;
+	background: #fff;
 }
 
 #main-menu {
@@ -673,7 +674,7 @@ section {
 	display: inline-block;
 	padding:6px 10px;
 	line-height: 60px;
-	color: #FFF;
+	color: #03587a;
 	font-weight: 600;
 	font-size: 15px;
 	text-transform: uppercase;
@@ -681,7 +682,7 @@ section {
 }
 
 #main-menu ul li a:hover {
-	color:#FFF;
+	color:#23bdc4;
 }
 
 #main-menu ul.nav>li>a:hover, #main-menu ul.nav>li>a:focus {
