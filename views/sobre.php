@@ -153,7 +153,7 @@
                         <li class="active">
                             <a aria-expanded="true" href="#tab-content-1" data-toggle="tab">
                                 <i class="fa fa-desktop"></i>
-                                <h4>Responsive</h4>
+                                <h4>Responsabilidade</h4>
                             </a>
                             <div class="tab-arrow">
                             </div>
@@ -203,16 +203,24 @@
                                 <div class="tab-pane active in" id="tab-content-1">
 
                                     <!-- Features Icon-->
-                                    <div class="col-md-6 margin-bottom-30">
+                                    <div class="col-md-12 margin-bottom-30">
                                         <div class="tab1-features">
-                                            <div class="icon"> <i class="fa fa-star-o"></i> </div>
-                                            <div class="info">
-                                                <h4>Dedicated Support & Updates</h4>
-                                                <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet. Et netus et malesuada fames ac turpis egestas tristique senectus. </p>
+                                            <!--div class="icon"> <i class="fa fa-star-o"></i> </div-->
+                                            <div class="core-features">
+                                                <!--h4>Dedicated Support & Updates</h4>
+                                                <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet. Et netus et malesuada fames ac turpis egestas tristique senectus. </p-->
+                                                <ul class="list">
+                                                    <li>Atender os requisitos e expectativas identificadas junto aos seus clientes;</li>
+                                                    <li>Capacitar adequadamente seus profissionais;</li>
+                                                    <li>Manter um Sistema de Gest&atilde;o da Qualidade;</li>
+                                                    <li>Analisar e implementar melhoria cont&iacute;nua dos processos;</li>
+                                                    <li>Procurar a excel&ecirc;ncia no relacionamento com os clientes;</li>
+                                                    <li>Compromisso com responsabilidade social;</li>
+                                                </ul>
                                             </div>
                                         </div>
 
-                                        <div class="tab1-features">
+                                        <!--div class="tab1-features">
                                             <div class="icon"> <i class="fa fa-codepen"></i> </div>
                                             <div class="info">
                                                 <h4>multipurpose theme</h4>
@@ -226,20 +234,20 @@
                                                 <h4>Design With Love</h4>
                                                 <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet. Et netus et malesuada fames ac turpis egestas tristique senectus. </p>
                                             </div>
-                                        </div>
+                                        </div-->
 
                                     </div>
                                     <!--End features Icon-->
 
 
                                     <!--  Start Carousel-->
-                                    <div class="col-md-6">
+                                    <!--div class="col-md-6">
                                         <div class="tab-carousel">
                                             <div class="item"><img src="images/works/img4.jpg" alt=""></div>
                                             <div class="item"><img src="images/works/img5.jpg" alt=""></div>
                                             <div class="item"><img src="images/works/img6.jpg" alt=""></div>
                                         </div>
-                                    </div>
+                                    </div-->
                                     <!-- End Carousel-->
 
                                 </div>
@@ -256,8 +264,10 @@
                                             </div>
 
                                             <div class="services-info">
-                                                <h4>Our History</h4>
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
+                                                <h4>Nossa Hist&oacute;ria</h4>
+                                                <p>
+                                                    Startup fundada em 2021, a S4Sys nasce para atender as mudanças e necessidades de Empresas associando todas as tend&ecirc;ncias de mercado que viabilizar&atilde;o uma melhor entrega e satisfa&ccedil;&atilde;o de seus clientes.
+                                                </p>
                                             </div>
 
                                         </div>
@@ -270,8 +280,10 @@
                                             </div>
 
                                             <div class="services-info">
-                                                <h4>What We Do</h4>
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
+                                                <h4>O que fazemos</h4>
+                                                <p>
+                                                Somos amantes da tecnologia, colaboramos com Transforma&ccedil;&otilde;es Digitais e temos em nosso DNA o ecossistema DeepTech.
+                                                </p>
                                             </div>
 
                                         </div>
@@ -284,8 +296,10 @@
                                             </div>
 
                                             <div class="services-info">
-                                                <h4>Our Mission</h4>
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
+                                                <h4>Nossa Miss&atilde;o</h4>
+                                                <p>
+                                                Dedicar nossa expertise atuando com solu&ccedil;&otilde;es que ir&atilde;o agregar valor, mudan&ccedil;as, transforma&ccedil;&otilde;es, seguran&ccedil;a, qualidade e confian&ccedil;a para nossos clientes.
+                                                </p>
                                             </div>
 
                                         </div>

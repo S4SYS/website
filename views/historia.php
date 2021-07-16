@@ -4,57 +4,29 @@
     <div class="container">
 
         <div class="title-box text-center white">
-            <h2 class="title">History</h2>
+            <h2 class="title">Hist&oacute;ria</h2>
         </div>
 
         <!-- History Timeline -->
         <ul class="timeline list-unstyled">
 
-            <li class="year">2014</li>
+            <li class="year">2021</li>
 
             <!--History Item -->
             <li class="timeline-item">
-                <h4>Lorem ipsum dolor consectetur adipisicing.</h4>
-                <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
-                <span> 16 OCT 2014</span>
+                <h4>Propulsor inicial da empresa.</h4>
+                <p>DNA Deep Tech, a S4Sys j&aacute; nasce com um cliente.</p>
+                <span>FEV 2021</span>
             </li>
             <!-- End Item -->
 
             <!--History Item -->
             <li class="timeline-item">
-                <h4>Lorem ipsum dolor consectetur adipisicing.</h4>
-                <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
-                <span> 18 OCT 2014</span>
+                <h4>Amantes da tecnologia.</h4>
+                <p>S4Sys re&uacute;ne 4 Especialistas e 1 Evangelista para compor o seu time inicial.</p>
+                <span>FEV 2021</span>
             </li>
-            <!-- End Item -->
-
-            <!-- History Year -->
-            <li class="year">2015</li>
-
-
-            <!--History Item -->
-            <li class="timeline-item">
-                <h4>Lorem ipsum dolor consectetur adipisicing.</h4>
-                <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
-                <span> 10 OCT 2015</span>
-            </li>
-            <!-- End Item -->
-
-            <!--History Item -->
-            <li class="timeline-item">
-                <h4>Lorem ipsum dolor consectetur adipisicing.</h4>
-                <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
-                <span> 11 OCT 2014</span>
-            </li>
-            <!-- End Item -->
-
-            <!--History Item -->
-            <li class="timeline-item">
-                <h4>Lorem ipsum dolor consectetur adipisicing.</h4>
-                <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
-                <span> 18 OCT 2015</span>
-            </li>
-            <!-- End Item -->
+            <!-- End Item -->            
 
             <li class="clear"></li>
 

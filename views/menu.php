@@ -24,7 +24,7 @@
 
                         <li> <a href="#about">Sobre</a> </li>
 
-                        <li> <a href="#history">History</a> </li>
+                        <li> <a href="#history">Hist&oacute;ria</a> </li>
 
                         <li> <a href="#works">Our Work</a> </li>
 
