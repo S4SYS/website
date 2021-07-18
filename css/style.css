@@ -143,8 +143,8 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 	line-height:33px;
 }
 
-.scrollup:hover {
-	background:rgba(126, 193, 63, .9);
+.scrollup:hover {	
+	background:#03587a;
 }
 
 .section {

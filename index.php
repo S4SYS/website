@@ -56,7 +56,7 @@
   require_once 'views/portfolio.php';
   require_once 'views/time.php';
   require_once 'views/servicos.php';
-  require_once 'views/blog.php';
+  //require_once 'views/blog.php';
   require_once 'views/depoimentos.php';
   require_once 'views/contato.php';
   require_once 'views/footer.php';
@@ -82,3 +82,52 @@
 </body>
 
 </html>
+
+<script>
+    const $form    = $('#formContact');
+    const $name    = $form.find('#name');
+    const $email   = $form.find('#email');
+    const $subject = $form.find('#subject');
+    const $message = $form.find('#message');
+  
+    $('#sendBtn').click(() => {
+      if(validarForm()) sendForm();
+    });
+
+    function sendForm()
+    {
+      // TODO: implementar envio de email.
+       alert('Mensagem enviada com sucesso!');
+    }
+
+    function validarForm()
+    {
+      if(!$name.val()){
+        warning($name, 'Por favor, informe o seu nome.');
+        return false;
+      }
+      
+      if(!$email.val()){
+        warning($email, 'Por favor, informe o seu email.');
+        return false;
+      }
+
+      if(!$subject.val()){
+        warning($subject, 'Por favor, informe o assunto.');
+        return false;
+      }
+
+      if(!$message.val()){
+        warning($message, 'Por favor, digite a mensagem.');
+        return false;
+      }
+
+      return true;
+    }
+
+    function warning(elem, msg)
+    {
+      elem.focus();
+      alert(msg);
+    }
+</script>

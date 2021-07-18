@@ -5,14 +5,14 @@
             <!--Start copyright-->
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="copyright">
-                    <p>Copyright © 2016 All Rights reserved by: <a href="http://templatestock.co">Template Stock</a>
+                    <p>Copyright © 2021 by <a href="http://www.planalto.gov.br/ccivil_03/leis/l9610.htm" target="_blank">S4Sys</a>.
                     </p>
                 </div>
             </div>
             <!--End copyright-->
 
             <!--start social icons-->
-            <div class="col-md-6 col-sm-6 col-xs-6">
+            <!--div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="social-icons">
                     <ul>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -21,7 +21,7 @@
                         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
-            </div>
+            </div-->
             <!--End social icons-->
         </div> <!-- /.row-->
     </div> <!-- /.container-->

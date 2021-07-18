@@ -2,18 +2,18 @@
 <section id="works" class="section">
     <!-- Filtering -->
     <div class="title-box text-center">
-        <h2 class="title">Our Work</h2>
+        <h2 class="title">Trabalhos</h2>
     </div>
 
 
     <div class=" col-md-12 text-center">
         <!-- Filtering -->
         <ul class="filtering">
-            <li class="filter" data-filter="all">All</li>
-            <li class="filter" data-filter="fashion">Fashion</li>
-            <li class="filter" data-filter="event">Events</li>
-            <li class="filter" data-filter="wedding">Wedding</li>
-            <li class="filter" data-filter="corporate">Corporate</li>
+            <li class="filter" data-filter="all">Open Source</li>
+            <li class="filter" data-filter="fashion">Inova&ccedil;&atilde;o</li>
+            <li class="filter" data-filter="event">Blockchain</li>
+            <li class="filter" data-filter="wedding">Colabora&ccedil;&atilde;o</li>
+            <li class="filter" data-filter="corporate">Intelig&ecirc;ncia Artificial</li>
         </ul>
     </div>
 
@@ -366,8 +366,8 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row text-center">
-            <h2>Are you ready to buy this theme</h2>
-            <a href="#" class="btn btn-green">GET A FREE QUOTE</a>
+            <h2>Voc&ecirc; est&aacute; pronto para a mudan&ccedil;a?</h2>
+            <a href="#contact" class="btn btn-green">FALE COM NOSSO TIME!</a>
         </div>
     </div>
 </section>

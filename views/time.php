@@ -4,7 +4,7 @@
         <div class="row">
 
             <div class="title-box text-center">
-                <h2 class="title">Team</h2>
+                <h2 class="title">Time</h2>
             </div>
 
         </div>
@@ -13,111 +13,40 @@
         <div class="team-items team-carousel">
             <!-- Team Member #1 -->
             <div class="item">
-                <img src="images/team/team1.jpg" alt="" />
-                <h4>Jonh Doe</h4>
-                <h5>Photogropher</h5>
-                <p>Lorem ipsum dolor consectetur dolor consectetur adipisicing incididunt eiusmod temporcd incididunt consectetur laboredolore dolor adipisicing. </p>
+                <img src="images/team/ferreira.png" alt="" />
+                <h4>Alexandre Ferreira</h4>
+                <h5></h5>
+                <p>CEO</p>
 
-                <div class="socials">
+                <!--div class="socials">
                     <ul>
                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
                     </ul>
-                </div>
+                </div-->
             </div>
             <!-- End Member -->
 
             <!-- Team Member #2 -->
             <div class="item">
-                <img src="images/team/team2.jpg" alt="" />
-                <h4>Jonh Doe</h4>
-                <h5>Web Designer</h5>
-                <p>Lorem ipsum dolor consectetur dolor consectetur adipisicing incididunt eiusmod temporcd incididunt consectetur laboredolore dolor adipisicing. </p>
+                <img src="images/team/filipe.png" alt="" />
+                <h4>Filipe Almada</h4>
+                <h5></h5>
+                <p>CTO</p>
 
-                <div class="socials">
+                <!--div class="socials">
                     <ul>
                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
                     </ul>
-                </div>
+                </div-->
             </div>
             <!-- End Member -->
-
-            <!-- Team Member #3 -->
-            <div class="item">
-                <img src="images/team/team3.jpg" alt="" />
-                <h4>Jonh Doe</h4>
-                <h5>Graphic Designer</h5>
-                <p>Lorem ipsum dolor consectetur dolor consectetur adipisicing incididunt eiusmod temporcd incididunt consectetur laboredolore dolor adipisicing. </p>
-
-                <div class="socials">
-                    <ul>
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- End Member -->
-
-            <!-- Team Member #4 -->
-            <div class="item">
-                <img src="images/team/team4.jpg" alt="" />
-                <h4>Jonh Doe</h4>
-                <h5>Photogropher</h5>
-                <p>Lorem ipsum dolor consectetur dolor consectetur adipisicing incididunt eiusmod temporcd incididunt consectetur laboredolore dolor adipisicing. </p>
-
-                <div class="socials">
-                    <ul>
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- End Member -->
-
-            <!-- Team Member #5 -->
-            <div class="item">
-                <img src="images/team/team1.jpg" alt="" />
-                <h4>Jonh Doe</h4>
-                <h5>Graphic Designer</h5>
-                <p>Lorem ipsum dolor consectetur dolor consectetur adipisicing incididunt eiusmod temporcd incididunt consectetur laboredolore dolor adipisicing. </p>
-
-                <div class="socials">
-                    <ul>
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- End Member -->
-
-            <!-- Team Member #6 -->
-            <div class="item">
-                <img src="images/team/team2.jpg" alt="" />
-                <h4>Jonh Doe</h4>
-                <h5>Web Designer</h5>
-                <p>Lorem ipsum dolor consectetur dolor consectetur adipisicing incididunt eiusmod temporcd incididunt consectetur laboredolore dolor adipisicing. </p>
-
-                <div class="socials">
-                    <ul>
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- End Member -->
+            
         </div>
         <!-- End Team -->
     </div>
@@ -133,7 +62,7 @@
         <div class="row">
 
             <div class="title-box text-center white">
-                <h2 class="title">Technical Skills</h2>
+                <h2 class="title">Projetos</h2>
             </div>
 
             <!--Skill #1-->
@@ -141,8 +70,8 @@
                 <span class="pie-chart " data-percent="87">
                     <span class="percent"></span>
                 </span>
-                <h4>Photoshop</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h4>Technology Innovation</h4>
+                <p></p>
             </div>
 
             <!--Skill #2-->
@@ -150,8 +79,8 @@
                 <span class="pie-chart" data-percent="75">
                     <span class="percent"></span>
                 </span>
-                <h4>Wordpress</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h4>Application Services</h4>
+                <p></p>
             </div>
 
             <!--Skill #3-->
@@ -159,8 +88,8 @@
                 <span class="pie-chart " data-percent="60">
                     <span class="percent"></span>
                 </span>
-                <h4>Graphic</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h4>Artificial Intelligence</h4>
+                <p></p>
             </div>
 
             <!--Skill #4-->
@@ -168,8 +97,8 @@
                 <span class="pie-chart" data-percent="95">
                     <span class="percent"></span>
                 </span>
-                <h4>Development</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h4>Business Process Services</h4>
+                <p></p>
             </div>
 
 

@@ -26,17 +26,17 @@
 
                         <li> <a href="#history">Hist&oacute;ria</a> </li>
 
-                        <li> <a href="#works">Our Work</a> </li>
+                        <li> <a href="#works">Trabalhos</a> </li>
 
-                        <li> <a href="#team">Team</a> </li>
+                        <li> <a href="#team">Time</a> </li>
 
-                        <li> <a href="#services">Services</a> </li>
+                        <li> <a href="#services">Servi&ccedil;os</a> </li>
 
-                        <li> <a href="#blog">Blog</a></li>
+                        <!--li> <a href="#blog">Blog</a></li-->
 
-                        <li> <a href="#testimonials">Testimonials</a></li>
+                        <li> <a href="#testimonials">Depoimentos</a></li>
 
-                        <li> <a href="#contact">Contact</a> </li>
+                        <li> <a href="#contact">Contato</a> </li>
 
                     </ul>
                 </div><!-- end main-menu -->
