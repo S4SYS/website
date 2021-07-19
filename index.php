@@ -9,6 +9,7 @@
 <html lang="en-gb" class="no-js">
 
 <head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta charset="utf-8">
   <title>S4SYS - Smart for System</title>
   <meta name="author" content="">
