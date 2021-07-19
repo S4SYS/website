@@ -10,7 +10,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>S4SYS - Smart for Systems</title>
+  <title>S4SYS - Smart for System</title>
   <meta name="author" content="">
   <meta name="keywords" content="">
   <meta name="description" content="">
