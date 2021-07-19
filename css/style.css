@@ -2917,7 +2917,7 @@ footer {
  @media (max-width: 992px) {
 
 #main-menu {
-	background:#202020;
+	background:#FFFFFF;
 }
 	 
  .navbar-right {
@@ -2941,14 +2941,14 @@ footer {
 #main-menu ul li a {
     line-height: 23px;
     display: inherit;
-    border-bottom: 1px solid #2C2C2C;
+    border-bottom: 1px solid #23bdc4;
     padding: 5px 20px;
 	background:transparent;
 }
 
 #main-menu ul li a:hover, #main-menu ul li.active a {
-	background:#2C2C2C !important;
-	color:#FFF;
+	background:#03587a !important;
+	color:#ffffff;
 }
 
 #main-menu ul li.active > a {
