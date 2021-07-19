@@ -1,10 +1,10 @@
 <!--Start Features-->
 <section id="about" class="section">
-    <div class="container">
-        <div class="row">
+    <!--div class="container">
+        <div class="row"-->
 
             <!-- Features Icon-->
-            <div class="col-md-4">
+            <!--div class="col-md-4">
                 <div class="features-icon-box">
 
                     <div class="features-icon">
@@ -16,10 +16,10 @@
                         <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
                     </div>
                 </div>
-            </div>
+            </div-->
 
             <!-- Features Icon-->
-            <div class="col-md-4">
+            <!--div class="col-md-4">
                 <div class="features-icon-box">
 
                     <div class="features-icon">
@@ -31,10 +31,10 @@
                         <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
                     </div>
                 </div>
-            </div>
+            </div-->
 
             <!-- Features Icon-->
-            <div class="col-md-4">
+            <!--div class="col-md-4">
                 <div class="features-icon-box">
 
                     <div class="features-icon">
@@ -46,10 +46,10 @@
                         <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
                     </div>
                 </div>
-            </div>
+            </div-->
 
             <!-- Features Icon-->
-            <div class="col-md-4">
+            <!--div class="col-md-4">
                 <div class="features-icon-box">
 
                     <div class="features-icon">
@@ -61,10 +61,10 @@
                         <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
                     </div>
                 </div>
-            </div>
+            </div-->
 
             <!-- Features Icon-->
-            <div class="col-md-4">
+            <!--div class="col-md-4">
                 <div class="features-icon-box">
 
                     <div class="features-icon">
@@ -76,10 +76,10 @@
                         <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
                     </div>
                 </div>
-            </div>
+            </div-->
 
             <!-- Features Icon-->
-            <div class="col-md-4">
+            <!--div class="col-md-4">
                 <div class="features-icon-box">
 
                     <div class="features-icon">
@@ -91,11 +91,11 @@
                         <p>Lorem ipsum dolor consectetur adipisicing incididunt eiusmod tempor incididunt laboredolore magna aliqua.</p>
                     </div>
                 </div>
-            </div>
+            </div-->
 
 
-        </div> <!-- /.row-->
-    </div> <!-- /.container-->
+        <!--/div--> <!-- /.row-->
+    <!--/div--> <!-- /.container-->
 </section>
 <!--End Features-->
 
@@ -162,39 +162,13 @@
                         <li>
                             <a aria-expanded="true" href="#tab-content-2" data-toggle="tab">
                                 <i class="fa fa-cubes"></i>
-                                <h4>Flexible</h4>
+                                <h4>S4SYS</h4>
                             </a>
                             <div class="tab-arrow">
                             </div>
                         </li>
 
-                        <li>
-                            <a aria-expanded="true" href="#tab-content-3" data-toggle="tab">
-                                <i class="fa fa-institution"></i>
-                                <h4>Support</h4>
-                            </a>
-                            <div class="tab-arrow">
-                            </div>
-                        </li>
-
-                        <li>
-                            <a aria-expanded="true" href="#tab-content-4" data-toggle="tab">
-                                <i class="fa fa-pagelines"></i>
-                                <h4>Clean Design</h4>
-                            </a>
-                            <div class="tab-arrow">
-                            </div>
-                        </li>
-
-                        <li>
-                            <a aria-expanded="true" href="#tab-content-5" data-toggle="tab">
-                                <i class="fa fa-pie-chart"></i>
-                                <h4>Easy to Use</h4>
-                            </a>
-                            <div class="tab-arrow">
-                            </div>
-                        </li>
-
+                        
                     </ul>
 
                     <div class="tab-content-main">
@@ -303,175 +277,6 @@
                                             </div>
 
                                         </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="tab-pane" id="tab-content-3">
-
-                                    <div class="features-tab3">
-
-                                        <!--Start Features Left-->
-                                        <div class="col-md-4">
-                                            <div class="features-left m-bot-30">
-                                                <!--Features Item #1-->
-                                                <div class="features-item">
-                                                    <div class="features-icon"> <i class="fa fa-pagelines"></i> </div>
-                                                    <div class="features-info">
-                                                        <h4>Multipurpose & Responsive</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                                    </div>
-                                                </div>
-
-                                                <!--Features Item #2-->
-                                                <div class="features-item">
-                                                    <div class="features-icon"> <i class="fa fa-trophy"></i> </div>
-                                                    <div class="features-info">
-                                                        <h4>Creative Design</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                                    </div>
-                                                </div>
-
-                                                <!--Features Item #3-->
-                                                <div class="features-item">
-                                                    <div class="features-icon"> <i class="fa fa-tag"></i> </div>
-                                                    <div class="features-info">
-                                                        <h4>Awesome Theme</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <!--End Features Left-->
-
-                                        <!--Start Features Image-->
-                                        <div class="col-md-4 hidden-xs m-bot-30">
-                                            <img src="images/device.png" alt="Features Image" />
-                                        </div>
-                                        <!--End Features Image-->
-
-                                        <!--Start Features Right-->
-                                        <div class="col-md-4">
-                                            <div class="features-right m-bot-30">
-                                                <!--Features Item #1-->
-                                                <div class="features-item">
-                                                    <div class="features-icon"> <i class="fa fa-eyedropper"></i> </div>
-                                                    <div class="features-info">
-                                                        <h4>Strategy Solutions</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                                    </div>
-                                                </div>
-
-                                                <!--Features Item #2-->
-                                                <div class="features-item">
-                                                    <div class="features-icon"> <i class="fa fa-search-plus"></i> </div>
-                                                    <div class="features-info">
-                                                        <h4>App Development</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                                    </div>
-                                                </div>
-
-                                                <!--Features Item #3-->
-                                                <div class="features-item">
-                                                    <div class="features-icon"> <i class="fa fa-send-o"></i> </div>
-                                                    <div class="features-info">
-                                                        <h4>HTML5 & CSS3</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <!--End Features Right -->
-                                    </div>
-
-                                </div>
-
-                                <div class="tab-pane" id="tab-content-4">
-
-                                    <div class="tab-content-4">
-
-                                        <div class="col-md-3">
-                                            <div class="tab4-services-box">
-                                                <div class="icon"><i class="fa fa-bolt"></i> </div>
-                                                <div class="info">
-                                                    <h4>Simple and Clean Codes</h4>
-                                                    <p>Vivamus a placerat ante. Duis vulputate nibh sit amet augue vehicula, mattis
-                                                        viverra purus tristique.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="col-md-3">
-                                            <div class="tab4-services-box">
-                                                <div class="icon"><i class="fa fa-fire"></i> </div>
-                                                <div class="info">
-                                                    <h4>Responsive Layout Design</h4>
-                                                    <p>Vivamus a placerat ante. Duis vulputate nibh sit amet augue vehicula, mattis
-                                                        viverra purus tristique.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="tab4-services-box">
-                                                <div class="icon"><i class="fa fa-chain"></i> </div>
-                                                <div class="info">
-                                                    <h4>Unlimited Support</h4>
-                                                    <p>Vivamus a placerat ante. Duis vulputate nibh sit amet augue vehicula, mattis
-                                                        viverra purus tristique.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="tab4-services-box">
-                                                <div class="icon"><i class="fa fa-shopping-cart"></i> </div>
-                                                <div class="info">
-                                                    <h4>multipurpose theme</h4>
-                                                    <p>Vivamus a placerat ante. Duis vulputate nibh sit amet augue vehicula, mattis
-                                                        viverra purus tristique.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="tab-pane" id="tab-content-5">
-
-                                    <div class="tab-content-5">
-
-                                        <div class="col-md-6">
-                                            <div class="core-features">
-
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod enim a metus adipiscing aliquam. Vestibulum in vestibulum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod enim a metus adipiscing aliquam. Vestibulum in vestibulum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod enim a metus adipiscing.</p>
-
-                                                <ul class="list">
-                                                    <li>Font-Awesome Integration</li>
-                                                    <li>Multiple unique designs</li>
-                                                    <li>Clean coded, responsive and multipurpose</li>
-                                                    <li>Pages valid on w3c.</li>
-                                                    <li>Well documented.</li>
-                                                    <li>Easy to customization.</li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-md-6">
-                                            <div class="devices-image">
-                                                <img src="images/device-desktop.png" alt="" />
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                 </div>
