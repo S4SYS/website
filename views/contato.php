@@ -20,18 +20,18 @@
 
             
             <div class="row">
-                <form id="formContact">
+                <form id="formContact" action="mail.php" method="post">
                     <div class="col-md-4">
-                        <input class="form-control" id="name" placeholder="Nome Completo" type="text">
+                        <input class="form-control" name="name" id="name" placeholder="Nome Completo" type="text">
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" id="email" placeholder="Seu Email" type="email">
+                        <input class="form-control" name="email" id="email" placeholder="Seu Email" type="email">
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" id="subject" placeholder="Assunto" type="text">
+                        <input class="form-control" name="subject" id="subject" placeholder="Assunto" type="text">
                     </div>
                     <div class="col-md-12">
-                        <textarea class="form-control" id="message" rows="7" placeholder="Sua Mensagem"></textarea>
+                        <textarea class="form-control" name="message" id="message" rows="7" placeholder="Sua Mensagem"></textarea>
                     </div>
                 </form>
                     <div class="col-md-12 text-right">

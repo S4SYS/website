@@ -85,20 +85,29 @@
 </html>
 
 <script>
-    const $form    = $('#formContact');
-    const $name    = $form.find('#name');
-    const $email   = $form.find('#email');
-    const $subject = $form.find('#subject');
-    const $message = $form.find('#message');
-  
-    $('#sendBtn').click(() => {
-      if(validarForm()) sendForm();
-    });
 
+  $(document).ready(function(){
+    
+    var $form    = $('#formContact');
+    var $name    = $form.find('#name');
+    var $email   = $form.find('#email');
+    var $subject = $form.find('#subject');
+    var $message = $form.find('#message');
+  
+    $('#sendBtn').click(function() {
+      if(validarForm()) $form.submit();//sendForm();
+    });
+       
     function sendForm()
     {
-      // TODO: implementar envio de email.
-       alert('Mensagem enviada com sucesso!');
+       $.post('mail.php', {
+          name    : $name,
+          email   : $email,
+          subject : $subject,
+          message : $message
+       }, function(data){
+          alert(JSON.stringify(data));
+       }, 'json');
     }
 
     function validarForm()
@@ -131,4 +140,8 @@
       elem.focus();
       alert(msg);
     }
+
+  });
+
+    
 </script>
