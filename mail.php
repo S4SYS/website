@@ -24,4 +24,5 @@ $mail->Body = $mailMsg;
 $mail->AddAddress($mailto);
 $mail->Send();
 
-@header('Location: index.php');
+//@header('Location: index.php');
+echo "<script>location.href='index.php';</script>";
