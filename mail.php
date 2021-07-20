@@ -1,4 +1,4 @@
-<?php
+git <?php
 
 require_once 'app/PhpMailer/PhpMailer.php';
 
@@ -23,3 +23,5 @@ $mail->Subject = $mailSub;
 $mail->Body = $mailMsg;
 $mail->AddAddress($mailto);
 $mail->Send();
+
+header('Location: index.php');
