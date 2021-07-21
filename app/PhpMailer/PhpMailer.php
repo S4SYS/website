@@ -2006,7 +2006,7 @@ class PHPMailer
             $this->smtp->quit();
             $this->smtp->close();
         }
-
+        
         foreach ($callbacks as $cb) {
             $this->doCallback(
                 $cb['issent'],

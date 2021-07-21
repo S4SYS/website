@@ -6,7 +6,7 @@
 -->
 
 
-<html lang="en-gb" class="no-js">
+<html lang="pt-br" class="no-js">
 
 <head>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -85,49 +85,59 @@
 </html>
 
 <script>
+  $(document).ready(function() {
 
-  $(document).ready(function(){
-    
-    var $form    = $('#formContact');
-    var $name    = $form.find('#name');
-    var $email   = $form.find('#email');
+    var $form = $('#formContact');
+    var $name = $form.find('#name');
+    var $email = $form.find('#email');
     var $subject = $form.find('#subject');
     var $message = $form.find('#message');
-  
-    $('#sendBtn').click(function() {
-      if(validarForm()) $form.submit();//sendForm();
+    var $button = $('#sendBtn');
+
+    $button.click(function() {
+
+      if (validarForm()) {
+        $(this).attr('disabled', true);
+        sendForm();
+      }
+
     });
-       
-    function sendForm()
-    {
-       $.post('mail.php', {
-          name    : $name,
-          email   : $email,
-          subject : $subject,
-          message : $message
-       }, function(data){
-          alert(JSON.stringify(data));
-       }, 'json');
+
+    function sendForm() {
+      $.ajax({
+        type: "POST",
+        url: "mail.php",
+        data: $form.serialize(),
+        cache: false,
+        dataType: 'json',
+        success: function(data) {
+          if (data['success'] == 1)
+            alert('Mensagem enviada com sucesso!');
+          else
+            alert(data['msg']);
+
+          $button.removeAttr('disabled');
+        }
+      });
     }
 
-    function validarForm()
-    {
-      if(!$name.val()){
+    function validarForm() {
+      if (!$name.val()) {
         warning($name, 'Por favor, informe o seu nome.');
         return false;
       }
-      
-      if(!$email.val()){
+
+      if (!$email.val()) {
         warning($email, 'Por favor, informe o seu email.');
         return false;
       }
 
-      if(!$subject.val()){
+      if (!$subject.val()) {
         warning($subject, 'Por favor, informe o assunto.');
         return false;
       }
 
-      if(!$message.val()){
+      if (!$message.val()) {
         warning($message, 'Por favor, digite a mensagem.');
         return false;
       }
@@ -135,13 +145,10 @@
       return true;
     }
 
-    function warning(elem, msg)
-    {
+    function warning(elem, msg) {
       elem.focus();
       alert(msg);
     }
 
   });
-
-    
 </script>
