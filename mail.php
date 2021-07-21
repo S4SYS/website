@@ -35,25 +35,32 @@ final Class EmailContato
     /**
      * @return void
      */
-    public function init(): void
+    public function init(): array
     {
-        $this->mailer = new PHPMailer();
-        $this->mailer->IsSmtp();
-        $this->mailer->SMTPDebug = self::SMTP_DEBUG;
+        try{
+            $this->mailer = new PHPMailer();
+            $this->mailer->IsSmtp();
+            $this->mailer->SMTPDebug = self::SMTP_DEBUG;
 
-        $this->mailer->SMTPAuth = self::SMTP_AUTH;
-        $this->mailer->SMTPSecure = self::SMTP_SECURE;
-        $this->mailer->Host = self::SMTP_HOST;
-        $this->mailer->Port = self::SMTP_PORT;
+            $this->mailer->SMTPAuth = self::SMTP_AUTH;
+            $this->mailer->SMTPSecure = self::SMTP_SECURE;
+            $this->mailer->Host = self::SMTP_HOST;
+            $this->mailer->Port = self::SMTP_PORT;
 
-        $this->mailer->IsHTML(true);
-        $this->mailer->Username = self::MAIL_USER;
-        $this->mailer->Password = self::MAIL_PASS;
-        $this->mailer->setFrom(self::MAIL_FROM);
-        $this->mailer->Subject = $this->assunto;
-        $this->mailer->Body = $this->getEmailMessage();
-        $this->mailer->AddAddress($this->email);
-        $this->mailer->Send();
+            $this->mailer->IsHTML(true);
+            $this->mailer->Username = self::MAIL_USER;
+            $this->mailer->Password = self::MAIL_PASS;
+            $this->mailer->setFrom(self::MAIL_FROM);
+            $this->mailer->Subject = $this->assunto;
+            $this->mailer->Body = $this->getEmailMessage();
+            $this->mailer->AddAddress($this->email);
+            
+            $log = $this->mailer->Send();
+            return ['success' => 1, 'data' => $log];
+
+        } catch(\Throwable $exception){
+            return ['success' => 0, 'data' => $exception->getMessage()];
+        }        
     }
 
     /**
@@ -71,4 +78,4 @@ final Class EmailContato
     }
 }
 
-(new EmailContato($_POST))->init();
+echo json_encode((new EmailContato($_POST))->init());
