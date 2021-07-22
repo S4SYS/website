@@ -113,10 +113,12 @@
         success: function(data) {
           if (data['success'] == 1)
             alert('Mensagem enviada com sucesso!');
+
           else
             alert(data['msg']);
 
           $button.removeAttr('disabled');
+          $form.reset();
         }
       });
     }
