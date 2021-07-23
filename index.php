@@ -117,8 +117,7 @@
           else
             alert(data['msg']);
 
-          $button.removeAttr('disabled');
-          $form.reset();
+          cleanForm();
         }
       });
     }
@@ -150,6 +149,14 @@
     function warning(elem, msg) {
       elem.focus();
       alert(msg);
+    }
+
+    function cleanForm() {
+      $name.val('');
+      $email.val('');
+      $subject.val('');
+      $message.val('');
+      $button.removeAttr('disabled');
     }
 
   });
