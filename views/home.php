@@ -6,7 +6,7 @@
             <li class="first">
                 <div class="slider-text-wrapper">
                     <div class="container">
-                        <div class="big">Intelig&ecirc;ncia para Sistemas</div>
+                        <div class="big">Intelig&ecirc;ncia para Neg&oacute;cios Inteligentes</div>
                         <!--div class="small">Are you ready to buy this theme</div-->
                         <a href="#works" class="middle btn btn-white">PORTFOLIO</a>
                     </div>
@@ -17,7 +17,7 @@
             <li class="secondary">
                 <div class="slider-text-wrapper">
                     <div class="container">
-                        <div class="big">Intelig&ecirc;ncia para Sistemas</div>
+                        <div class="big">Intelig&ecirc;ncia para Neg&oacute;cios Inteligentes</div>
                         <!--div class="small">Are you ready to buy this theme</div-->
                         <a href="#works" class=" middle btn btn-white">PORTFOLIO</a>
                     </div>
