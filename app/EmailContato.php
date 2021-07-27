@@ -12,9 +12,9 @@ final Class EmailContato
     const SMTP_DEBUG    = false;
     const SMTP_DO_DEBUG = 0;
     
-    const MAIL_USER = 'fabio.santos@s4sys.com.br'; // TODO: mudar para contato @s4sys.com.br
-    const MAIL_PASS = 'uska#galo2021';
-    const MAIL_FROM = 'fabio.santos@s4sys.com.br'; // TODO: mudar para contato @s4sys.com.br
+    const MAIL_USER = 'contato@s4sys.com.br'; // TODO: mudar para contato @s4sys.com.br
+    const MAIL_PASS = '';
+    const MAIL_FROM = 'contato@s4sys.com.br'; // TODO: mudar para contato @s4sys.com.br
 
     private $nome;
     private $email;
