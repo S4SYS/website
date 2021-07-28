@@ -37,9 +37,9 @@
 
                 <div class="socials">
                     <ul>
-                        <li><a class="facebook" target="_blank" href="https://www.facebook.com/S4SysBR"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="instagram" target="_blank" href="https://www.instagram.com/s4sys/"><i class="fa fa-instagram"></i></a></li>
-                        <li><a class="linkedin" target="_blank" href="https://www.linkedin.com/company/s4sys/"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a class="facebook" target="_blank" href="https://www.facebook.com/filipe.almada.7"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="instagram" target="_blank" href="https://www.instagram.com/filipealmada/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a class="linkedin" target="_blank" href="https://www.linkedin.com/in/filipealmadasouto/"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>

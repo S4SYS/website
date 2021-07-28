@@ -12,11 +12,11 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="testimonials-carousel">
                     <!--Start Testimonial item #1-->
-                    <!--div class="items">
-                        <div class="desc">habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet habitant morbi tristique senectus et netus et malesuada fames ac quam egestas.</div>
+                    <div class="items">
+                        <div class="desc">Nós da Mitsui Gás temos a S4Sys como elo estratégico em nossos Projetos.</div>
                         <img src="images/testimonial/testimonial-img1.jpg" class="testimonial-pic" alt="testimonials" />
-                        <div class="name">Andrew Doe</div>
-                    </div-->
+                        <div class="name">Rodrigo Nunes</div>
+                    </div>
 
                     <!--Start Testimonial item #2-->
                     <!--div class="items">

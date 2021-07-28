@@ -9,11 +9,11 @@
     <div class=" col-md-12 text-center">
         <!-- Filtering -->
         <ul class="filtering">
-            <li class="filter" data-filter="all">Open Source</li>
-            <li class="filter" data-filter="fashion">Inova&ccedil;&atilde;o</li>
-            <li class="filter" data-filter="event">Blockchain</li>
-            <li class="filter" data-filter="wedding">Colabora&ccedil;&atilde;o</li>
-            <li class="filter" data-filter="corporate">Intelig&ecirc;ncia Artificial</li>
+            <li class="filter" data-filter="opensource">Open Source</li>
+            <li class="filter" data-filter="inovacao">Inova&ccedil;&atilde;o</li>
+            <li class="filter" data-filter="blockchain">Blockchain</li>
+            <!--<li class="filter" data-filter="wedding">Colabora&ccedil;&atilde;o</li>
+            <li class="filter" data-filter="corporate">Intelig&ecirc;ncia Artificial</li>-->
         </ul>
     </div>
 
@@ -21,43 +21,15 @@
         <!-- Work Grid -->
         <ul class="work-grid">
             <!-- Work Item -->
-            <li class="work-item thumnail-img mix corporate">
-                <div class="work-image">
-                    <img src="images/works/img1.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img1.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
-
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix fashion wedding">
+            <li class="work-item thumnail-img mix inovacao wedding">
                 <div class="work-image">
                     <img src="images/works/img2.jpg" alt="thumbnail">
 
                     <!--Hover link-->
                     <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
+                        <!-- <a href="#">
+                           <i class="fa fa-link"></i>
+                        </a> -->
 
                         <a href="images/works/img2.jpg" class="popup-image">
                             <i class="fa fa-plus"></i>
@@ -67,8 +39,8 @@
 
                     <!--Hover Caption-->
                     <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
+                        <h4>PDI</h4>
+                        <p>S4Sys</p>
                     </div>
                     <!--End Caption-->
 
@@ -76,70 +48,15 @@
             </li>
             <!--End Work Item -->
 
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix corporate">
-                <div class="work-image">
-                    <img src="images/works/img3.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img3.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
 
             <!-- Work Item -->
-            <li class="work-item thumnail-img mix corporate">
-                <div class="work-image">
-                    <img src="images/works/img4.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img4.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
-
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix fashion wedding">
+            <li class="work-item thumnail-img mix opensource wedding">
                 <div class="work-image">
                     <img src="images/works/img5.jpg" alt="thumbnail">
 
                     <!--Hover link-->
                     <div class="hover-link">
-                        <a href="single-work.html">
+                        <a href="https://www.ggas.com.br">
                             <i class="fa fa-link"></i>
                         </a>
 
@@ -151,8 +68,8 @@
 
                     <!--Hover Caption-->
                     <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
+                        <h4>Projeto GGÁS</h4>
+                        <p>Mantenedor</p>
                     </div>
                     <!--End Caption-->
 
@@ -161,15 +78,15 @@
             <!--End Work Item -->
 
             <!-- Work Item -->
-            <li class="work-item thumnail-img mix event wedding">
+            <li class="work-item thumnail-img mix blockchain wedding">
                 <div class="work-image">
                     <img src="images/works/img6.jpg" alt="thumbnail">
 
                     <!--Hover link-->
                     <div class="hover-link">
-                        <a href="single-work.html">
+                        <!-- <a href="#">
                             <i class="fa fa-link"></i>
-                        </a>
+                        </a> -->
 
                         <a href="images/works/img6.jpg" class="popup-image">
                             <i class="fa fa-plus"></i>
@@ -179,8 +96,8 @@
 
                     <!--Hover Caption-->
                     <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
+                        <h4>S4Sys Blockchain</h4>
+                        <p>S4Sys PDI</p>
                     </div>
                     <!--End Caption-->
 
@@ -188,173 +105,6 @@
             </li>
             <!--End Work Item -->
 
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix event">
-                <div class="work-image">
-                    <img src="images/works/img7.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img7.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
-
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix corporate">
-                <div class="work-image">
-                    <img src="images/works/img8.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img8.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
-
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix event">
-                <div class="work-image">
-                    <img src="images/works/img9.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img9.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
-
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix wedding">
-                <div class="work-image">
-                    <img src="images/works/img10.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img10.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
-
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix fashion">
-                <div class="work-image">
-                    <img src="images/works/img11.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img11.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
-
-            <!-- Work Item -->
-            <li class="work-item thumnail-img mix corporate">
-                <div class="work-image">
-                    <img src="images/works/img12.jpg" alt="thumbnail">
-
-                    <!--Hover link-->
-                    <div class="hover-link">
-                        <a href="single-work.html">
-                            <i class="fa fa-link"></i>
-                        </a>
-
-                        <a href="images/works/img12.jpg" class="popup-image">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
-                    <!--End link-->
-
-                    <!--Hover Caption-->
-                    <div class="work-caption">
-                        <h4>Project Title</h4>
-                        <p>Photography</p>
-                    </div>
-                    <!--End Caption-->
-
-                </div> <!-- /.work-image-->
-            </li>
-            <!--End Work Item -->
         </ul>
 
     </div>
@@ -366,7 +116,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row text-center">
-            <h2>Voc&ecirc; est&aacute; pronto para a mudan&ccedil;a?</h2>
+            <h2>VOCÊ ESTÁ PRONTO PARA A TRANSFORMAÇÃO DIGITAL?</h2>
             <a href="#contact" class="btn btn-green">FALE COM NOSSO TIME!</a>
         </div>
     </div>

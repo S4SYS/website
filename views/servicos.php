@@ -10,7 +10,7 @@
             <!--Services Item-->
             <div class="col-md-4">
                 <div class="services-box">
-                    <div class="services-icon"> <i class="icon-basket"></i> </div>
+                    <div class="services-icon"> <i class="fa fa-laptop"></i> </div>
                     <div class="services-desc">
                         <h4>Technology Innovation</h4>
                         <p></p>
@@ -22,9 +22,9 @@
             <!--Services Item-->
             <div class="col-md-4">
                 <div class="services-box">
-                    <div class="services-icon"> <i class="icon-shield"></i> </div>
+                    <div class="services-icon"> <i class="fa fa-cogs"></i> </div>
                     <div class="services-desc">
-                        <h4>Application Services</h4>
+                        <h4>BLOCKCHAIN</h4>
                         <p></p>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
             <!--Services Item-->
             <div class="col-md-4">
                 <div class="services-box">
-                    <div class="services-icon"> <i class="icon-hotairballoon"></i> </div>
+                    <div class="services-icon"> <i class="fa fa-line-chart"></i> </div>
                     <div class="services-desc">
                         <h4>Data & Analytics</h4>
                         <p></p>
@@ -46,7 +46,7 @@
             <!--Services Item -->
             <div class="col-md-4">
                 <div class="services-box">
-                    <div class="services-icon"> <i class="icon-global"></i> </div>
+                    <div class="services-icon"> <i class="fa fa-qrcode"></i> </div>
                     <div class="services-desc">
                         <h4>Artificial Intelligence</h4>
                         <p></p>
@@ -70,7 +70,7 @@
             <!--Services Item -->
             <div class="col-md-4">
                 <div class="services-box">
-                    <div class="services-icon"> <i class="icon-aperture"></i> </div>
+                    <div class="services-icon"> <i class="fa fa-refresh"></i> </div>
                     <div class="services-desc">
                         <h4>Automation</h4>
                         <p></p>
@@ -147,7 +147,7 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p></p>
+                                <p>Com a crescente demanda de energia, a S4Sys atua com soluções que visam otimizar as atividades meio e fim do segmento.</p>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p></p>
+                                <p>S4Sys possui Especialistas com vasta experiência no modelo B2C.</p>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p></p>
+                                <p>Temos uma área específica para atender o segmento Público, apoiando e contribuindo para um melhor serviço ao Cidadão.</p>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                         </div>
                         <div id="collapseFour" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p></p>
+                                <p>Utilizamos nossa essência e expertise de mercado para conduzir projetos que permeiam todos os setores e segmentos deste contexto.</p>
                             </div>
                         </div>
                     </div>

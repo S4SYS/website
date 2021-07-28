@@ -152,15 +152,6 @@
                     <ul class="nav">
                         <li class="active">
                             <a aria-expanded="true" href="#tab-content-1" data-toggle="tab">
-                                <i class="fa fa-desktop"></i>
-                                <h4>Responsabilidade</h4>
-                            </a>
-                            <div class="tab-arrow">
-                            </div>
-                        </li>
-
-                        <li>
-                            <a aria-expanded="true" href="#tab-content-2" data-toggle="tab">
                                 <i class="fa fa-cubes"></i>
                                 <h4>S4SYS</h4>
                             </a>
@@ -168,7 +159,15 @@
                             </div>
                         </li>
 
-                        
+                        <li>
+                            <a aria-expanded="true" href="#tab-content-2" data-toggle="tab">
+                                <i class="fa fa-desktop"></i>
+                                <h4>Responsabilidade</h4>
+                            </a>
+                            <div class="tab-arrow">
+                            </div>
+                        </li>
+
                     </ul>
 
                     <div class="tab-content-main">
@@ -176,9 +175,60 @@
                             <div class="tab-content">
                                 <div class="tab-pane active in" id="tab-content-1">
 
+                                    <div class="col-md-4">
+                                        <div class="tab1-services-box">
+                                            <div class="media">
+                                                <img src="images/services1.jpg" alt="services" />
+                                            </div>
+
+                                            <div class="services-info">
+                                                <h4>Nossa Hist&oacute;ria</h4>
+                                                <p>
+                                                    Startup fundada em 2021, a S4Sys nasce para atender as mudanças e necessidades de Empresas associando todas as tend&ecirc;ncias de mercado que viabilizar&atilde;o uma melhor entrega e satisfa&ccedil;&atilde;o de seus clientes.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="tab1-services-box">
+                                            <div class="media">
+                                                <img src="images/services2.jpg" alt="services" />
+                                            </div>
+
+                                            <div class="services-info">
+                                                <h4>O que fazemos</h4>
+                                                <p>
+                                                    Somos amantes da tecnologia, colaboramos com Transforma&ccedil;&otilde;es Digitais e temos em nosso DNA o ecossistema DeepTech.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="tab1-services-box">
+                                            <div class="media">
+                                                <img src="images/services3.jpg" alt="services" />
+                                            </div>
+
+                                            <div class="services-info">
+                                                <h4>Nossa Miss&atilde;o</h4>
+                                                <p>
+                                                    Dedicar nossa expertise atuando com solu&ccedil;&otilde;es que ir&atilde;o agregar valor, mudan&ccedil;as, transforma&ccedil;&otilde;es, seguran&ccedil;a, qualidade e confian&ccedil;a para nossos clientes.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane" id="tab-content-2">
+
                                     <!-- Features Icon-->
                                     <div class="col-md-12 margin-bottom-30">
-                                        <div class="tab1-features">
+                                        <div class="tab2-features">
                                             <!--div class="icon"> <i class="fa fa-star-o"></i> </div-->
                                             <div class="core-features">
                                                 <!--h4>Dedicated Support & Updates</h4>
@@ -229,57 +279,7 @@
 
 
                                 <!-- Start Tab content 2-->
-                                <div class="tab-pane" id="tab-content-2">
 
-                                    <div class="col-md-4">
-                                        <div class="tab2-services-box">
-                                            <div class="media">
-                                                <img src="images/services1.jpg" alt="services" />
-                                            </div>
-
-                                            <div class="services-info">
-                                                <h4>Nossa Hist&oacute;ria</h4>
-                                                <p>
-                                                    Startup fundada em 2021, a S4Sys nasce para atender as mudanças e necessidades de Empresas associando todas as tend&ecirc;ncias de mercado que viabilizar&atilde;o uma melhor entrega e satisfa&ccedil;&atilde;o de seus clientes.
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="tab2-services-box">
-                                            <div class="media">
-                                                <img src="images/services2.jpg" alt="services" />
-                                            </div>
-
-                                            <div class="services-info">
-                                                <h4>O que fazemos</h4>
-                                                <p>
-                                                Somos amantes da tecnologia, colaboramos com Transforma&ccedil;&otilde;es Digitais e temos em nosso DNA o ecossistema DeepTech.
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="tab2-services-box">
-                                            <div class="media">
-                                                <img src="images/services3.jpg" alt="services" />
-                                            </div>
-
-                                            <div class="services-info">
-                                                <h4>Nossa Miss&atilde;o</h4>
-                                                <p>
-                                                Dedicar nossa expertise atuando com solu&ccedil;&otilde;es que ir&atilde;o agregar valor, mudan&ccedil;as, transforma&ccedil;&otilde;es, seguran&ccedil;a, qualidade e confian&ccedil;a para nossos clientes.
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
 
                             </div>
                         </div>
