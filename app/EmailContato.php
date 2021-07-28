@@ -13,8 +13,10 @@ final Class EmailContato
     const SMTP_DO_DEBUG = 0;
     
     const MAIL_USER = 'contato@s4sys.com.br'; // TODO: mudar para contato @s4sys.com.br
-    const MAIL_PASS = '';
+    const MAIL_PASS = 'X52HtI7rFRaV9S5*Aguwa^X1';
     const MAIL_FROM = 'contato@s4sys.com.br'; // TODO: mudar para contato @s4sys.com.br
+    
+    const NAME_FROM = 'S4Sys Contato';
 
     private $nome;
     private $email;
@@ -51,7 +53,7 @@ final Class EmailContato
             $this->mailer->IsHTML(true);
             $this->mailer->Username = self::MAIL_USER;
             $this->mailer->Password = self::MAIL_PASS;
-            $this->mailer->setFrom(self::MAIL_FROM);
+            $this->mailer->setFrom(self::MAIL_FROM, self::NAME_FROM);
             $this->mailer->Subject = $this->assunto;
             $this->mailer->Body = $this->getEmailMessage();
             $this->mailer->AddAddress($this->email);
