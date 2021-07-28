@@ -77,7 +77,7 @@
                 <span class="pie-chart" data-percent="75">
                     <span class="percent"></span>
                 </span>
-                <h4>Application Services</h4>
+                <h4>BLOCKCHAIN</h4>
                 <p></p>
             </div>
 
