@@ -96,6 +96,14 @@
     var $message = $form.find('#message');
     var $button = $('#sendBtn');
 
+    /*
+    *
+    * Evento click do botao da Politica de Privacidade.
+    */
+    $('#btnPolitica').click(function(){
+      $('#myModal').modal('hide');            
+    });
+
     $button.click(function() {
 
       if (validarForm()) {
