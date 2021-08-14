@@ -1,12 +1,12 @@
 <!-- Modal -->
-<div style="margin-top: 5em !important;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div style="margin-top: 4.5em !important;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Pol&iacute;tica de Privacidade</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="overflow-y:scroll !important; max-height:35em !important;">
                 <p>
                     <b>DA PRIVACIDADE</b><br>
                     A sua privacidade é importante para nós. É política da Smart 4 System (S4Sys) respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site S4Sys.com.br, e outros sites que possuímos e operamos.
@@ -127,7 +127,8 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" style="color:#fff !important; background-color: #03587a !important; border-radius: 0px !important;">OK</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" style="color:#fff !important; border-radius: 0px !important;">Cancelar</button>
+                <button type="button" class="btn btn-default" style="color:#fff !important; background-color: #03587a !important; border-radius: 0px !important;">Aceito os Termos de Uso e a Política de Privacidade</button>
             </div>
         </div>
     </div>
