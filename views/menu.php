@@ -34,9 +34,9 @@
 
                         <!--li> <a href="#blog">Blog</a></li-->
 
-                        <li> <a href="#testimonials">Depoimentos</a></li>
+                        <!--li> <a href="#testimonials">Depoimentos</a></li-->
 
-                        <li> <a href="#contact">Contato</a> </li>
+                        <li> <a href="#contact" id="contato">Contato</a> </li>
 
                     </ul>
                 </div><!-- end main-menu -->

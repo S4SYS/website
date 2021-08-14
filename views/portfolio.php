@@ -117,7 +117,7 @@
     <div class="container">
         <div class="row text-center">
             <h2>VOCÊ ESTÁ PRONTO PARA A TRANSFORMAÇÃO DIGITAL?</h2>
-            <a href="#contact" class="btn btn-green">FALE COM NOSSO TIME!</a>
+            <a style="cursor:pointer;" onClick="$('#main-menu').find('ul').find('#contato').click();" class="btn btn-green">FALE COM NOSSO TIME!</a>
         </div>
     </div>
 </section>

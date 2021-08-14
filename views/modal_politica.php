@@ -127,8 +127,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <!--button type="button" class="btn btn-default" data-dismiss="modal">Close</button-->
-                <button type="button" class="btn btn-default" style="color:#fff !important; background-color: #20bfc7 !important; border-radius: 0px !important;">OK</button>
+                <button type="button" class="btn btn-default" style="color:#fff !important; background-color: #03587a !important; border-radius: 0px !important;">OK</button>
             </div>
         </div>
     </div>

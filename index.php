@@ -57,7 +57,7 @@
   require_once 'views/portfolio.php';
   require_once 'views/time.php';
   require_once 'views/servicos.php';
-  require_once 'views/depoimentos.php';
+  //require_once 'views/depoimentos.php';
   require_once 'views/contato.php';
   require_once 'views/footer.php';
   require_once 'views/modal_politica.php';

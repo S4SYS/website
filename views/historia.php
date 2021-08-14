@@ -11,13 +11,7 @@
         <ul class="timeline list-unstyled">
 
             <li class="year">2021</li>
-            <!--History Item -->
-            <li class="timeline-item">
-                <h4>NUCLEO PDI.</h4>
-                <p>S4Sys reforça a área de Pesquisa, Desenvolvimento e Inovação com nova equipe.</p>
-                <span>JUL 2021</span>
-            </li>
-            <!-- End Item -->
+            
             <!--History Item -->
             <li class="timeline-item">
                 <h4>Propulsor inicial da empresa.</h4>
@@ -33,7 +27,13 @@
                 <span>FEV 2021</span>
             </li>
             <!-- End Item -->
-
+            <!--History Item -->
+            <li class="timeline-item">
+                <h4>NUCLEO PDI.</h4>
+                <p>S4Sys reforça a área de Pesquisa, Desenvolvimento e Inovação com nova equipe.</p>
+                <span>AGO 2021</span>
+            </li>
+            <!-- End Item -->
             <li class="clear"></li>
 
             <li class="end-icon fa fa-bookmark"></li>

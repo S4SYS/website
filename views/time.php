@@ -7,48 +7,16 @@
                 <h2 class="title">Time</h2>
             </div>
 
-        </div>
+            <div class="text-center">
+                <h4>É amante de Tecnologia?</h4>
+                <h4><a style="cursor:pointer;" onClick="$('#main-menu').find('ul').find('#contato').click();">Faça parte de nosso time!</a></h4>
+                </p>
 
-        <!-- Team -->
-        <div class="team-items team-carousel">
-            <!-- Team Member #1 -->
-            <div class="item">
-                <img src="images/team/ferreira.png" alt="" />
-                <h4>Alexandre Ferreira</h4>
-                <h5></h5>
-                <p>CEO</p>
-
-                <div class="socials">
-                    <ul>
-                        <li><a class="facebook" target="_blank" href="https://www.facebook.com/S4SysBR"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="instagram" target="_blank" href="https://www.instagram.com/s4sys/"><i class="fa fa-instagram"></i></a></li>
-                        <li><a class="linkedin" target="_blank" href="https://www.linkedin.com/company/s4sys/"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
             </div>
-            <!-- End Member -->
 
-            <!-- Team Member #2 -->
-            <div class="item">
-                <img src="images/team/filipe.png" alt="" />
-                <h4>Filipe Almada</h4>
-                <h5></h5>
-                <p>CTO</p>
 
-                <div class="socials">
-                    <ul>
-                        <li><a class="facebook" target="_blank" href="https://www.facebook.com/filipe.almada.7"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="instagram" target="_blank" href="https://www.instagram.com/filipealmada/"><i class="fa fa-instagram"></i></a></li>
-                        <li><a class="linkedin" target="_blank" href="https://www.linkedin.com/in/filipealmadasouto/"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- End Member -->
-            
         </div>
-        <!-- End Team -->
-    </div>
-    <!-- End Content -->
+        <!-- End Content -->
 </section>
 <!--End Team-->
 
