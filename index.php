@@ -97,8 +97,13 @@
     var $button = $('#sendBtn');
 
     var policyModal = $('#myModal');
-    
-    if(!getCookie(POLICY_COOKIE_NAME)) policyModal.modal('show')
+
+    if (!getCookie(POLICY_COOKIE_NAME)) policyModal.modal('show');
+
+    $('img').each(function() {
+      if ($(this).attr('alt') === 'www.000webhost.com')
+        $(this).hide();
+    });
 
     /*
      *
