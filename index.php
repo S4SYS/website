@@ -11,7 +11,7 @@
 <head>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta charset="utf-8">
-  <title>S4SYS - Smart for System</title>
+  <title>S4Sys - Smart 4 System</title>
   <meta name="author" content="">
   <meta name="keywords" content="">
   <meta name="description" content="">
@@ -57,15 +57,16 @@
   require_once 'views/portfolio.php';
   require_once 'views/time.php';
   require_once 'views/servicos.php';
-  //require_once 'views/blog.php';
   require_once 'views/depoimentos.php';
   require_once 'views/contato.php';
   require_once 'views/footer.php';
+  require_once 'views/modal_politica.php';
   ?>
 
 
 
   <a href="#" class="scrollup"> <i class="fa fa-chevron-up"> </i> </a>
+
 
   <!--Plugins-->
   <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
@@ -78,14 +79,15 @@
   <script type="text/javascript" src="js/jquery.appear.js"></script>
   <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
   <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-  <script type="text/javascript" src="js/custom.js"></script>
-
+  <script type="text/javascript" src="js/custom.js"></script>  
 </body>
 
 </html>
 
 <script>
   $(document).ready(function() {
+
+    $('#myModal').modal('show');
 
     var $form = $('#formContact');
     var $name = $form.find('#name');
