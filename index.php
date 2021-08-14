@@ -79,7 +79,7 @@
   <script type="text/javascript" src="js/jquery.appear.js"></script>
   <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
   <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-  <script type="text/javascript" src="js/custom.js"></script>  
+  <script type="text/javascript" src="js/custom.js"></script>
 </body>
 
 </html>
@@ -87,7 +87,7 @@
 <script>
   $(document).ready(function() {
 
-    $('#myModal').modal('show');
+    const POLICY_COOKIE_NAME = '4sys_policy';
 
     var $form = $('#formContact');
     var $name = $form.find('#name');
@@ -96,12 +96,17 @@
     var $message = $form.find('#message');
     var $button = $('#sendBtn');
 
+    var policyModal = $('#myModal');
+    
+    if(!getCookie(POLICY_COOKIE_NAME)) policyModal.modal('show')
+
     /*
-    *
-    * Evento click do botao da Politica de Privacidade.
-    */
-    $('#btnPolitica').click(function(){
-      $('#myModal').modal('hide');            
+     *
+     * Evento click do botao da Politica de Privacidade.
+     */
+    $('#btnPolitica').click(function() {
+      document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2021 23:59:59 UTC";
+      policyModal.modal('hide');
     });
 
     $button.click(function() {
@@ -167,6 +172,23 @@
       $subject.val('');
       $message.val('');
       $button.removeAttr('disabled');
+    }
+
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
     }
 
   });
