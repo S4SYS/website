@@ -43,7 +43,7 @@
 
   <!--Start Page loader -->
   <div id="pageloader">
-    <div class="loader">
+    <div class="loader text-center">
       <img src="images/progress.gif" alt='loader' />
     </div>
   </div>
@@ -85,102 +85,29 @@
 </html>
 
 <script>
-  $(document).ready(function() {
+  const POLICY_COOKIE_NAME = '4sys_policy';
 
-    const POLICY_COOKIE_NAME = '4sys_policy';
+  class Politica {
+    policyModal;
 
-    var $form = $('#formContact');
-    var $name = $form.find('#name');
-    var $email = $form.find('#email');
-    var $subject = $form.find('#subject');
-    var $message = $form.find('#message');
-    var $button = $('#sendBtn');
+    constructor() {
+      this.policyModal = $('#myModal');
+    }
 
-    var policyModal = $('#myModal');
+    init() {
+      if (!this.getCookie(POLICY_COOKIE_NAME)) this.policyModal.modal('show');
+      this.clickEvent();
+    }
 
-    if (!getCookie(POLICY_COOKIE_NAME)) policyModal.modal('show');
-
-    $('img').each(function() {
-      if ($(this).attr('alt') === 'www.000webhost.com')
-        $(this).hide();
-    });
-
-    /*
-     *
-     * Evento click do botao da Politica de Privacidade.
-     */
-    $('#btnPolitica').click(function() {
-      document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2021 23:59:59 UTC";
-      policyModal.modal('hide');
-    });
-
-    $button.click(function() {
-
-      if (validarForm()) {
-        $(this).attr('disabled', true);
-        sendForm();
-      }
-
-    });
-
-    function sendForm() {
-      $.ajax({
-        type: "POST",
-        url: "mail.php",
-        data: $form.serialize(),
-        cache: false,
-        dataType: 'json',
-        success: function(data) {
-          if (data['success'] == 1)
-            alert('Mensagem enviada com sucesso!');
-
-          else
-            alert(data['msg']);
-
-          cleanForm();
-        }
+    clickEvent() {
+      let self = this;
+      $('#btnPolitica').click(function() {
+        document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2021 23:59:59 UTC";
+        self.policyModal.modal('hide');
       });
     }
 
-    function validarForm() {
-      if (!$name.val()) {
-        warning($name, 'Por favor, informe o seu nome.');
-        return false;
-      }
-
-      if (!$email.val()) {
-        warning($email, 'Por favor, informe o seu email.');
-        return false;
-      }
-
-      if (!$subject.val()) {
-        warning($subject, 'Por favor, informe o assunto.');
-        return false;
-      }
-
-      if (!$message.val()) {
-        warning($message, 'Por favor, digite a mensagem.');
-        return false;
-      }
-
-      return true;
-    }
-
-    function warning(elem, msg) {
-      elem.focus();
-      alert(msg);
-    }
-
-    function cleanForm() {
-      $name.val('');
-      $email.val('');
-      $subject.val('');
-      $message.val('');
-      $button.removeAttr('disabled');
-    }
-
-
-    function getCookie(cname) {
+    getCookie(cname) {
       let name = cname + "=";
       let decodedCookie = decodeURIComponent(document.cookie);
       let ca = decodedCookie.split(';');
@@ -195,6 +122,102 @@
       }
       return "";
     }
+  }
 
+
+  class Contact {
+    $form;
+    $name;
+    $email;
+    $subject;
+    $message;
+    $button;
+
+    constructor() {
+      this.$form = $('#formContact');
+      this.$button = $('#sendBtn');
+      this.$name = this.$form.find('#name');
+      this.$email = this.$form.find('#email');
+      this.$subject = this.$form.find('#subject');
+      this.$message = this.$form.find('#message');
+    }
+
+    init() {
+      let self = this;
+      this.$button.click(() => {
+        if (self.validarForm()) {
+          $(this).attr('disabled', true);
+          self.sendForm();
+        }
+      });
+    }
+
+    sendForm() {
+      $.ajax({
+        type: "POST",
+        url: "mail.php",
+        data: this.$form.serialize(),
+        cache: false,
+        dataType: 'json',
+        success: function(data) {
+          if (data['success'] == 1)
+            alert('Mensagem enviada com sucesso!');
+
+          else
+            alert(data['msg']);
+
+          this.cleanForm();
+        }
+      });
+    }
+
+    validarForm() {
+      if (!this.$name.val()) {
+        this.warning(this.$name, 'Por favor, informe o seu nome.');
+        return false;
+      }
+
+      if (!this.$email.val()) {
+        this.warning(this.$email, 'Por favor, informe o seu email.');
+        return false;
+      }
+
+      if (!this.$subject.val()) {
+        this.warning(this.$subject, 'Por favor, informe o assunto.');
+        return false;
+      }
+
+      if (!this.$message.val()) {
+        this.warning(this.$message, 'Por favor, digite a mensagem.');
+        return false;
+      }
+
+      return true;
+    }
+
+    warning(elem, msg) {
+      elem.focus();
+      alert(msg);
+    }
+
+    cleanForm() {
+      this.$name.val('');
+      this.$email.val('');
+      this.$subject.val('');
+      this.$message.val('');
+      this.$button.removeAttr('disabled');
+    }
+
+  }
+
+  var politica = new Politica();
+  var contact = new Contact();
+
+  politica.init();
+  contact.init();
+
+  $('img').each(function() {
+    if ($(this).attr('alt') === 'www.000webhost.com')
+      $(this).hide();
   });
 </script>

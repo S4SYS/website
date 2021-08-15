@@ -20,7 +20,7 @@
 
             
             <div class="row">
-                <form id="formContact" action="mail.php" method="post">
+                <form id="formContact">
                     <div class="col-md-4">
                         <input class="form-control" style="color:#fff;" name="name" id="name" placeholder="Nome Completo" type="text">
                     </div>
