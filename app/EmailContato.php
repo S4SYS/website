@@ -13,7 +13,7 @@ final class EmailContato
     const SMTP_DO_DEBUG = 0;
 
     const MAIL_USER = 'contato@s4sys.com.br';
-    const MAIL_PASS = 'X52HtI7rFRaV9S5*Aguwa^X1';
+    const MAIL_PASS = '';
     const MAIL_FROM = 'contato@s4sys.com.br'; 
     //const MAIL_TO   = 'deployment@s4sys.com.br';
     const MAIL_TO   = 'contato@s4sys.com.br';
