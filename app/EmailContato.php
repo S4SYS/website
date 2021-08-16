@@ -12,11 +12,10 @@ final class EmailContato
     const SMTP_DEBUG    = false;
     const SMTP_DO_DEBUG = 0;
 
-    const MAIL_USER = 'contato@s4sys.com.br';
+    const MAIL_USER = '';
     const MAIL_PASS = '';
-    const MAIL_FROM = 'contato@s4sys.com.br'; 
-    //const MAIL_TO   = 'deployment@s4sys.com.br';
-    const MAIL_TO   = 'contato@s4sys.com.br';
+    const MAIL_FROM = '';    
+    const MAIL_TO   = '';
     const NAME_FROM = 'S4Sys Contato Site';
 
     private $nome;
