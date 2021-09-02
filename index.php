@@ -80,6 +80,10 @@
   <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
   <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
   <script type="text/javascript" src="js/custom.js"></script>
+
+  <!-- Google Recaptcha V3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq"></script>
+
 </body>
 
 </html>
