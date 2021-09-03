@@ -150,13 +150,33 @@
       let self = this;
       this.$button.click(() => {
         if (self.validarForm()) {
-          $(this).attr('disabled', true);
-          self.sendForm();
+          this.$button.attr('disabled', true);
+          self.validateCaptcha();
         }
       });
     }
 
+    validateCaptcha()
+    {
+      let self = this;
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq', {
+          action: 'rastreio'
+        }).then((token) => {
+          var response = token;
+          $.get('https://www.google.com/recaptcha/api/siteverify', {
+            secret: '6LeMLngUAAAAAE4491OBpbRCvrI5QIQctQa87Lnp',
+            response
+          }, function(data) {
+            if (data.success && data.score > parseFloat(0.5))
+               self.sendForm();
+          }, 'json');
+        });
+      });
+    }
+
     sendForm() {
+      let self = this;
       $.ajax({
         type: "POST",
         url: "mail.php",
@@ -170,7 +190,7 @@
           else
             alert(data['msg']);
 
-          this.cleanForm();
+          self.cleanForm();
         }
       });
     }
@@ -214,14 +234,15 @@
 
   }
 
-  var politica = new Politica();
-  var contact = new Contact();
+  var politica  = new Politica();
+  var contact   = new Contact();
 
   politica.init();
   contact.init();
-
+ 
   $('img').each(function() {
     if ($(this).attr('alt') === 'www.000webhost.com')
       $(this).hide();
   });
+
 </script>
