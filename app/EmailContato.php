@@ -56,6 +56,8 @@ final class EmailContato
         $this->mailer->Subject = $this->assunto;
         $this->mailer->Body = $this->getEmailMessage();
         $this->mailer->AddAddress(self::MAIL_TO);
+        $this->mailer->addCC(self::MAIL_FROM);
+        $this->mailer->addReplyTo($this->email);
 
         $response = $this->mailer->Send();
         return ['success' => 1, 'msg' => $response];
