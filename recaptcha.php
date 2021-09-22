@@ -1,6 +1,6 @@
 <?php
 
-if(!$_GET['token'] || empty($_GET)) header('Location: index.php');
+if(!$_GET || empty($_GET)) header('Location: index.php');
 
 $secret = '6LeMLngUAAAAAE4491OBpbRCvrI5QIQctQa87Lnp';
 
