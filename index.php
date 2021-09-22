@@ -89,6 +89,7 @@
 </html>
 
 <script>
+  
   const POLICY_COOKIE_NAME = '4sys_policy';
 
   class Politica {
@@ -155,7 +156,7 @@
         }
       });
     }
-
+    
     validateCaptcha() {
       let self = this;
       let key = '6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq';
