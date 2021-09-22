@@ -13,8 +13,8 @@
   <meta charset="utf-8">
   <title>S4Sys - Smart 4 System</title>
   <meta name="author" content="">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
+  <meta name="keywords" content="s4sys">
+  <meta name="description" content="Inteligência para Negócios Inteligentes">
 
   <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -158,19 +158,21 @@
 
     validateCaptcha()
     {
-      let self = this;
+      let self   = this;
+      let key    = '6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq';
+     
       grecaptcha.ready(function() {
-        grecaptcha.execute('6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq', {
+        grecaptcha.execute(key, {
           action: 'rastreio'
         }).then((token) => {
-          var response = token;
-          $.get('https://www.google.com/recaptcha/api/siteverify', {
-            secret: '6LeMLngUAAAAAE4491OBpbRCvrI5QIQctQa87Lnp',
-            response
-          }, function(data) {
-            if (data.success && data.score > parseFloat(0.5))
-               self.sendForm();
-          }, 'json');
+          $.get('recaptcha.php', {
+            token
+          }, function(data){
+            if(data.success == true && data.score > parseFloat(0.5)) 
+              self.sendForm();
+            else
+              alert('Falha na verifica\u00e7\u00e3o do Recaptcha.');
+          }, 'json');          
         });
       });
     }
