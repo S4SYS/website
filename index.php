@@ -156,23 +156,22 @@
       });
     }
 
-    validateCaptcha()
-    {
-      let self   = this;
-      let key    = '6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq';
-     
+    validateCaptcha() {
+      let self = this;
+      let key = '6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq';
+
       grecaptcha.ready(function() {
         grecaptcha.execute(key, {
           action: 'rastreio'
         }).then((token) => {
           $.get('recaptcha.php', {
             token
-          }, function(data){
-            if(data.success == true && data.score > parseFloat(0.5)) 
+          }, function(data) {
+            if (data.success == true && data.score > parseFloat(0.5))
               self.sendForm();
             else
               alert('Falha na verifica\u00e7\u00e3o do Recaptcha.');
-          }, 'json');          
+          }, 'json');
         });
       });
     }
@@ -236,15 +235,14 @@
 
   }
 
-  var politica  = new Politica();
-  var contact   = new Contact();
+  var politica = new Politica();
+  var contact = new Contact();
 
   politica.init();
   contact.init();
- 
+
   $('img').each(function() {
     if ($(this).attr('alt') === 'www.000webhost.com')
       $(this).hide();
   });
-
 </script>
