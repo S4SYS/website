@@ -22,6 +22,8 @@
 
                         <li class="active"> <a href="#home">Home</a> </li>
 
+                        <li> <a href="#services">Servi&ccedil;os</a> </li>
+
                         <li> <a href="#about">Sobre</a> </li>
 
                         <li> <a href="#history">Hist&oacute;ria</a> </li>
@@ -29,8 +31,6 @@
                         <li> <a href="#works">Trabalhos</a> </li>
 
                         <li> <a href="#team">Time</a> </li>
-
-                        <li> <a href="#services">Servi&ccedil;os</a> </li>
 
                         <!--li> <a href="#blog">Blog</a></li-->
 
