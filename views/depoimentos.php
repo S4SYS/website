@@ -34,6 +34,9 @@
 
             <div class="clients-carousel">
 
+                <div class="item">&nbsp;</div>
+                <div class="item">&nbsp;</div>
+
                 <!-- Clients Logo Item-->
                 <div class="item">
                     <a href="#">
