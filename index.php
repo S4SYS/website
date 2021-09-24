@@ -44,7 +44,7 @@
   <!--Start Page loader -->
   <div id="pageloader">
     <div class="loader text-center">
-      <img src="images/progress.gif" alt='loader' />
+      <img src="images/progress.gif" alt='loader'/>
     </div>
   </div>
   <!--End Page loader -->

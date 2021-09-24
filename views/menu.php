@@ -38,7 +38,20 @@
 
                         <li> <a href="#contact" id="contato">Contato</a> </li>
 
+                        <li>&nbsp;</li>
+
+                        <li>
+                            <a target="_blank" href="https://www.facebook.com/S4SysBR"><i class="fa fa-facebook"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/company/s4sys/"><i class="fa fa-linkedin"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/s4sys/"><i class="fa fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.twitter.com/s4sys/"><i class="fa fa-twitter"></i></a>
+
+                        </li>
+
+
                     </ul>
+
+
                 </div><!-- end main-menu -->
             </div>
         </div>
