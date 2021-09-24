@@ -1,5 +1,5 @@
 <!--Start Features-->
-<section id="about" class="section">
+<section id="about" class="section-thin">
     <!--div class="container">
         <div class="row"-->
 

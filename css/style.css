@@ -152,6 +152,11 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 	position:relative;
 }
 
+.section-thin {
+	padding:0 0 0;
+	position:relative;
+}
+
 .section .container {
 	position:relative;
 }
