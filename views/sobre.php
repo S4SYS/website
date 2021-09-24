@@ -183,7 +183,7 @@
 
                                             <div class="services-info">
                                                 <h4>Nossa Hist&oacute;ria</h4>
-                                                <p>
+                                                <p style="text-align:justify !important;">
                                                     Startup fundada em 2021, a S4Sys nasce para atender as mudanças e necessidades de Empresas associando todas as tend&ecirc;ncias de mercado que viabilizar&atilde;o uma melhor entrega e satisfa&ccedil;&atilde;o de seus clientes.
                                                 </p>
                                             </div>
@@ -199,7 +199,7 @@
 
                                             <div class="services-info">
                                                 <h4>O que fazemos</h4>
-                                                <p>
+                                                <p style="text-align:justify !important;">
                                                     Somos amantes da tecnologia, colaboramos com Transforma&ccedil;&otilde;es Digitais e temos em nosso DNA o ecossistema DeepTech.
                                                 </p>
                                             </div>
@@ -215,7 +215,7 @@
 
                                             <div class="services-info">
                                                 <h4>Nossa Miss&atilde;o</h4>
-                                                <p>
+                                                <p style="text-align:justify !important;">
                                                     Dedicar nossa expertise atuando com solu&ccedil;&otilde;es que ir&atilde;o agregar valor, mudan&ccedil;as, transforma&ccedil;&otilde;es, seguran&ccedil;a, qualidade e confian&ccedil;a para nossos clientes.
                                                 </p>
                                             </div>
