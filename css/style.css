@@ -1502,7 +1502,15 @@ ul.timeline {
 
 .work-grid {
 	width: 100%;
-	padding:0;
+	padding:0;		
+}
+
+@media (min-width: 992px){
+	.work-grid {
+		width: 100%;
+		padding:0;
+		margin-left: 13%;		
+	}	
 }
 
 .work-grid .work-item {
