@@ -134,8 +134,20 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" style="color:#fff !important; border-radius: 0px !important;">Cancelar</button>
-                <button type="button" id="btnPolitica" class="btn btn-default" style="color:#fff !important; background-color: #03587a !important; border-radius: 0px !important;">Aceito os Termos de Uso e a Política de Privacidade</button>
+                <button type="button" id="btnPolitica" class="btn btn-default" style="color:#fff !important; background-color: #03587a !important; border-radius: 0px !important;"><?php
+                    if (isMobile()){
+                        echo "Aceito os Termos";
+                    }
+                    else{
+                        echo "Aceito os Termos de Uso e a Política de Privacidade";
+                    }?>
+                </button>
             </div>
         </div>
     </div>
 </div>
+
+ <?php
+function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}?>
