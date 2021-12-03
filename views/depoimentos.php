@@ -34,8 +34,6 @@
 
             <div class="clients-carousel">
 
-                <div class="item">&nbsp;</div>
-                <div class="item">&nbsp;</div>
 
                 <!-- Clients Logo Item-->
                 <div class="item">
@@ -54,6 +52,36 @@
                         </figure>
                     </a>
                 </div>
+
+                <!-- Clients Logo Item-->
+                <div class="item">
+                    <a href="#">
+                        <figure>
+                            <img src="images/clients-logo/logo-dominos.png" alt="" />
+                        </figure>
+                    </a>
+                </div>
+
+                <!-- Clients Logo Item-->
+                <div class="item">
+                    <a href="#">
+                        <figure>
+                            <img src="images/clients-logo/logo-taco.png" alt="" />
+                        </figure>
+                    </a>
+                </div>
+
+                <!-- Clients Logo Item-->
+                <div class="item">
+                    <a href="#">
+                        <figure>
+                            <img src="images/clients-logo/logo-sc.png" alt="" />
+                        </figure>
+                    </a>
+                </div>
+
+
+
 
             </div>
         </div>

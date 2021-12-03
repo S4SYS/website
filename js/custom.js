@@ -293,7 +293,7 @@ $('.popup-image').magnificPopup({
 	 $('.clients-carousel').owlCarousel({
 	 autoPlay:3000,
 	 slideSpeed: 200,
-	  items : 6,
+	  items : 5,
 	  itemsDesktop : [1199,4],
 	  itemsDesktopSmall : [979,3],
 	  stopOnHover:true,
