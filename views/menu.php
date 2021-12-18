@@ -20,23 +20,23 @@
                 <div id="main-menu" class="collapse scroll navbar-right">
                     <ul class="nav">
 
-                        <li class="active"> <a href="#home">Home</a> </li>
+                        <li class="active"> <a href="#home" class="topMenu">Home</a> </li>
 
-                        <li> <a href="#services">Servi&ccedil;os</a> </li>
+                        <li> <a href="#services" class="topMenu">Servi&ccedil;os</a> </li>
 
-                        <li> <a href="#about">Sobre</a> </li>
+                        <li> <a href="#about" class="topMenu">Sobre</a> </li>
 
-                        <li> <a href="#history">Hist&oacute;ria</a> </li>
+                        <li> <a href="#history" class="topMenu">Hist&oacute;ria</a> </li>
 
-                        <li> <a href="#works">Trabalhos</a> </li>
+                        <li> <a href="#works" class="topMenu">Trabalhos</a> </li>
 
-                        <li> <a href="#team">Time</a> </li>
+                        <li> <a href="#team" class="topMenu">Time</a> </li>
 
                         <!--li> <a href="#blog">Blog</a></li-->
 
-                        <li> <a href="#clients">Clientes</a></li>
+                        <li> <a href="#clients" class="topMenu">Clientes</a></li>
 
-                        <li> <a href="#contact" id="contato">Contato</a> </li>
+                        <li> <a href="#contact" id="contato" class="topMenu">Contato</a> </li>
 
                         <li>&nbsp;</li>
 

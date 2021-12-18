@@ -44,23 +44,34 @@
   <!--Start Page loader -->
   <div id="pageloader">
     <div class="loader text-center">
-      <img src="images/progress.gif" alt='loader'/>
+      <img src="images/progress.gif" alt='loader' />
     </div>
   </div>
   <!--End Page loader -->
 
   <?php
+
   require_once 'views/menu.php';
+
+  echo '<span id="mainPages">';
+  require_once 'views/modal_politica.php';
   require_once 'views/home.php';
   require_once 'views/servicos.php';
   require_once 'views/sobre.php';
   require_once 'views/historia.php';
   require_once 'views/portfolio.php';
-  require_once 'views/time.php';  
+  require_once 'views/time.php';
   require_once 'views/depoimentos.php';
   require_once 'views/contato.php';
+  echo '</span>';
+
+  echo '<span id="politicaPage" style="display:none;">';
+  require_once 'views/politica.php';
+  echo '</span>';
+
   require_once 'views/footer.php';
-  require_once 'views/modal_politica.php';
+
+
   ?>
 
 
@@ -89,7 +100,6 @@
 </html>
 
 <script>
-  
   const POLICY_COOKIE_NAME = '4sys_policy';
 
   class Politica {
@@ -101,15 +111,39 @@
 
     init() {
       if (!this.getCookie(POLICY_COOKIE_NAME)) this.policyModal.modal('show');
-      this.clickEvent();
+      this.clickEvents();
     }
 
-    clickEvent() {
+    clickEvents() 
+    {
       let self = this;
+
       $('#btnPolitica').click(function() {
         document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2021 23:59:59 UTC";
         self.policyModal.modal('hide');
       });
+
+      $('#linkPaginaPolitica, #linkPaginaPoliticaModal').click(function() { 
+        self.showPolicyContent();
+        self.policyModal.modal('hide'); 
+      });
+
+      $('.topMenu').click(function() { self.hidePolicyContent(this) });
+    }
+
+    showPolicyContent()
+    {
+      $("html, body").animate({ scrollTop: 0 }, 400);
+      $('#mainPages').hide();
+      $('#politicaPage').show();
+      $('li').each(function() { $(this).removeClass('active'); });
+    }
+
+    hidePolicyContent(elem)
+    {
+      $('#mainPages').show();
+      $('#politicaPage').hide();
+      $('html, body').stop().animate({ scrollTop: $($(elem).attr('href')).offset().top }, 2000, 'easeOutExpo');
     }
 
     getCookie(cname) {
@@ -156,7 +190,7 @@
         }
       });
     }
-    
+
     validateCaptcha() {
       let self = this;
       let key = '6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq';

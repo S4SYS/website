@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div style="margin-top: 4.5em !important;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div style="margin-top: 4.2em !important;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -142,6 +142,11 @@
                         echo "Aceito os Termos de Uso e a Política de Privacidade";
                     }?>
                 </button>
+                <p>
+                    <a style="cursor:pointer; color:#666;" id="linkPaginaPoliticaModal">
+                        Visualizar&nbsp;<span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </p>
             </div>
         </div>
     </div>

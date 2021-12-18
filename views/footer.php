@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <!--Start copyright-->
-            <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="col-md-4 col-sm-4 col-xs-6">
                 <div class="copyright">
                     <p>Copyright © 2021 by <a href="http://www.planalto.gov.br/ccivil_03/leis/l9610.htm" target="_blank">S4Sys</a>.
                     </p>
@@ -11,8 +11,19 @@
             </div>
             <!--End copyright-->
 
+            <!--start footer menu-->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="menu-footer scroll">
+                    <ul>
+                        <li>
+                            <a style="cursor:pointer;" id="linkPaginaPolitica">Pol&iacute;tica de Privacidade.</a>
+                        </li>
+                    </ul>
+                </div>    
+            </div>
+
             <!--start social icons-->
-            <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="col-md-4 col-sm-4 col-xs-6">
                 <div class="social-icons">             
                     <ul>
                         <li><a target="_blank" href="https://www.facebook.com/S4SysBR"><i class="fa fa-facebook"></i></a></li>
