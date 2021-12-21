@@ -123,24 +123,35 @@
         self.policyModal.modal('hide');
       });
 
-      $('#linkPaginaPolitica, #linkPaginaPoliticaModal, #linkPaginaPoliticaMenu').click(function() { 
-        self.showPolicyContent();
-        self.policyModal.modal('hide'); 
+      $('#linkPaginaPoliticaFooter').click(function() { 
+        self.showPolicyContent(400, self);
       });
 
+      $('#linkPaginaPoliticaModal').click(function(){
+        self.showPolicyContent(2000, self);
+      })
+
+      $('#linkPaginaPoliticaMenu').click(function(){
+        self.showPolicyContent(2000, self);
+        $(this).attr('href', '#politica');        
+      });
+      
       $('.topMenu').click(function() { self.hidePolicyContent(this) });
     }
 
-    showPolicyContent()
+    showPolicyContent(delay, elem)
     {
-      $("html, body").animate({ scrollTop: 0 }, 400);
+      $("html, body").animate({ scrollTop: -100 }, delay);
       $('#mainPages').hide();
       $('#politicaPage').show();
-      $('li').each(function() { $(this).removeClass('active'); });
+      $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
+      $('.topMenu').closest('li').removeClass('active');
+      elem.policyModal.modal('hide');
     }
 
     hidePolicyContent(elem)
     {
+      window.location.hash = '';
       $('#mainPages').show();
       $('#politicaPage').hide();
       $('html, body').stop().animate({ scrollTop: $($(elem).attr('href')).offset().top }, 2000, 'easeOutExpo');

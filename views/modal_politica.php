@@ -143,7 +143,7 @@
                     }?>
                 </button>
                 <p>
-                    <a style="cursor:pointer; color:#666;" id="linkPaginaPoliticaModal">
+                    <a class="politicaPrivacidade" style="cursor:pointer; color:#666;" id="linkPaginaPoliticaModal">
                         Visualizar&nbsp;<span class="glyphicon glyphicon-search"></span>
                     </a>
                 </p>

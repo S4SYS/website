@@ -36,11 +36,11 @@
 
                         <li> <a href="#team" class="topMenu">Time</a> </li>
 
-                        <!--li> <a href="#blog">Blog</a></li-->
-
                         <li> <a href="#clients" class="topMenu">Clientes</a></li>
 
                         <li> <a href="#contact" id="contato" class="topMenu">Contato</a> </li>
+
+                        <li> <a style="cursor:pointer;" class="politicaPrivacidade" id="linkPaginaPoliticaMenu">LGPD</a> </li>
 
                         <li>&nbsp;</li>
 
@@ -49,7 +49,6 @@
                             <a target="_blank" href="https://www.linkedin.com/company/s4sys/"><i class="fa fa-linkedin"></i></a>
                             <a target="_blank" href="https://www.instagram.com/s4sys/"><i class="fa fa-instagram"></i></a>
                             <a target="_blank" href="https://www.twitter.com/s4sys/"><i class="fa fa-twitter"></i></a>
-                            <a style="cursor:pointer;" id="linkPaginaPoliticaMenu">LGPD</a>
                         </li>
 
 

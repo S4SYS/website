@@ -16,7 +16,7 @@
                 <div class="menu-footer scroll">
                     <ul>
                         <li>
-                            <a style="cursor:pointer;" id="linkPaginaPolitica">Pol&iacute;tica de Privacidade.</a>
+                            <a style="cursor:pointer;" class="politicaPrivacidade" id="linkPaginaPoliticaFooter">Pol&iacute;tica de Privacidade.</a>
                         </li>
                     </ul>
                 </div>    
