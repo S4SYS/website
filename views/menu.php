@@ -24,7 +24,11 @@
 
                         <li> <a href="#services" class="topMenu">Servi&ccedil;os</a> </li>
 
-                        <li> <a href="#about" class="topMenu">Sobre</a> </li>
+                        <li>                             
+                            <a href="#about" class="topMenu" data-toggle="dropdown" aria-expanded="false">
+                                Sobre
+                            </a>                            
+                        </li>
 
                         <li> <a href="#history" class="topMenu">Hist&oacute;ria</a> </li>
 
@@ -45,7 +49,7 @@
                             <a target="_blank" href="https://www.linkedin.com/company/s4sys/"><i class="fa fa-linkedin"></i></a>
                             <a target="_blank" href="https://www.instagram.com/s4sys/"><i class="fa fa-instagram"></i></a>
                             <a target="_blank" href="https://www.twitter.com/s4sys/"><i class="fa fa-twitter"></i></a>
-
+                            <a style="cursor:pointer;" id="linkPaginaPoliticaMenu">LGPD</a>
                         </li>
 
 

@@ -123,7 +123,7 @@
         self.policyModal.modal('hide');
       });
 
-      $('#linkPaginaPolitica, #linkPaginaPoliticaModal').click(function() { 
+      $('#linkPaginaPolitica, #linkPaginaPoliticaModal, #linkPaginaPoliticaMenu').click(function() { 
         self.showPolicyContent();
         self.policyModal.modal('hide'); 
       });
