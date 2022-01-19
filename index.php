@@ -71,6 +71,11 @@
   require_once 'views/politica.php';
   echo '</span>';
 
+  echo '<span id="contatoLgpdPage" style="display:none;">';
+  require_once 'views/contato_lgpd.php';
+  echo '</span>';
+
+
   require_once 'views/footer.php';
 
 
@@ -125,29 +130,24 @@
         self.policyModal.modal('hide');
       });
 
-      $('#linkPaginaPoliticaFooter').click(function() { 
-        self.showPolicyContent(400, self);
-      });
+      $('#linkPaginaPoliticaFooter').click(function() { self.showPolicyContent(400, self); });
 
-      $('#linkPaginaPoliticaModal').click(function(){
-        self.showPolicyContent(2000, self);
-      });
+      $('#linkPaginaPoliticaModal').click(function(){ self.showPolicyContent(2000, self); });
 
-      $('#linkPaginaPoliticaLgpd').click(function(){
-        self.showPolicyContent(2000, self);
-        $(this).attr('href', '#politica');
-      });
+      $('#linkPaginaPoliticaLgpd').click(function(){ self.showPolicyContent(2000, self); });
+
+      $('#linkPaginaContatoLgpd').click(function(){ self.showContatoLgpdContent(2000, self); });
       
-      $('.topMenu').click(function() { self.hidePolicyContent(this) });
+      $('.topMenu').click(function() { self.hidePolicyContent(this); self.hideContatoLgpdContent(this); });
     }
 
     showPolicyContent(delay, elem)
     {
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages').hide();
+      $('#mainPages, #contatoLgpdPage').hide();
       $('#politicaPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
-      $('.topMenu').closest('li').removeClass('active');
+      //$('.topMenu').closest('li').removeClass('active');
       elem.policyModal.modal('hide');
     }
 
@@ -156,6 +156,24 @@
       window.location.hash = '';
       $('#mainPages').show();
       $('#politicaPage').hide();
+      $('html, body').stop().animate({ scrollTop: $($(elem).attr('href')).offset().top }, 2000, 'easeOutExpo');
+    }
+
+    showContatoLgpdContent(delay, elem)
+    {
+      //$("html, body").animate({ scrollTop: -100 }, delay);
+      $('#mainPages, #politicaPage').hide();
+      $('#contatoLgpdPage').show();
+      $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
+      //$('.topMenu').closest('li').removeClass('active');
+      elem.policyModal.modal('hide');
+    }
+
+    hideContatoLgpdContent(elem)
+    {
+      window.location.hash = '';
+      $('#mainPages').show();
+      $('#contatoLgpdPage').hide();
       $('html, body').stop().animate({ scrollTop: $($(elem).attr('href')).offset().top }, 2000, 'easeOutExpo');
     }
 
