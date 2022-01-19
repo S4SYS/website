@@ -51,6 +51,7 @@
 
   <?php
 
+  
   require_once 'views/menu.php';
 
   echo '<span id="mainPages">';
@@ -61,8 +62,9 @@
   require_once 'views/historia.php';
   require_once 'views/portfolio.php';
   require_once 'views/time.php';
-  require_once 'views/depoimentos.php';
+  require_once 'views/depoimentos.php';  
   require_once 'views/contato.php';
+  require_once 'views/lgpd.php';
   echo '</span>';
 
   echo '<span id="politicaPage" style="display:none;">';
@@ -129,11 +131,11 @@
 
       $('#linkPaginaPoliticaModal').click(function(){
         self.showPolicyContent(2000, self);
-      })
+      });
 
-      $('#linkPaginaPoliticaMenu').click(function(){
+      $('#linkPaginaPoliticaLgpd').click(function(){
         self.showPolicyContent(2000, self);
-        $(this).attr('href', '#politica');        
+        $(this).attr('href', '#politica');
       });
       
       $('.topMenu').click(function() { self.hidePolicyContent(this) });

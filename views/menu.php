@@ -40,7 +40,7 @@
 
                         <li> <a href="#contact" id="contato" class="topMenu">Contato</a> </li>
 
-                        <li> <a style="cursor:pointer;" class="politicaPrivacidade" id="linkPaginaPoliticaMenu">LGPD</a> </li>
+                        <li> <a href="#lgpd" class="topMenu">LGPD</a> </li>
 
                         <li>&nbsp;</li>
 
