@@ -136,7 +136,7 @@
 
       $('#linkPaginaPoliticaLgpd').click(function(){ self.showPolicyContent(2000, self); });
 
-      $('#linkPaginaContatoLgpd').click(function(){ self.showContatoLgpdContent(2000, self); });
+      $('#linkPaginaContatoLgpd').click(function(){ self.showContatoLgpdContent(400, self); });
       
       $('.topMenu').click(function() { self.hidePolicyContent(this); self.hideContatoLgpdContent(this); });
     }
@@ -161,7 +161,7 @@
 
     showContatoLgpdContent(delay, elem)
     {
-      //$("html, body").animate({ scrollTop: -100 }, delay);
+      $("html, body").animate({ scrollTop: -100 }, delay);
       $('#mainPages, #politicaPage').hide();
       $('#contatoLgpdPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
