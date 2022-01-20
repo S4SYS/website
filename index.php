@@ -217,7 +217,7 @@
       }
       return "";
     }
-  }
+  }// end class
 
 
   class Contact {
@@ -324,13 +324,184 @@
       this.$button.removeAttr('disabled');
     }
 
-  }
+  }// end class
 
+  const ID_PORTAL_REQUISICAO = 'opcoesLgpdRequisicao';
+  const ID_PORTAL_CONSULTA   = 'opcoesLgpdConsulta';
+  const ID_PORTAL_VIOLACAO   = 'opcoesLgpdViolacao';
+  const ID_PORTAL_DUVIDAS    = 'opcoesLgpdDuvidas';
+
+  class ViewPortalLgpd
+    {
+        $form;
+        $requisicaoContent;
+        $consultaContent;
+        $violacaoContent;
+        $duvidasContent;
+        
+        showTime;
+
+        constructor()
+        {
+            this.$form = $('#formPortalLgpd'); 
+        }
+
+        init()
+        {
+          this.showTime = 2000;
+          this.setCheckboxChangeEvent();    
+        }
+
+        setCheckboxChangeEvent()
+        {
+          let self = this;
+          let $checkboxLgpd = this.$form.find('.checkboxLgpd');
+
+          $checkboxLgpd.change(function(){
+              self.setContentByElementId($(this).attr('id'));
+          }); 
+        }
+
+        setContentByElementId($id)
+        {         
+          this.$requisicaoContent = this.$form.find('#requisicaoContent');
+          this.$consultaContent   = this.$form.find('#consultaContent');
+          this.$violacaoContent   = this.$form.find('#violacaoContent');
+          this.$duvidasContent    = this.$form.find('#duvidasContent');
+
+          switch($id){
+            case(ID_PORTAL_REQUISICAO):
+              this.setRequisicaoContent();
+              break;
+            case(ID_PORTAL_CONSULTA): 
+              this.setConsultaContent();
+              break;
+            case(ID_PORTAL_VIOLACAO): 
+              this.setViolacaoContent();
+              break;
+            case(ID_PORTAL_DUVIDAS): 
+              this.setDuvidasContent();
+              break;    
+          }
+        }
+        
+        setRequisicaoContent()
+        {          
+          this.$requisicaoContent
+          .show(this.showTime)
+          .find('td')
+          .html(this.getRequisicaoContent());
+          
+          this.clearConsultaContent();
+          this.clearViolacaoContent();
+          this.clearViolacaoContent();
+        }
+
+        getRequisicaoContent()
+        {
+          return [
+            'requisicao'
+          ].join('');
+        }
+
+        clearRequisicaoContent()
+        {
+          this.$requisicaoContent          
+          .hide()
+          .find('td')
+          .html('');
+        }
+
+        setConsultaContent()
+        {          
+          this.$consultaContent
+          .show(this.showTime)
+          .find('td')
+          .html(this.getConsultaContent());
+
+          this.clearRequisicaoContent();
+          this.clearViolacaoContent();
+          this.clearDuvidasContent();
+        }
+
+        getConsultaContent()
+        {
+          return [
+            'consulta'
+          ].join('');
+        }
+
+        clearConsultaContent()
+        {
+          this.$consultaContent
+          .hide()
+          .find('td')
+          .html('');
+        }
+
+        setViolacaoContent()
+        {          
+          this.$violacaoContent
+          .show(this.showTime)
+          .find('td')
+          .html(this.getViolacaoContent());
+
+          this.clearRequisicaoContent();
+          this.clearConsultaContent();
+          this.clearDuvidasContent();
+        }
+
+        getViolacaoContent()
+        {
+          return [
+            'violacao'
+          ].join('');
+        }
+
+        clearViolacaoContent()
+        {
+          this.$violacaoContent
+          .hide()          
+          .find('td')
+          .html('');
+        }
+
+        setDuvidasContent()
+        {          
+          this.$duvidasContent
+          .show(this.showTime)
+          .find('td')
+          .html(this.getDuvidasContent());
+
+          this.clearRequisicaoContent();
+          this.clearConsultaContent();
+          this.clearViolacaoContent();
+        }
+
+        getDuvidasContent()
+        {
+          return [
+            'duvidas'
+          ].join('');
+        }
+
+        clearDuvidasContent()
+        {
+          this.$duvidasContent
+          .hide()
+          .find('td')
+          .html('');
+        }
+    }// end class
+  
   var lgpd = new Lgpd();
   var contact = new Contact();
+  var viewPortalLgpd = new ViewPortalLgpd(); 
 
   lgpd.init();
   contact.init();
+  viewPortalLgpd.init();
+
 
   $('img').each(function() {
     if ($(this).attr('alt') === 'www.000webhost.com')
