@@ -36,15 +36,17 @@
             <!--End lgpd Item-->
 
             <!--lgpd Item-->
-            <div class="col-md-6">
-                <div class="services-box">
-                    <div class="services-icon"> <i class="fa fa-home"></i> </div>
-                    <div class="services-desc">
-                        <h4>Portal LGPD</h4>
-                        <p></p>
+            <a style="cursor:pointer" id="linkPaginaPortalLgpd">
+                <div class="col-md-6">
+                    <div class="services-box">
+                        <div class="services-icon"> <i class="fa fa-home"></i> </div>
+                        <div class="services-desc">
+                            <h4>Portal LGPD</h4>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             <!--End lgpd Item-->
 
             <!--lgpd Item -->

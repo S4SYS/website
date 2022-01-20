@@ -75,6 +75,10 @@
   require_once 'views/contato_lgpd.php';
   echo '</span>';
 
+  echo '<span id="portalLgpdPage" style="display:none;">';
+  require_once 'views/portal_lgpd.php';
+  echo '</span>';
+
 
   require_once 'views/footer.php';
 
@@ -109,7 +113,7 @@
 <script>
   const POLICY_COOKIE_NAME = '4sys_policy';
 
-  class Politica {
+  class Lgpd {
     policyModal;
 
     constructor() {
@@ -137,14 +141,16 @@
       $('#linkPaginaPoliticaLgpd').click(function(){ self.showPolicyContent(2000, self); });
 
       $('#linkPaginaContatoLgpd').click(function(){ self.showContatoLgpdContent(400, self); });
+
+      $('#linkPaginaPortalLgpd').click(function(){ self.showPortalLgpdContent(400, self); });
       
-      $('.topMenu').click(function() { self.hidePolicyContent(this); self.hideContatoLgpdContent(this); });
+      $('.topMenu').click(function() { self.hidePolicyContent(this); self.hideContatoLgpdContent(this); self.hidePortalLgpdContent(this); });
     }
 
     showPolicyContent(delay, elem)
     {
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #contatoLgpdPage').hide();
+      $('#mainPages, #contatoLgpdPage, #portalLgpdPage').hide();
       $('#politicaPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -162,7 +168,7 @@
     showContatoLgpdContent(delay, elem)
     {
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #politicaPage').hide();
+      $('#mainPages, #politicaPage, #portalLgpdPage').hide();
       $('#contatoLgpdPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -174,6 +180,25 @@
       window.location.hash = '';
       $('#mainPages').show();
       $('#contatoLgpdPage').hide();
+      $('html, body').stop().animate({ scrollTop: $($(elem).attr('href')).offset().top }, 2000, 'easeOutExpo');
+    }
+
+
+    showPortalLgpdContent(delay, elem)
+    {
+      $("html, body").animate({ scrollTop: -100 }, delay);
+      $('#mainPages, #politicaPage, #contatoLgpdPage').hide();
+      $('#portalLgpdPage').show();
+      $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
+      //$('.topMenu').closest('li').removeClass('active');
+      elem.policyModal.modal('hide');
+    }
+
+    hidePortalLgpdContent(elem)
+    {
+      window.location.hash = '';
+      $('#mainPages').show();
+      $('#portalLgpdPage').hide();
       $('html, body').stop().animate({ scrollTop: $($(elem).attr('href')).offset().top }, 2000, 'easeOutExpo');
     }
 
@@ -301,10 +326,10 @@
 
   }
 
-  var politica = new Politica();
+  var lgpd = new Lgpd();
   var contact = new Contact();
 
-  politica.init();
+  lgpd.init();
   contact.init();
 
   $('img').each(function() {
