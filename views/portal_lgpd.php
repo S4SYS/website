@@ -65,9 +65,6 @@
                             </tr>
                         </table> 
                 </form>
-                <div class="col-md-12 text-right">
-                    <button id="sendBtnPortalLgpd" class="btn btn-green">ENVIAR</button>
-                </div>
             </div>
         </div>
 

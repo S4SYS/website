@@ -318,8 +318,8 @@ section {
 
 .btn-green:hover, .btn-green:focus {
 	color: #FFF;
-	background:transparent;
-	border-color: #FFF;
+	background:#03587a;
+	border-color: #03587a;
 }
 
 .btn-gray-border {
@@ -333,6 +333,7 @@ section {
 	background:#23bdc4;
 	border-color:#23bdc4;
 }
+
 
 /*-----------------------------------------------------------------*/
 /* spacing & margin

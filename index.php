@@ -400,8 +400,120 @@
         getRequisicaoContent()
         {
           return [
-            'requisicao'
+            ...this.getCampoTipoRequisicao(),
+            ...this.getCampoSetor(),
+            ...this.getCampoPedido(),
+            ...this.getCampoCpf(),
+            ...this.getCampoTelefone(),
+            ...this.getCampoEmail(),
+            ...this.getCampoArquivo(),
+            ...this.getSendButton()    
           ].join('');
+        }
+
+        getCampoTipoRequisicao()
+        {
+          return [
+            '<div class="col-md-12">',
+            '<select name="tipoRequisicao" id="tipoRequisicao" class="form-control">',
+            '<option value="">Selecione uma op&ccedil;&atilde;o</option>',
+            '<option value="1">Confirmar a exist&ecirc;ncia de tratamento com meus dados pessoais</option>',
+            '<option value="2">Ter acesso aos meus dados pessoais que est&atilde;o sendo tratados</option>',
+            '<option value="3">Corrigir algum dado pessoal incompleto, inexato ou desatualizado</option>',
+            '<option value="4">Anonimizar, bloquear ou eliminar algum dado pessoal</option>',
+            '<option value="5">Realizar a portabilidade dos meus dados pessoais a outro fornecedor de servi&ccedil;o/produto</option>',
+            '<option value="6">Eliminar dados pessoais com o meu consentimento</option>',
+            '<option value="7>Ser informado sobre as entidades p&uacute;blicas e privadas com as quais a S4Sys compartilha meus dados pessoais</option>',
+            '<option value="8">Ser informado sobre a possibilidade de n&atilde;o fornecer consentimento sobre as consequ&ecirc;ncias da negativa</option>',
+            '<option value="9">Revogar o consentimento que forneci para alguma opera&ccedil;&atilde;o de tratamento com meus dados pessoais</option>',
+            '</select>',
+            '</div>'
+          ];
+        }
+
+        getCampoSetor()
+        {
+          return [
+            '<div class="col-md-12">',
+            '<label for="setor">Setor</label>',
+            '<select name="setor" id="setor" class="form-control">',
+            '<option value="">Selecione o setor que deseja encaminhar a solicita&ccedil;&atilde;o</option>',
+            '<option value="1">Administrativo</option>',
+            '<option value="2">Financeiro</option>',
+            '<option value="3">Comercial</option>',
+            '<option value="4">Gente e Gest&atilde;o</option>',
+            '<option value="5">Jur&iacute;dico</option>',
+            '<option value="5">Marketing</option>',
+            '<option value="5">Tecnologia</option>',
+            '</select>',
+            '</div>'
+          ];
+        }
+
+
+        getCampoPedido()
+        {
+          return [
+            '<div class="col-md-12">',
+            '<label for="pedido">Pedido<label>',
+            '<textarea class="form-control" cols="100"  name="pedido" id="pedido" placeholder="Especifique aqui o seu pedido">',
+            '</textarea>',
+            '</div>'
+          ];
+        }
+
+
+        getCampoCpf()
+        {
+          return [
+            '<div class="col-md-4">',
+            '<label for="cpf">CPF<label>',
+            '<input type="text" name="cpf" id="cpf" class="form-control">',
+            '</div>'
+          ];
+        }
+
+        getCampoTelefone()
+        {
+          return [
+            '<div class="col-md-4">',
+            '<label for="cpf">Telefone<label>',
+            '<input type="text" name="telefone" id="telefone" class="form-control">',
+            '</div>'
+          ];
+        }
+
+        getCampoEmail()
+        {
+          return [
+            '<div class="col-md-4">',
+            '<label for="cpf">Email<label>',
+            '<input type="text" name="email" id="email" class="form-control">',
+            '</div>'
+          ];
+        }
+
+
+        getCampoArquivo()
+        {
+          return [
+            '<div class="col-md-6">',
+            '<label for="arquivo">Anexar arquivo caso necess&aacute;rio<label>',
+            '<input type="file" name="arquivo" id="arquivo" class="form-control">',
+            '</div>'
+          ];
+        }
+        
+
+        getSendButton()
+        {
+          return [
+            '<div class="col-md-6 text-right">',
+            '<button id="sendBtnPortalLgpd" class="btn btn-green">',
+            'Finalizar e Enviar minha requisi&ccedil;&atilde;o',
+            '</button>',
+            '</div>'
+          ];
         }
 
         clearRequisicaoContent()
