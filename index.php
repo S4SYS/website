@@ -394,7 +394,7 @@
           
           this.clearConsultaContent();
           this.clearViolacaoContent();
-          this.clearViolacaoContent();
+          this.clearDuvidasContent();
         }
 
         getRequisicaoContent()
