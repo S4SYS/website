@@ -539,8 +539,19 @@
         getConsultaContent()
         {
           return [
-            'consulta'
+            ...this.getCampoConsulta(),
+            ...this.getSendButton() 
           ].join('');
+        }
+
+        getCampoConsulta()
+        {
+          return [
+            '<div class="col-md-12">',
+            '<label for="consulta">Consultar o andamento da minha requisi&ccedil;&atilde;o<label>',
+            '<input type="text" class="form-control" name="consulta" id="consulta">',
+            '</div>'
+          ];
         }
 
         clearConsultaContent()
@@ -566,8 +577,20 @@
         getViolacaoContent()
         {
           return [
-            'violacao'
+            ...this.getCampoViolacao(),
+            ...this.getSendButton()
           ].join('');
+        }
+
+        getCampoViolacao()
+        {
+          return [
+            '<div class="col-md-12">',
+            '<label for="violacao">Reportar uma viola&ccedil;&atilde;o<label>',
+            '<textarea class="form-control" cols="100"  name="violacao" id="violacao">',
+            '</textarea>',
+            '</div>'
+          ];
         }
 
         clearViolacaoContent()
