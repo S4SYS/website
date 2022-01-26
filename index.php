@@ -411,6 +411,7 @@
           ].join('');
         }
 
+        //TODO
         getCampoTipoRequisicao()
         {
           return [
@@ -431,6 +432,7 @@
           ];
         }
 
+        //TODO
         getCampoSetor()
         {
           return [
