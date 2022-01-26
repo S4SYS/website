@@ -340,6 +340,7 @@
         $duvidasContent;
         
         showTime;
+        buttonLabel;
 
         constructor()
         {
@@ -386,7 +387,8 @@
         }
         
         setRequisicaoContent()
-        {          
+        {
+          this.buttonLabel = 'Finalizar e Enviar minha requisi&ccedil;&atilde;o';          
           this.$requisicaoContent
           .show(this.showTime)
           .find('td')
@@ -512,7 +514,7 @@
           return [
             '<div class="col-md-6 text-right">',
             '<button id="sendBtnPortalLgpd" class="btn btn-green">',
-            'Finalizar e Enviar minha requisi&ccedil;&atilde;o',
+            this.buttonLabel,
             '</button>',
             '</div>'
           ];
@@ -527,7 +529,8 @@
         }
 
         setConsultaContent()
-        {          
+        { 
+          this.buttonLabel = 'Enviar';         
           this.$consultaContent
           .show(this.showTime)
           .find('td')
@@ -549,7 +552,7 @@
         getCampoConsulta()
         {
           return [
-            '<div class="col-md-12">',
+            '<div class="col-md-6">',
             '<label for="consulta">Consultar o andamento da minha requisi&ccedil;&atilde;o<label>',
             '<input type="text" class="form-control" name="consulta" id="consulta">',
             '</div>'
@@ -565,7 +568,8 @@
         }
 
         setViolacaoContent()
-        {          
+        {
+          this.buttonLabel = 'Enviar';          
           this.$violacaoContent
           .show(this.showTime)
           .find('td')
