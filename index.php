@@ -1,6 +1,8 @@
 <?php
 
-// TODO get api data with curl to fill selects.
+require_once 'app/ApiRequest.php';
+
+final class Index { use ApiRequest; }
 
 ?>
 
@@ -347,6 +349,8 @@
         
         showTime;
         buttonLabel;
+        dadosApi;
+        options;
 
         constructor()
         {
@@ -355,6 +359,7 @@
 
         init()
         {
+          this.dadosApi = $.parseJSON('<?=(new Index())->get();?>');
           this.showTime = 2000;
           this.setCheckboxChangeEvent();    
         }
@@ -418,46 +423,33 @@
             ...this.getSendButton()    
           ].join('');
         }
-
-        //TODO
+        
         getCampoTipoRequisicao()
         {
+          this.options = this.dadosApi.tipo_requisicao.data;
+          
           return [
             '<div class="col-md-12">',
             '<select name="tipoRequisicao" id="tipoRequisicao" class="form-control">',
-            '<option value="">Selecione uma op&ccedil;&atilde;o</option>',
-            '<option value="1">Confirmar a exist&ecirc;ncia de tratamento com meus dados pessoais</option>',
-            '<option value="2">Ter acesso aos meus dados pessoais que est&atilde;o sendo tratados</option>',
-            '<option value="3">Corrigir algum dado pessoal incompleto, inexato ou desatualizado</option>',
-            '<option value="4">Anonimizar, bloquear ou eliminar algum dado pessoal</option>',
-            '<option value="5">Realizar a portabilidade dos meus dados pessoais a outro fornecedor de servi&ccedil;o/produto</option>',
-            '<option value="6">Eliminar dados pessoais com o meu consentimento</option>',
-            '<option value="7>Ser informado sobre as entidades p&uacute;blicas e privadas com as quais a S4Sys compartilha meus dados pessoais</option>',
-            '<option value="8">Ser informado sobre a possibilidade de n&atilde;o fornecer consentimento sobre as consequ&ecirc;ncias da negativa</option>',
-            '<option value="9">Revogar o consentimento que forneci para alguma opera&ccedil;&atilde;o de tratamento com meus dados pessoais</option>',
+            ...this.getHtmlOptions(),
             '</select>',
             '</div>'
-          ];
+          ];          
         }
 
-        //TODO
         getCampoSetor()
         {
+          this.options = this.dadosApi.setor.data; 
+          
           return [
             '<div class="col-md-12">',
             '<label for="setor">Setor</label>',
             '<select name="setor" id="setor" class="form-control">',
             '<option value="">Selecione o setor que deseja encaminhar a solicita&ccedil;&atilde;o</option>',
-            '<option value="1">Administrativo</option>',
-            '<option value="2">Financeiro</option>',
-            '<option value="3">Comercial</option>',
-            '<option value="4">Gente e Gest&atilde;o</option>',
-            '<option value="5">Jur&iacute;dico</option>',
-            '<option value="5">Marketing</option>',
-            '<option value="5">Tecnologia</option>',
+            ...this.getHtmlOptions(),
             '</select>',
             '</div>'
-          ];
+          ];                    
         }
 
 
@@ -638,6 +630,13 @@
           .hide()
           .find('td')
           .html('');
+        }
+
+        getHtmlOptions()
+        {
+          return this.options.map(row => {
+              return `<option value="${row.id}">${row.nome}</option>`;
+          });
         }
     }// end class
   
