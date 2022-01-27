@@ -1,3 +1,9 @@
+<?php
+
+// TODO get api data with curl to fill selects.
+
+?>
+
 <!doctype html>
 <!--
 	Lamoda by TEMPLATE STOCK

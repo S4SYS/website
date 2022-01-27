@@ -5,15 +5,15 @@ require_once 'TipoRequisicao.php';
 
 final class Requisicao
 {
-    public $id;
-    public $codigo;
-    public $pedido;
-    public $cpf;
-    public $telefone;
-    public $email;
-    public $arquivo;
-    public $setor;
-    public $tipoRequisicao;
+    private $id;
+    private $codigo;
+    private $pedido;
+    private $cpf;
+    private $telefone;
+    private $email;
+    private $arquivo;
+    private $setor;
+    private $tipoRequisicao;
 
 
     /**
