@@ -34,4 +34,26 @@ final class RequisicaoDao extends Connection
             return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
+
+
+    /**
+     * @param Requisicao $requisicao
+     * 
+     * @return array
+     */
+    public function getByCode(Requisicao $requisicao): array
+    {
+        $sql = "SELECT * FROM requisicao WHERE codigo = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $requisicao->getCodigo());
+            $p_sql->execute();
+
+            return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
+    }
 }

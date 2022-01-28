@@ -545,6 +545,7 @@ final class Index { use ApiRequest; }
         {
           return [
             ...this.getCampoConsulta(),
+            '<input type="hidden" name="acao" value="consulta">',
             ...this.getSendButton() 
           ].join('');
         }
@@ -554,7 +555,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-6">',
             '<label for="consulta">Consultar o andamento da minha requisi&ccedil;&atilde;o<label>',
-            '<input type="text" class="form-control" name="consulta" id="consulta">',
+            '<input type="text" class="form-control" name="codigo" id="codigo">',
             '</div>'
           ];
         }

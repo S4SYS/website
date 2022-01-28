@@ -39,5 +39,19 @@ final class RequisicaoController
 
         return $this->dao->save($requisicao);
     }
+
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function getByCode(array $requestData): array
+    {
+        $requisicao = new Requisicao();
+        $requisicao->setCodigo($requestData['codigo']);
+
+        return $this->dao->getByCode($requisicao);
+    }
     
 }

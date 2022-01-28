@@ -21,7 +21,10 @@ final Class Api
                 ]);
 
             case('requisicao'): 
-                return json_encode((new RequisicaoController())->save($requestParams));    
+                return json_encode((new RequisicaoController())->save($requestParams));
+                
+            case('consulta'): 
+                return json_encode((new RequisicaoController())->getByCode($requestParams));    
         }
     }
 }
