@@ -393,7 +393,8 @@ final class Index { use ApiRequest; }
               this.setViolacaoContent();
               break;
             case(ID_PORTAL_DUVIDAS): 
-              this.setDuvidasContent();
+              //this.setDuvidasContent();
+              $('#linkPaginaContatoLgpd').click();
               break;    
           }
         }
