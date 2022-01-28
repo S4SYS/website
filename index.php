@@ -585,6 +585,7 @@ final class Index { use ApiRequest; }
         {
           return [
             ...this.getCampoViolacao(),
+            '<input type="hidden" name="acao" value="violacao">',
             ...this.getSendButton()
           ].join('');
         }
@@ -593,8 +594,8 @@ final class Index { use ApiRequest; }
         {
           return [
             '<div class="col-md-12">',
-            '<label for="violacao">Reportar uma viola&ccedil;&atilde;o<label>',
-            '<textarea class="form-control" cols="100"  name="violacao" id="violacao">',
+            '<label for="descricao">Reportar uma viola&ccedil;&atilde;o<label>',
+            '<textarea class="form-control" cols="100"  name="descricao" id="descricao">',
             '</textarea>',
             '</div>'
           ];

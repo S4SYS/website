@@ -28,7 +28,7 @@ final class RequisicaoController
         $setor->id = $requestData['setor'];
         $tipoRequisicao->id = $requestData['tipoRequisicao'];
 
-        $requisicao->setCodigo(base64_encode($requestData['cpf']));
+        $requisicao->setCodigo($this->createRequisicaoCode($requestData['cpf']));
         $requisicao->setPedido($requestData['pedido']);
         $requisicao->setCpf($requestData['cpf']);
         $requisicao->setTelefone($requestData['telefone']);
@@ -52,6 +52,18 @@ final class RequisicaoController
         $requisicao->setCodigo($requestData['codigo']);
 
         return $this->dao->getByCode($requisicao);
+    }
+
+    /**
+     * @param string $cpf
+     * 
+     * @return string
+     */
+    private function createRequisicaoCode(string $cpf): string
+    {
+        $now = date('Y-m-d H:i:s');
+
+        return base64_encode("{$cpf}##{$now}");
     }
     
 }

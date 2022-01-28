@@ -28,7 +28,11 @@ final class RequisicaoDao extends Connection
             $p_sql->bindValue(8, $requisicao->getTipoRequisicao()->id);
             $p_sql->execute();
 
-            return ['success' => true, 'id' => $this->getInstance()->lastInsertId()];
+            return [
+                'success' => true, 
+                'id' => $this->getInstance()->lastInsertId(),
+                'codigo' => $requisicao->getCodigo()
+            ];
 
         } catch(PDOException $exception){
             return ['success' => false, 'message' => $exception->getMessage()];
@@ -50,7 +54,7 @@ final class RequisicaoDao extends Connection
             $p_sql->bindValue(1, $requisicao->getCodigo());
             $p_sql->execute();
 
-            return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
+            return ['success' => true, 'data' => $p_sql->fetch(PDO::FETCH_ASSOC)];
 
         } catch(PDOException $exception){
             return ['success' => false, 'message' => $exception->getMessage()];

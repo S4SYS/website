@@ -3,6 +3,7 @@
 require_once 'app/controller/SetorController.php';
 require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
+require_once 'app/controller/ViolacaoController.php';
 
 final Class Api
 {      
@@ -24,7 +25,13 @@ final Class Api
                 return json_encode((new RequisicaoController())->save($requestParams));
                 
             case('consulta'): 
-                return json_encode((new RequisicaoController())->getByCode($requestParams));    
+                return json_encode([
+                    'requisicao' => (new RequisicaoController())->getByCode($requestParams),
+                    'violacao'   => (new ViolacaoController())->getByCode($requestParams)
+                ]);   
+                
+            case('violacao'):
+                return json_encode((new ViolacaoController())->save($requestParams));    
         }
     }
 }

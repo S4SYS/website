@@ -41,6 +41,14 @@ CREATE TABLE IF NOT EXISTS `requisicao` (
   CONSTRAINT `requisicao_ibfk_2` FOREIGN KEY (`setor_id`) REFERENCES `setor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE violacao (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  codigo VARCHAR(128) NULL,
+  descricao TEXT NULL,
+  created_at TIMESTAMP NULL DEFAULT current_timestamp(),
+  updated_at TIMESTAMP NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO setor(nome) VALUES('Administrativo');
 INSERT INTO setor(nome) VALUES('Financeiro');
