@@ -359,7 +359,7 @@ final class Index { use ApiRequest; }
 
         init()
         {
-          this.dadosApi = $.parseJSON('<?=(new Index())->get();?>');
+          this.dadosApi = $.parseJSON('<?=(new Index())->get('index');?>');
           this.showTime = 2000;
           this.setCheckboxChangeEvent();    
         }
@@ -373,6 +373,7 @@ final class Index { use ApiRequest; }
               self.setContentByElementId($(this).attr('id'));
           }); 
         }
+
 
         setContentByElementId($id)
         {         
@@ -420,6 +421,7 @@ final class Index { use ApiRequest; }
             ...this.getCampoTelefone(),
             ...this.getCampoEmail(),
             ...this.getCampoArquivo(),
+            '<input type="hidden" name="acao" value="requisicao">',
             ...this.getSendButton()    
           ].join('');
         }

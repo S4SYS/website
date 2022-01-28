@@ -5,12 +5,12 @@ trait ApiRequest
     //private $url = 'http://localhost/website/api.php';
     private $url = 'https://s4sys.000webhostapp.com/api.php';
   
-    public function get(string $urlParam = ''): string
+    public function get(string $actionParam = ''): string
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => $this->url,
+            CURLOPT_URL => "{$this->url}?acao={$actionParam}",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

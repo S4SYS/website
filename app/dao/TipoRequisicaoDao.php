@@ -19,7 +19,7 @@ final class TipoRequisicaoDao extends Connection
             return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
 
         } catch(PDOException $exception){
-            return ['success' => false, 'message' => $exception];
+            return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
 
