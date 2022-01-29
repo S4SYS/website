@@ -31,7 +31,8 @@ final Class Api
                 ]);   
                 
             case('violacao'):
-                return json_encode((new ViolacaoController())->save($requestParams));    
+                return json_encode((new ViolacaoController())->save($requestParams));
+                    
         }
     }
 }

@@ -393,7 +393,6 @@ final class Index { use ApiRequest; }
               this.setViolacaoContent();
               break;
             case(ID_PORTAL_DUVIDAS): 
-              //this.setDuvidasContent();
               $('#linkPaginaContatoLgpd').click();
               break;    
           }
@@ -585,6 +584,9 @@ final class Index { use ApiRequest; }
         getViolacaoContent()
         {
           return [
+            ...this.getCampoCpf(),
+            ...this.getCampoTelefone(),
+            ...this.getCampoEmail(),
             ...this.getCampoViolacao(),
             '<input type="hidden" name="acao" value="violacao">',
             ...this.getSendButton()

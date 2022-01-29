@@ -44,6 +44,9 @@ CREATE TABLE IF NOT EXISTS `requisicao` (
 CREATE TABLE violacao (
   id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   codigo VARCHAR(128) NULL,
+  cpf varchar(32) DEFAULT NULL,
+  telefone varchar(32) DEFAULT NULL,
+  email varchar(64) DEFAULT NULL,  
   descricao TEXT NULL,
   created_at TIMESTAMP NULL DEFAULT current_timestamp(),
   updated_at TIMESTAMP NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),

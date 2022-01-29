@@ -21,7 +21,10 @@ final class ViolacaoController
     {
         $violacao = new violacao();
 
-        $violacao->setCodigo(base64_encode(date('Y-m-d H:i:s')));
+        $violacao->setCodigo(date('YmdHis'));
+        $violacao->setCpf($requestData['cpf']);
+        $violacao->setEmail($requestData['email']);
+        $violacao->setTelefone($requestData['telefone']);
         $violacao->setDescricao($requestData['descricao']);
 
         return $this->dao->save($violacao);
