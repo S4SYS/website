@@ -87,6 +87,9 @@ final class Index { use ApiRequest; }
   require_once 'views/portal_lgpd.php';
   echo '</span>';
 
+  echo '<span id="successPage" style="display:none;">';
+  require_once 'views/success.php';
+  echo '</span>';
 
   require_once 'views/footer.php';
 
@@ -119,6 +122,7 @@ final class Index { use ApiRequest; }
 </html>
 
 <script>
+
   const POLICY_COOKIE_NAME = '4sys_policy';
 
   class Lgpd {
@@ -128,37 +132,64 @@ final class Index { use ApiRequest; }
       this.policyModal = $('#myModal');
     }
 
-    init() {
+    init() 
+    {      
       if (!this.getCookie(POLICY_COOKIE_NAME)) this.policyModal.modal('show');
       this.clickEvents();
+      this.verifyHashUrl();
+    }
+
+    verifyHashUrl()
+    {
+      let hash = window.location.hash;
+
+      switch(hash){
+        case('#success'):
+          this.showSuccessContent(400);
+          break;
+        case('#error'):
+          alert('errrrouuu!!');
+          break;
+
+        default: return;  
+      }
+    }
+
+    showSuccessContent(delay)
+    {
+      $("html, body").animate({ scrollTop: 0 }, delay);
+      $('#mainPages, #contatoLgpdPage, #portalLgpdPage, #politicaPage').hide();
+      $('#successPage').show();
+      $('.topMenu').closest('li').removeClass('active');
+      this.policyModal.modal('hide');
     }
 
     clickEvents() 
     {
       let self = this;
-
       $('#btnPolitica').click(function() {
-        document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2021 23:59:59 UTC";
+        document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2022 23:59:59 UTC";
         self.policyModal.modal('hide');
       });
-
       $('#linkPaginaPoliticaFooter').click(function() { self.showPolicyContent(400, self); });
-
       $('#linkPaginaPoliticaModal').click(function(){ self.showPolicyContent(2000, self); });
-
       $('#linkPaginaPoliticaLgpd').click(function(){ self.showPolicyContent(2000, self); });
-
       $('#linkPaginaContatoLgpd').click(function(){ self.showContatoLgpdContent(400, self); });
-
       $('#linkPaginaPortalLgpd').click(function(){ self.showPortalLgpdContent(400, self); });
-      
-      $('.topMenu').click(function() { self.hidePolicyContent(this); self.hideContatoLgpdContent(this); self.hidePortalLgpdContent(this); });
+      $('#backLgpd').click(function(){ window.location.hash = ''; window.location.reload(); });      
+      $('.topMenu').click(function() { 
+        self.hidePolicyContent(this); 
+        self.hideContatoLgpdContent(this); 
+        self.hidePortalLgpdContent(this);
+        window.location.hash = ''; 
+        $('#successPage').hide();
+      });
     }
 
     showPolicyContent(delay, elem)
     {
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #contatoLgpdPage, #portalLgpdPage').hide();
+      $('#mainPages, #contatoLgpdPage, #portalLgpdPage, #successPage').hide();
       $('#politicaPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -174,9 +205,9 @@ final class Index { use ApiRequest; }
     }
 
     showContatoLgpdContent(delay, elem)
-    {
+    {      
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #politicaPage, #portalLgpdPage').hide();
+      $('#mainPages, #politicaPage, #portalLgpdPage, #successPage').hide();
       $('#contatoLgpdPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -191,11 +222,11 @@ final class Index { use ApiRequest; }
       $('html, body').stop().animate({ scrollTop: $($(elem).attr('href')).offset().top }, 2000, 'easeOutExpo');
     }
 
-
     showPortalLgpdContent(delay, elem)
     {
+      window.location.hash = '';
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #politicaPage, #contatoLgpdPage').hide();
+      $('#mainPages, #politicaPage, #contatoLgpdPage, #successPage').hide();
       $('#portalLgpdPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -584,6 +615,7 @@ final class Index { use ApiRequest; }
         getViolacaoContent()
         {
           return [
+            ...this.getTextoVolacao(),
             ...this.getCampoCpf(),
             ...this.getCampoTelefone(),
             ...this.getCampoEmail(),
@@ -591,6 +623,20 @@ final class Index { use ApiRequest; }
             '<input type="hidden" name="acao" value="violacao">',
             ...this.getSendButton()
           ].join('');
+        }
+
+        getTextoVolacao()
+        {
+          return [
+            '<div class="col-md-12">',
+            '<p class="alert alert-warning" role="alert">',
+            'A S4Sys adotar&aacute; todas as provid&ecirc;ncias necess&aacute;rias para apurar este incidente,',
+            '&nbsp;tomando todas as medidas cab&iacute;veis &agrave; nossa disposi&ccedil;&atilde;o.',
+            '&nbsp;Para facilitar a investiga&ccedil;&atilde;o, anexe algum arquivo (formato pdf) necess&aacute;rio &agrave; demonstra&ccedil;&atilde;o e comprova&ccedil;&atilde;o do ocorrido.',
+            '&nbsp;A seguir, informe-nos tudo o que aconteceu, em detalhes.',
+            '</p>',
+            '</div>'
+          ];
         }
 
         getCampoViolacao()

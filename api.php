@@ -9,10 +9,9 @@ final Class Api
 {      
     /**
      * @param array $requestParams
-     * 
-     * @return string
+     *      
      */
-    public static function json(array $requestParams): string
+    public static function json(array $requestParams)
     {
         switch($requestParams['acao']){
             case('index') : 
@@ -22,7 +21,9 @@ final Class Api
                 ]);
 
             case('requisicao'): 
-                return json_encode((new RequisicaoController())->save($requestParams));
+                $response = (new RequisicaoController())->save($requestParams);
+                if($response['success']) header('Location: ./#success');
+                break;
                 
             case('consulta'): 
                 return json_encode([
@@ -31,8 +32,9 @@ final Class Api
                 ]);   
                 
             case('violacao'):
-                return json_encode((new ViolacaoController())->save($requestParams));
-                    
+                $response = (new ViolacaoController())->save($requestParams);
+                if($response['success']) header('Location: ./#success');
+                break;
         }
     }
 }
