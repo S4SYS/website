@@ -562,7 +562,8 @@ final class Index { use ApiRequest; }
         }
 
         setConsultaContent()
-        { 
+        {
+          this.$form.attr('action', 'consulta.php'); 
           this.buttonLabel = 'Enviar';         
           this.$consultaContent
           .show(this.showTime)

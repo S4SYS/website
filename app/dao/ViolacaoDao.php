@@ -44,7 +44,10 @@ final class ViolacaoDao extends Connection
      */
     public function getByCode(Violacao $violacao): array
     {
-        $sql = "SELECT * FROM violacao WHERE codigo = ?";
+        $sql = "SELECT violacao.*, status.nome AS nome_status 
+                FROM violacao
+                INNER JOIN status ON violacao.status_id = status.id 
+                WHERE codigo = ?";
 
         try{
             $p_sql = $this->getInstance()->prepare($sql);
