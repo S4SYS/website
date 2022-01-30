@@ -114,6 +114,8 @@ final class Index { use ApiRequest; }
   <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
   <script type="text/javascript" src="js/custom.js"></script>
 
+  <script type="text/javascript" src="views/js/Helper.js"></script>
+
   <!-- Google Recaptcha V3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LeMLngUAAAAAJgxYunr01z9AYdOputDgVtqlNcq"></script>
 
@@ -503,7 +505,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-4">',
             '<label for="cpf">CPF<label>',
-            '<input type="text" name="cpf" id="cpf" class="form-control">',
+            '<input type="text" name="cpf" id="cpf" class="form-control" maxlength="14" onKeyUp="Helper.getCpfMask(this);" onMouseOut="Helper.validateCpf(this);">',
             '</div>'
           ];
         }
@@ -513,7 +515,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-4">',
             '<label for="cpf">Telefone<label>',
-            '<input type="text" name="telefone" id="telefone" class="form-control">',
+            '<input type="text" name="telefone" id="telefone" class="form-control" maxlength="15" onKeyUp="Helper.getPhoneMask(this);">',
             '</div>'
           ];
         }

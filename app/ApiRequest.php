@@ -2,8 +2,8 @@
 
 trait ApiRequest
 {
-    //private $url = 'http://localhost/website/api.php';
-    private $url = 'https://s4sys.000webhostapp.com/api.php';
+    private $url = 'http://localhost/website/api.php';
+    //private $url = 'https://s4sys.000webhostapp.com/api.php';
   
     public function get(string $actionParam = ''): string
     {
