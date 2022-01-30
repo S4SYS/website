@@ -22,14 +22,14 @@ class Helper {
         return true;
     }
 
-    static validateCpf(cpf) {
+    static validateCpf(cpfElement) {
         var soma, resto;
+        var cpf = cpfElement.value.replace('.', '').replace('.', '').replace('-', '');
 
         if (cpf.length !== 11 || ['00000000000', '11111111111', '22222222222',
             '33333333333', '44444444444', '55555555555', '66666666666',
             '77777777777', '88888888888', '99999999999'].includes(cpf)) {
-            //return false;
-            alert('CPF inv\u00e1lido!');
+            cpfElement.style.border = '1px solid red';
             return false;
         }
 
@@ -42,8 +42,7 @@ class Helper {
             resto = 0;
         }
         if (resto != parseInt(cpf.charAt(9))) {
-            //return false;
-            alert('CPF inv\u00e1lido!');
+            cpfElement.style.border = '1px solid red';
             return false;
         }
         soma = 0;
@@ -55,10 +54,10 @@ class Helper {
             resto = 0;
         }
         if (resto != parseInt(cpf.charAt(10))) {
-            //return false;
-            alert('CPF inv\u00e1lido!');
+            cpfElement.style.border = '1px solid red';
             return false;
         }
+        cpfElement.style.border = '1px solid #ccc';
         return true;
     }
 

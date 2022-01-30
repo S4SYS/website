@@ -505,7 +505,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-4">',
             '<label for="cpf">CPF<label>',
-            '<input type="text" name="cpf" id="cpf" class="form-control" maxlength="14" onKeyUp="Helper.getCpfMask(this);" onMouseOut="Helper.validateCpf(this);">',
+            '<input type="text" name="cpf" id="cpf" class="form-control" maxlength="14" onKeyUp="Helper.getCpfMask(this);">',
             '</div>'
           ];
         }
