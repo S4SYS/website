@@ -1,5 +1,7 @@
 <?php
 
+if(!isset($_POST['acao']) && !isset($_GET['acao'])) die("<script>location.href='./';</script>");
+
 require_once 'app/controller/SetorController.php';
 require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
@@ -53,7 +55,7 @@ final class Api
                 break;
 
             default:
-                echo "<script>location.href='./#success';</script>";
+                echo "<script>location.href='./';</script>";
                 break;
         }
     }
