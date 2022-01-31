@@ -4,42 +4,72 @@ require_once 'app/controller/SetorController.php';
 require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
 require_once 'app/controller/ViolacaoController.php';
+require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 
-final Class Api
-{      
+final class Api
+{
     /**
      * @param array $requestParams
-     *      
+     * 
+     * @return void
      */
-    public static function json(array $requestParams)
+    public static function setAction(array $requestParams): void
     {
-        switch($requestParams['acao']){
-            case('index') : 
-                return json_encode([
+        switch ($requestParams['acao']) {
+            case ('index'):
+                echo json_encode([
                     'setor' => (new SetorController())->get(),
                     'tipo_requisicao' => (new TipoRequisicaoController())->get()
                 ]);
-
-            case('requisicao'): 
-                $response = (new RequisicaoController())->save($requestParams);
-                if($response['success']) header('Location: ./#success');
                 break;
-                
-            case('consulta'): 
-                return json_encode([
+
+            case ('requisicao'):
+                echo self::getLoader();
+                $response = (new RequisicaoController())->save($requestParams);
+                if ($response['success']) {
+                    $mail = (new EmailPortalLgpdAdapter($response))->init();
+                }
+                if ($mail['success']) header('Location: ./#success');
+                break;
+
+            case ('consulta'):
+                echo json_encode([
                     'requisicao' => (new RequisicaoController())->getByCode($requestParams),
                     'violacao'   => (new ViolacaoController())->getByCode($requestParams)
-                ]);   
-                
-            case('violacao'):
+                ]);
+                break;
+
+            case ('violacao'):
+                echo self::getLoader();
                 $response = (new ViolacaoController())->save($requestParams);
-                if($response['success']) header('Location: ./#success');
+                if ($response['success']) {
+                    $mail = (new EmailPortalLgpdAdapter($response))->init();
+                }
+                if ($mail['success']) header('Location: ./#success');
+                break;
+
+            default:
+                header('Location: ./');
                 break;
         }
+    }
+
+    /**
+     * @return string
+     */
+    private static function getLoader(): string
+    {
+        return implode('', [
+            '<link href="css/style.css" type="text/css" rel="stylesheet" />',
+            '<div id="pageloader">',
+            '<div class="loader text-center">',
+            '<img src="images/progress.gif" alt="loader" />',
+            '</div>',
+            '</div>'
+        ]);
     }
 }
 
 $request = (isset($_POST['acao']) && !empty($_POST)) ? $_POST : $_GET;
 
-echo Api::json($request); 
-
+Api::setAction($request);

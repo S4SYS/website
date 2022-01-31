@@ -546,7 +546,7 @@ final class Index { use ApiRequest; }
         {
           return [
             '<div class="col-md-6 text-right">',
-            '<button id="sendBtnPortalLgpd" class="btn btn-green">',
+            '<button id="sendBtnPortalLgpd" class="btn btn-green" onClick="this.setAttribute(\'disabled\', \'true\');">',
             this.buttonLabel,
             '</button>',
             '</div>'

@@ -1,5 +1,6 @@
 <?php
 
-require_once 'app/EmailContato.php';
+require_once 'app/adapter/EmailContatoAdapter.php';
 
-echo json_encode((new EmailContato($_POST))->init());
+echo json_encode((new EmailContatoAdapter($_POST))->init());
+

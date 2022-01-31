@@ -31,7 +31,8 @@ final class RequisicaoDao extends Connection
             return [
                 'success' => true, 
                 'id' => $this->getInstance()->lastInsertId(),
-                'codigo' => $requisicao->getCodigo()
+                'codigo' => $requisicao->getCodigo(),
+                'email'  => $requisicao->getEmail()
             ];
 
         } catch(PDOException $exception){

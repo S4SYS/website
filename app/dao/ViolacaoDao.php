@@ -27,8 +27,9 @@ final class ViolacaoDao extends Connection
 
             return [
                 'success' => true, 
-                'id' => $this->getInstance()->lastInsertId(),
-                'codigo' => $violacao->getCodigo()
+                'id'      => $this->getInstance()->lastInsertId(),
+                'codigo'  => $violacao->getCodigo(),
+                'email'   => $violacao->getEmail()
             ];
 
         } catch(PDOException $exception){
