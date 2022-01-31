@@ -24,7 +24,7 @@ final class Api
                 break;
 
             case ('requisicao'):
-                echo self::getLoader();
+                //echo self::getLoader();
                 $response = (new RequisicaoController())->save($requestParams);
                 if ($response['success']) {
                     $mail = (new EmailPortalLgpdAdapter($response))->init();
@@ -44,16 +44,12 @@ final class Api
             case ('violacao'):
                 //echo self::getLoader();
                 $response = (new ViolacaoController())->save($requestParams);
-                (new EmailPortalLgpdAdapter($response))->init();
-                
-                /*
                 if ($response['success']) {
                     $mail = (new EmailPortalLgpdAdapter($response))->init();
                 }
                 if ($mail['success']){
                     echo "<script>location.href='./#success';</script>";
-                } 
-                */
+                }                
                 break;
 
             default:

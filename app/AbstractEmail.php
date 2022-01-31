@@ -9,13 +9,9 @@ abstract class AbstractEmail
     const SMTP_AUTH     = true;
     const SMTP_SECURE   = 'tls';
     
-    /*
     const SMTP_DEBUG    = false;
     const SMTP_DO_DEBUG = 0;
-    */
-    const SMTP_DEBUG    = true;
-    const SMTP_DO_DEBUG = 1;
-
+    
     const MAIL_USER = 'contato@s4sys.com.br';
     const MAIL_PASS = 'XFTj@phwZxEQuh{EUp';
     const MAIL_FROM = 'contato@s4sys.com.br';
