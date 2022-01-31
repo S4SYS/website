@@ -29,7 +29,9 @@ final class Api
                 if ($response['success']) {
                     $mail = (new EmailPortalLgpdAdapter($response))->init();
                 }
-                if ($mail['success']) header('Location: ./#success');
+                if ($mail['success']){
+                    echo "<script>location.href='./#success';</script>";
+                } 
                 break;
 
             case ('consulta'):
@@ -42,10 +44,16 @@ final class Api
             case ('violacao'):
                 echo self::getLoader();
                 $response = (new ViolacaoController())->save($requestParams);
+                (new EmailPortalLgpdAdapter($response))->init();
+                
+                /*
                 if ($response['success']) {
                     $mail = (new EmailPortalLgpdAdapter($response))->init();
                 }
-                if ($mail['success']) header('Location: ./#success');
+                if ($mail['success']){
+                    echo "<script>location.href='./#success';</script>";
+                } 
+                */
                 break;
 
             default:
