@@ -42,7 +42,7 @@ final class Api
                 break;
 
             case ('violacao'):
-                echo self::getLoader();
+                //echo self::getLoader();
                 $response = (new ViolacaoController())->save($requestParams);
                 (new EmailPortalLgpdAdapter($response))->init();
                 
@@ -57,7 +57,7 @@ final class Api
                 break;
 
             default:
-                header('Location: ./');
+                echo "<script>location.href='./#success';</script>";
                 break;
         }
     }
