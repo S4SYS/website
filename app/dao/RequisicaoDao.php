@@ -11,7 +11,7 @@ final class RequisicaoDao extends Connection
      * 
      * @return array
      */
-    public function save(Requisicao $requisicao): array
+    public function save(Requisicao $requisicao): array 
     {
         $sql = "INSERT INTO requisicao(codigo, pedido, cpf, telefone, email, arquivo, setor_id, tipo_requisicao_id) 
         VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -28,11 +28,11 @@ final class RequisicaoDao extends Connection
             $p_sql->bindValue(8, $requisicao->getTipoRequisicao()->id);
             $p_sql->execute();
 
+            $requisicao->setId($this->getInstance()->lastInsertId());
+            
             return [
                 'success' => true, 
-                'id' => $this->getInstance()->lastInsertId(),
-                'codigo' => $requisicao->getCodigo(),
-                'email'  => $requisicao->getEmail()
+                'data'    => $requisicao
             ];
 
         } catch(PDOException $exception){

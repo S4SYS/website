@@ -25,11 +25,11 @@ final class ViolacaoDao extends Connection
             $p_sql->bindValue(5, $violacao->getDescricao());
             $p_sql->execute();
 
+            $violacao->setId($this->getInstance()->lastInsertId());
+
             return [
                 'success' => true, 
-                'id'      => $this->getInstance()->lastInsertId(),
-                'codigo'  => $violacao->getCodigo(),
-                'email'   => $violacao->getEmail()
+                'data'    => $violacao
             ];
 
         } catch(PDOException $exception){

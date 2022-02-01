@@ -2,6 +2,8 @@
 
 if(!isset($_POST['acao']) && !isset($_GET['acao'])) die("<script>location.href='./';</script>");
 
+@session_start();
+
 require_once 'app/controller/SetorController.php';
 require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
@@ -26,12 +28,13 @@ final class Api
                 break;
 
             case ('requisicao'):
-                //echo self::getLoader();
                 $response = (new RequisicaoController())->save($requestParams);
                 if ($response['success']) {
-                    $mail = (new EmailPortalLgpdAdapter($response))->init();
+                    $requisicao = $response['data'];
+                    $mail = (new EmailPortalLgpdAdapter($requisicao))->init();
                 }
-                if ($mail['success']){
+                if ($mail['success']){                    
+                    $_SESSION['codigo'] = $requisicao->codigo; 
                     echo "<script>location.href='./#success';</script>";
                 } 
                 break;
@@ -44,12 +47,13 @@ final class Api
                 break;
 
             case ('violacao'):
-                //echo self::getLoader();
                 $response = (new ViolacaoController())->save($requestParams);
                 if ($response['success']) {
-                    $mail = (new EmailPortalLgpdAdapter($response))->init();
+                    $violacao = $response['data'];
+                    $mail = (new EmailPortalLgpdAdapter($violacao))->init();
                 }
                 if ($mail['success']){
+                    $_SESSION['codigo'] = $violacao->codigo;
                     echo "<script>location.href='./#success';</script>";
                 }                
                 break;
@@ -58,22 +62,7 @@ final class Api
                 echo "<script>location.href='./';</script>";
                 break;
         }
-    }
-
-    /**
-     * @return string
-     */
-    private static function getLoader(): string
-    {
-        return implode('', [
-            '<link href="css/style.css" type="text/css" rel="stylesheet" />',
-            '<div id="pageloader">',
-            '<div class="loader text-center">',
-            '<img src="images/progress.gif" alt="loader" />',
-            '</div>',
-            '</div>'
-        ]);
-    }
+    }    
 }
 
 $request = (isset($_POST['acao']) && !empty($_POST)) ? $_POST : $_GET;

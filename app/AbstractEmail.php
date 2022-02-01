@@ -49,6 +49,7 @@ abstract class AbstractEmail
         $this->mailer->addReplyTo($this->replyTo);
 
         $response = $this->mailer->Send();
+
         return ['success' => 1, 'msg' => $response];
     }
 

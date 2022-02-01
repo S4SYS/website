@@ -1,15 +1,19 @@
 <?php
 
 require_once 'app/AbstractEmail.php';
+require_once 'app/model/AbstractModel.php';
 
 final class EmailPortalLgpdAdapter extends AbstractEmail
 {
     private $codigo;
 
-    public function __construct(array $params)
+    /**
+     * @param AbstractModel $model
+     */
+    public function __construct(AbstractModel $model)
     {
-        $this->codigo   = $params['codigo'];
-        $this->mailTo   = $params['email'];
+        $this->codigo   = $model->codigo;
+        $this->mailTo   = $model->email;
         $this->assunto  = 'Código para consulta';
         $this->nameFrom = 'Portal LGPD - S4SYS';
     }
