@@ -1,6 +1,6 @@
 <?php
 
-if(!isset($_POST['acao']) && !isset($_GET['acao'])) die("<script>location.href='./';</script>");
+if (!isset($_POST['acao']) && !isset($_GET['acao'])) die("<script>location.href='./';</script>");
 
 @session_start();
 
@@ -30,20 +30,20 @@ final class Api
 
             case ('requisicao'):
                 $arquivo = $_FILES['arquivo'];
-                if(is_array($arquivo) && !empty($arquivo)){
+                $requestParams['arquivo'] = $arquivo['name'];
+                if ($arquivo['size'] > 0) {
                     $upload = File::upload($arquivo);
-                    if(!$upload['success']) die($upload['message']); 
-                    $requestParams['arquivo'] = $upload['file_name']; 
+                    if (!$upload['success']) die($upload['message']);
                 }
 
                 $response = (new RequisicaoController())->save($requestParams);
-                if(!$response['success']) die($response['message']);
+                if (!$response['success']) die($response['message']);
 
                 $requisicao = $response['data'];
                 $mail = (new EmailPortalLgpdAdapter($requisicao))->init();
-                if(!$mail['success']) die('Falha no envio do email.');
+                if (!$mail['success']) die('Falha no envio do email.');
 
-                $_SESSION['codigo'] = $requisicao->codigo; 
+                $_SESSION['codigo'] = $requisicao->codigo;
                 echo "<script>location.href='./#success';</script>";
                 break;
 
@@ -56,10 +56,10 @@ final class Api
 
             case ('violacao'):
                 $arquivo = $_FILES['arquivo'];
-                if(is_array($arquivo) && !empty($arquivo)){
+                $requestParams['arquivo'] = $arquivo['name'];
+                if($arquivo['size'] > 0){
                     $upload = File::upload($arquivo);
                     if(!$upload['success']) die($upload['message']); 
-                    $requestParams['arquivo'] = $upload['file_name']; 
                 }
                           
                 $response = (new ViolacaoController())->save($requestParams);

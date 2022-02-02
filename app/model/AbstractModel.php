@@ -104,22 +104,23 @@ abstract class AbstractModel
         $this->email = $email;
     }
 
-
+    
     /**
-     * @return string
+     * @return string|null
      */
-    public function getArquivo(): string
+    public function getArquivo(): ?string
     {
         return $this->arquivo;
 
     }
 
+    
     /**
-     * @param string $arquivo
+     * @param string|null $arquivo
      * 
      * @return void
      */
-    public function setArquivo(string $arquivo): void
+    public function setArquivo(?string $arquivo): void
     {
         $this->arquivo = $arquivo;
     }

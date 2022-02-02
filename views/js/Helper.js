@@ -29,7 +29,6 @@ class Helper {
         if (cpf.length !== 11 || ['00000000000', '11111111111', '22222222222',
             '33333333333', '44444444444', '55555555555', '66666666666',
             '77777777777', '88888888888', '99999999999'].includes(cpf)) {
-            cpfElement.style.border = '1px solid red';
             return false;
         }
 
@@ -42,7 +41,6 @@ class Helper {
             resto = 0;
         }
         if (resto != parseInt(cpf.charAt(9))) {
-            cpfElement.style.border = '1px solid red';
             return false;
         }
         soma = 0;
@@ -54,10 +52,8 @@ class Helper {
             resto = 0;
         }
         if (resto != parseInt(cpf.charAt(10))) {
-            cpfElement.style.border = '1px solid red';
             return false;
         }
-        cpfElement.style.border = '1px solid #ccc';
         return true;
     }
 
@@ -93,17 +89,29 @@ class Helper {
         }
     }
 
-    static verificarCamposObrigatorios()
+    static validateForm($formElement)
     {
         let counter = 0;
-        $('.form-control').each(function(){
-            if($(this).attr('data-required') == true){
-                $(this).css('border', '1px solid red');
+        $formElement.find('.required').each(function(){
+            if(!$(this).val()){
                 counter ++;
-            }
-        });
-        
-        if(counter > 0) return false;
+                $(this).css('border', '1px solid red');                        
+            } else 
+                $(this).css('border', '1px solid #ccc'); 
+        });               
+                
+        if(parseInt(counter) > 0){
+            alert('Por favor, preencha os campos obrigat\u00f3rios.');
+            return false;
+        } 
+
+        if(!this.validateCpf(document.getElementById('cpf'))){
+            alert('Por favor, informe um CPF v\u00e1lido.');
+            $formElement.find('#cpf').css('border', '1px solid red');
+            return false;
+        }
+
+        return true;
     }
 
 }

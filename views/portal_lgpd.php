@@ -16,7 +16,8 @@
 
         <div class="col-md-8 col-md-offset-2 contact-form">
             <div class="row">
-                <form id="formPortalLgpd" action="api.php" method="post" enctype="multipart/form-data">
+                <form id="formPortalLgpd" name="formPortalLgpd" action="api.php" method="post" enctype="multipart/form-data" 
+                onSubmit="return Helper.validateForm($(this));">
                     <div class="col-md-12">
                         <table class="table table-condensed table-striped">
                             <tr>

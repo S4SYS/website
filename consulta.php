@@ -60,7 +60,7 @@ final class Consulta
             </div>
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table table-bordered .table-condensed" id="tableConsulta">
+                    <table class="table table-bordered table-condensed table-striped" id="tableConsulta">
                         <thead></thead>
                         <tbody></tbody>
                     </table>
@@ -103,11 +103,26 @@ final class Consulta
             this.setTable();
         }
 
-        identificarDados() {
-            if (!this.dadosApi.violacao.data)
-                this.setDadosRequisicao();
+        identificarDados() 
+        {
+            if(!this.dadosApi.violacao.data && !this.dadosApi.requisicao.data)
+                this.setEmptyData();
+            else if(!this.dadosApi.violacao.data && this.dadosApi.requisicao.data)
+                this.setDadosRequisicao();    
             else
-                this.setDadosViolacao();
+                this.setDadosViolacao();            
+        }
+
+        setEmptyData()
+        {
+            this.thead = ['<tr>', '<th class="text-center">', 'Mensagem', '</th>', '</tr>'].join('');
+            this.tbody = [
+                '<tr>', 
+                '<td class="text-center">', 
+                'N&atilde;o h&aacute; resultados para essa consulta.', 
+                '</td>', 
+                '</tr>'
+            ].join('');
         }
 
         setDadosRequisicao() {
