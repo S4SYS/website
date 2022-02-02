@@ -93,4 +93,17 @@ class Helper {
         }
     }
 
+    static verificarCamposObrigatorios()
+    {
+        let counter = 0;
+        $('.form-control').each(function(){
+            if($(this).attr('data-required') == true){
+                $(this).css('border', '1px solid red');
+                counter ++;
+            }
+        });
+        
+        if(counter > 0) return false;
+    }
+
 }

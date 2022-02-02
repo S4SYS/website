@@ -172,7 +172,7 @@ final class Index { use ApiRequest; }
     {
       let self = this;
       $('#btnPolitica').click(function() {
-        document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2022 23:59:59 UTC";
+        document.cookie = "4sys_policy=true; expires=Fri, 31 Dec 2026 23:59:59 UTC";
         self.policyModal.modal('hide');
       });
       $('#linkPaginaPoliticaFooter').click(function() { self.showPolicyContent(400, self); });
@@ -467,7 +467,7 @@ final class Index { use ApiRequest; }
           
           return [
             '<div class="col-md-12">',
-            '<select name="tipoRequisicao" id="tipoRequisicao" class="form-control">',
+            '<select name="tipoRequisicao" id="tipoRequisicao" class="form-control" data-required="true">',
             ...this.getHtmlOptions(),
             '</select>',
             '</div>'
@@ -481,7 +481,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-12">',
             '<label for="setor">Setor</label>',
-            '<select name="setor" id="setor" class="form-control">',
+            '<select name="setor" id="setor" class="form-control" data-required="true">',
             '<option value="">Selecione o setor que deseja encaminhar a solicita&ccedil;&atilde;o</option>',
             ...this.getHtmlOptions(),
             '</select>',
@@ -495,7 +495,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-12">',
             '<label for="pedido">Pedido<label>',
-            '<textarea class="form-control" cols="100"  name="pedido" id="pedido" placeholder="Especifique aqui o seu pedido">',
+            '<textarea class="form-control" cols="100"  name="pedido" id="pedido" data-required="true" placeholder="Especifique aqui o seu pedido">',
             '</textarea>',
             '</div>'
           ];
@@ -507,7 +507,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-4">',
             '<label for="cpf">CPF<label>',
-            '<input type="text" name="cpf" id="cpf" class="form-control" maxlength="14" onKeyUp="Helper.getCpfMask(this);">',
+            '<input type="text" name="cpf" id="cpf" class="form-control" maxlength="14" data-required="true" onKeyUp="Helper.getCpfMask(this);">',
             '</div>'
           ];
         }
@@ -517,7 +517,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-4">',
             '<label for="cpf">Telefone<label>',
-            '<input type="text" name="telefone" id="telefone" class="form-control" maxlength="15" onKeyUp="Helper.getPhoneMask(this);">',
+            '<input type="text" name="telefone" id="telefone" class="form-control" data-required="false" maxlength="15" onKeyUp="Helper.getPhoneMask(this);">',
             '</div>'
           ];
         }
@@ -527,18 +527,17 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-4">',
             '<label for="cpf">Email<label>',
-            '<input type="text" name="email" id="email" class="form-control">',
+            '<input type="text" name="email" id="email" class="form-control" data-required="true">',
             '</div>'
           ];
         }
-
 
         getCampoArquivo()
         {
           return [
             '<div class="col-md-6">',
             '<label for="arquivo">Anexar arquivo caso necess&aacute;rio<label>',
-            '<input type="file" name="arquivo" id="arquivo" class="form-control">',
+            '<input type="file" name="arquivo" id="arquivo" class="form-control" data-required="false">',
             '</div>'
           ];
         }
@@ -591,7 +590,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-6">',
             '<label for="consulta">Consultar o andamento da minha requisi&ccedil;&atilde;o<label>',
-            '<input type="text" class="form-control" name="codigo" id="codigo">',
+            '<input type="text" class="form-control" name="codigo" id="codigo" data-required="true">',
             '</div>'
           ];
         }
@@ -625,6 +624,7 @@ final class Index { use ApiRequest; }
             ...this.getCampoTelefone(),
             ...this.getCampoEmail(),
             ...this.getCampoViolacao(),
+            ...this.getCampoArquivo(),
             '<input type="hidden" name="acao" value="violacao">',
             ...this.getSendButton()
           ].join('');
@@ -649,7 +649,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-12">',
             '<label for="descricao">Reportar uma viola&ccedil;&atilde;o<label>',
-            '<textarea class="form-control" cols="100"  name="descricao" id="descricao">',
+            '<textarea class="form-control" cols="100"  name="descricao" id="descricao" data-required="true">',
             '</textarea>',
             '</div>'
           ];

@@ -9,6 +9,7 @@ require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
 require_once 'app/controller/ViolacaoController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
+require_once 'app/File.php';
 
 final class Api
 {
@@ -28,15 +29,22 @@ final class Api
                 break;
 
             case ('requisicao'):
-                $response = (new RequisicaoController())->save($requestParams);
-                if ($response['success']) {
-                    $requisicao = $response['data'];
-                    $mail = (new EmailPortalLgpdAdapter($requisicao))->init();
+                $arquivo = $_FILES['arquivo'];
+                if(is_array($arquivo) && !empty($arquivo)){
+                    $upload = File::upload($arquivo);
+                    if(!$upload['success']) die($upload['message']); 
+                    $requestParams['arquivo'] = $upload['file_name']; 
                 }
-                if ($mail['success']){                    
-                    $_SESSION['codigo'] = $requisicao->codigo; 
-                    echo "<script>location.href='./#success';</script>";
-                } 
+
+                $response = (new RequisicaoController())->save($requestParams);
+                if(!$response['success']) die($response['message']);
+
+                $requisicao = $response['data'];
+                $mail = (new EmailPortalLgpdAdapter($requisicao))->init();
+                if(!$mail['success']) die('Falha no envio do email.');
+
+                $_SESSION['codigo'] = $requisicao->codigo; 
+                echo "<script>location.href='./#success';</script>";
                 break;
 
             case ('consulta'):
@@ -47,15 +55,22 @@ final class Api
                 break;
 
             case ('violacao'):
-                $response = (new ViolacaoController())->save($requestParams);
-                if ($response['success']) {
-                    $violacao = $response['data'];
-                    $mail = (new EmailPortalLgpdAdapter($violacao))->init();
+                $arquivo = $_FILES['arquivo'];
+                if(is_array($arquivo) && !empty($arquivo)){
+                    $upload = File::upload($arquivo);
+                    if(!$upload['success']) die($upload['message']); 
+                    $requestParams['arquivo'] = $upload['file_name']; 
                 }
-                if ($mail['success']){
-                    $_SESSION['codigo'] = $violacao->codigo;
-                    echo "<script>location.href='./#success';</script>";
-                }                
+                          
+                $response = (new ViolacaoController())->save($requestParams);
+                if(!$response['success']) die($response['message']); 
+                
+                $violacao = $response['data'];
+                $mail = (new EmailPortalLgpdAdapter($violacao))->init();
+                if(!$mail['success']) die('Falha no envio do email.');
+
+                $_SESSION['codigo'] = $violacao->codigo;
+                echo "<script>location.href='./#success';</script>";
                 break;
 
             default:

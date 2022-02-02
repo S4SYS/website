@@ -60,6 +60,7 @@ CREATE TABLE violacao (
   telefone varchar(32) DEFAULT NULL,
   email varchar(64) DEFAULT NULL,  
   descricao TEXT NULL,
+  `arquivo` varchar(128) DEFAULT NULL,
   created_at TIMESTAMP NULL DEFAULT current_timestamp(),
   updated_at TIMESTAMP NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY(id),

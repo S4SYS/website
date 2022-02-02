@@ -26,6 +26,7 @@ final class ViolacaoController
         $violacao->setEmail($requestData['email']);
         $violacao->setTelefone($requestData['telefone']);
         $violacao->setDescricao($requestData['descricao']);
+        $violacao->setArquivo($requestData['arquivo']);
 
         return $this->dao->save($violacao);
     }

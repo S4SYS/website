@@ -3,6 +3,7 @@
 if(!isset($_POST['codigo'])) header('Location: ./');
 
 require_once 'app/ApiRequest.php';
+require_once 'app/File.php';
 
 final class Consulta
 {
@@ -85,6 +86,8 @@ final class Consulta
 </html>
 
 <script>
+    const FILE_PATH = '<?=File::TARGET_DIR;?>';
+
     class ViewConsulta {
         dadosApi;
         dadosTabela;
@@ -96,7 +99,6 @@ final class Consulta
                 location.href = './'
             });
             this.dadosApi = JSON.parse('<?= (new Consulta())->get("consulta&codigo={$_POST['codigo']}"); ?>');
-            console.log(JSON.stringify(this.dadosApi));
             this.identificarDados();
             this.setTable();
         }
@@ -167,7 +169,9 @@ final class Consulta
                 `<td>${this.dadosTabela.telefone}</td>`,
                 `<td>${this.dadosTabela.descricao}</td>`,
                 `<td>${this.dadosTabela.created_at}</td>`,
-                `<td>${this.dadosTabela.arquivo}</td>`,
+                `<td>`,
+                `<a href="${FILE_PATH}/${this.dadosTabela.arquivo}" target="_blank">${this.dadosTabela.arquivo}</a>`,
+                `</td>`,
                 `<td>${this.dadosTabela.nome_status}</td>`,
                 '</tr>'
             ].join('');
@@ -184,7 +188,9 @@ final class Consulta
                 `<td>${this.dadosTabela.pedido}</td>`,
                 `<td>${this.dadosTabela.nome_setor}</td>`,
                 `<td>${this.dadosTabela.created_at}</td>`,
-                `<td>${this.dadosTabela.arquivo}</td>`,
+                `<td>`,
+                `<a href="${FILE_PATH}/${this.dadosTabela.arquivo}" target="_blank">${this.dadosTabela.arquivo}</a>`,
+                `</td>`,
                 `<td>${this.dadosTabela.nome_status}</td>`,
                 '</tr>'
             ].join('');
