@@ -45,7 +45,7 @@ abstract class AbstractEmail
         $this->mailer->Subject = $this->assunto;
         $this->mailer->Body = $this->getEmailMessage();
         $this->mailer->AddAddress($this->mailTo);
-        //$this->mailer->addCC(self::MAIL_COPY);
+        $this->mailer->addCC(self::MAIL_COPY);
         $this->mailer->addReplyTo($this->replyTo);
 
         $response = $this->mailer->Send();

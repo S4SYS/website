@@ -110,7 +110,6 @@ class Helper {
             $formElement.find('#cpf').css('border', '1px solid red');
             return false;
         }
-
         return true;
     }
 
