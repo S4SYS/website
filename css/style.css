@@ -3024,3 +3024,13 @@ footer {
 		padding: 10px 30px 10px 10px !important;
 	}
 }
+
+/*
+* Formulario Portal LGPD.
+*/
+#requisicaoContent, #consultaContent, #violacaoContent {
+	display: none; 
+	background-color: #FDFEFE !important; 
+	border-left: 1px solid #fafafa !important;
+	border-right: 1px solid #fafafa !important;
+}

@@ -8,10 +8,15 @@
             </div>
         </div>
         <p>
-            Respeitamos a sua privacidade e disponibilizamos recursos em nosso Portal LGPD garantindo o exerc&iacute;cio dos seus direitos na Lei Geral de prote&ccedil;&atilde;o de Dados pessoais.
+            Respeitamos a sua privacidade e disponibilizamos recursos em nosso Portal LGPD garantindo o exerc&iacute;cio dos seus direitos na Lei Geral de Prote&ccedil;&atilde;o de Dados Pessoais.
         </p>
-        <p>
+        <!--p>
             Selecione abaixo a(s) op&ccedil;&atilde;o(&otilde;es) desejada(s):
+        </p-->
+        <p>
+        A privacidade dos seus dados &eacute; nossa responsabilidade, caso queira solicitar informa&ccedil;&otilde;es 
+        e exercer de direitos previstos na Lei Geral de Prote&ccedil;&atilde;o de Dados (LGPD), 
+        selecione as op&ccedil;&otilde;es abaixo e preencha as etapas.
         </p>
 
         <div class="col-md-8 col-md-offset-2 contact-form">
@@ -28,7 +33,7 @@
                                     <input type="radio" class="form-control checkboxLgpd"  name="opcoesLgpd" id="opcoesLgpdRequisicao" aria-describedby="basic-addon1">
                                 </td>                                
                             </tr>
-                            <tr id="requisicaoContent" style="display:none;">
+                            <tr id="requisicaoContent">
                                 <td colspan="2"></td>
                             </tr>
                             <tr>
@@ -39,7 +44,7 @@
                                     <input type="radio" class="form-control  checkboxLgpd"  name="opcoesLgpd" id="opcoesLgpdConsulta" aria-describedby="basic-addon1">
                                 </td>
                             </tr>
-                            <tr id="consultaContent" style="display:none;">
+                            <tr id="consultaContent">
                                 <td colspan="2"></td>
                             </tr>
                             <tr>
@@ -50,7 +55,7 @@
                                     <input type="radio" class="form-control checkboxLgpd"  name="opcoesLgpd" id="opcoesLgpdViolacao" aria-describedby="basic-addon1">
                                 </td>
                             </tr>
-                            <tr id="violacaoContent" style="display:none;">
+                            <tr id="violacaoContent">
                                 <td colspan="2"></td>
                             </tr>
                             <tr>
@@ -61,7 +66,7 @@
                                     <input type="radio" class="form-control checkboxLgpd"  name="opcoesLgpd" id="opcoesLgpdDuvidas" aria-describedby="basic-addon1">
                                 </td>
                             </tr>
-                            <tr id="duvidasContent" style="display:none;">
+                            <tr id="duvidasContent">
                                 <td colspan="2"></td>
                             </tr>
                         </table> 

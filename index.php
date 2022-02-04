@@ -449,6 +449,7 @@ final class Index { use ApiRequest; }
         getRequisicaoContent()
         {
           return [
+            ...this.getTextoLei(),
             ...this.getCampoTipoRequisicao(),
             ...this.getCampoSetor(),
             ...this.getCampoPedido(),
@@ -495,7 +496,10 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-12">',
             '<label for="pedido">Pedido<label>',
-            '<textarea class="form-control required" cols="100"  name="pedido" id="pedido" placeholder="Especifique aqui o seu pedido">',
+            '&nbsp;<span style="font-weight:normal !important;">',
+            'Informe abaixo a descri&ccedil;&atilde;o da sua requisi&ccedil;&atilde;o:',
+            '</span>',
+            '<textarea class="form-control required" cols="100" name="pedido" id="pedido">',
             '</textarea>',
             '</div>'
           ];
@@ -618,7 +622,8 @@ final class Index { use ApiRequest; }
         getViolacaoContent()
         {
           return [
-            ...this.getTextoVolacao(),
+            ...this.getTextoLei(),
+            ...this.getTextoViolacao(),
             ...this.getCampoCpf(),
             ...this.getCampoTelefone(),
             ...this.getCampoEmail(),
@@ -629,7 +634,7 @@ final class Index { use ApiRequest; }
           ].join('');
         }
 
-        getTextoVolacao()
+        getTextoViolacao()
         {
           return [
             '<div class="col-md-12">',
@@ -638,6 +643,20 @@ final class Index { use ApiRequest; }
             '&nbsp;tomando todas as medidas cab&iacute;veis &agrave; nossa disposi&ccedil;&atilde;o.',
             '&nbsp;Para facilitar a investiga&ccedil;&atilde;o, anexe algum arquivo (formato pdf) necess&aacute;rio &agrave; demonstra&ccedil;&atilde;o e comprova&ccedil;&atilde;o do ocorrido.',
             '&nbsp;A seguir, informe-nos tudo o que aconteceu, em detalhes.',
+            '</p>',
+            '</div>'
+          ];
+        }
+
+
+        getTextoLei()
+        {
+          return [
+            '<div class="col-md-12">',
+            '<p class="alert alert-warning" role="alert">',
+            'Os dados a seguir ser&atilde;o coletados com a &uacute;nica finalidade de identificar',
+            '&nbsp;o titular dos dados pessoais para viabilizar e facilitar',
+            '&nbsp;o exerc&iacute;cio de seus direitos previstos na Lei n&ordm; 13.709/2018.',
             '</p>',
             '</div>'
           ];
