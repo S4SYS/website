@@ -31,6 +31,7 @@ final class RequisicaoController
         $requisicao->setCodigo(date('YmdHis'));
         $requisicao->setPedido($requestData['pedido']);
         $requisicao->setCpf($requestData['cpf']);
+        $requisicao->setNome($requestData['nome']);
         $requisicao->setTelefone($requestData['telefone']);
         $requisicao->setEmail($requestData['email']);
         $requisicao->setArquivo($requestData['arquivo']);

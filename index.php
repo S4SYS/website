@@ -386,6 +386,7 @@ final class Index { use ApiRequest; }
         buttonLabel;
         dadosApi;
         options;
+        acao;
 
         constructor()
         {
@@ -435,6 +436,7 @@ final class Index { use ApiRequest; }
         
         setRequisicaoContent()
         {
+          this.acao = 'requisicao';
           this.buttonLabel = 'Finalizar e Enviar minha requisi&ccedil;&atilde;o';          
           this.$requisicaoContent
           .show(this.showTime)
@@ -454,10 +456,11 @@ final class Index { use ApiRequest; }
             ...this.getCampoSetor(),
             ...this.getCampoPedido(),
             ...this.getCampoCpf(),
+            ...this.getCampoNome(),
             ...this.getCampoTelefone(),
             ...this.getCampoEmail(),
             ...this.getCampoArquivo(),
-            '<input type="hidden" name="acao" value="requisicao">',
+            ...this.getHiddenAction(),
             ...this.getSendButton()    
           ].join('');
         }
@@ -516,6 +519,18 @@ final class Index { use ApiRequest; }
           ];
         }
 
+
+        getCampoNome()
+        {
+          return [
+            '<div class="col-md-4">',
+            '<label for="nome">Nome Completo<label>',
+            '<input type="text" name="nome" id="nome" class="form-control required">',
+            '</div>'
+          ];
+        }
+
+
         getCampoTelefone()
         {
           return [
@@ -567,6 +582,7 @@ final class Index { use ApiRequest; }
 
         setConsultaContent()
         {
+          this.acao = 'consulta';
           this.$form.attr('action', 'consulta.php'); 
           this.buttonLabel = 'Enviar';         
           this.$consultaContent
@@ -576,14 +592,13 @@ final class Index { use ApiRequest; }
 
           this.clearRequisicaoContent();
           this.clearViolacaoContent();
-          this.clearDuvidasContent();
         }
 
         getConsultaContent()
         {
           return [
             ...this.getCampoConsulta(),
-            '<input type="hidden" name="acao" value="consulta">',
+            ...this.getHiddenAction(),
             ...this.getSendButton() 
           ].join('');
         }
@@ -608,6 +623,7 @@ final class Index { use ApiRequest; }
 
         setViolacaoContent()
         {
+          this.acao = 'violacao';
           this.buttonLabel = 'Enviar';          
           this.$violacaoContent
           .show(this.showTime)
@@ -616,7 +632,6 @@ final class Index { use ApiRequest; }
 
           this.clearRequisicaoContent();
           this.clearConsultaContent();
-          this.clearDuvidasContent();
         }
 
         getViolacaoContent()
@@ -625,11 +640,12 @@ final class Index { use ApiRequest; }
             ...this.getTextoLei(),
             ...this.getTextoViolacao(),
             ...this.getCampoCpf(),
+            ...this.getCampoNome(),
             ...this.getCampoTelefone(),
             ...this.getCampoEmail(),
             ...this.getCampoViolacao(),
             ...this.getCampoArquivo(),
-            '<input type="hidden" name="acao" value="violacao">',
+            ...this.getHiddenAction(),
             ...this.getSendButton()
           ].join('');
         }
@@ -647,7 +663,6 @@ final class Index { use ApiRequest; }
             '</div>'
           ];
         }
-
 
         getTextoLei()
         {
@@ -679,34 +694,7 @@ final class Index { use ApiRequest; }
           .hide()          
           .find('td')
           .html('');
-        }
-
-        setDuvidasContent()
-        {          
-          this.$duvidasContent
-          .show(this.showTime)
-          .find('td')
-          .html(this.getDuvidasContent());
-
-          this.clearRequisicaoContent();
-          this.clearConsultaContent();
-          this.clearViolacaoContent();
-        }
-
-        getDuvidasContent()
-        {
-          return [
-            'duvidas'
-          ].join('');
-        }
-
-        clearDuvidasContent()
-        {
-          this.$duvidasContent
-          .hide()
-          .find('td')
-          .html('');
-        }
+        }        
 
         getHtmlOptions()
         {
@@ -714,6 +702,12 @@ final class Index { use ApiRequest; }
               return `<option value="${row.id}">${row.nome}</option>`;
           });
         }
+
+        getHiddenAction()
+        {
+          return `<input type="hidden" name="acao" value="${this.acao}">`;
+        }
+
     }// end class
   
   var lgpd = new Lgpd();

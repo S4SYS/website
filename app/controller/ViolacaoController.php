@@ -24,6 +24,7 @@ final class ViolacaoController
         $violacao->setCodigo(date('YmdHis'));
         $violacao->setCpf($requestData['cpf']);
         $violacao->setEmail($requestData['email']);
+        $violacao->setNome($requestData['nome']);
         $violacao->setTelefone($requestData['telefone']);
         $violacao->setDescricao($requestData['descricao']);
         $violacao->setArquivo($requestData['arquivo']);
