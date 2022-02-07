@@ -151,6 +151,9 @@ final class Index { use ApiRequest; }
         case('#success'):
           this.showSuccessContent(400);
           break;
+        case('#portal'):
+          this.showPortalLgpdContent(400, this);
+          break;  
         case('#error'):
           alert('errrrouuu!!');
           break;

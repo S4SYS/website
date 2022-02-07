@@ -56,7 +56,14 @@ final class Consulta
                 </div>
             </div>
             <div class="row">
-                <p class="text-right"><button class="btn btn-green" id="backConsulta">Voltar</button></p>
+                <p class="text-right">
+                    <button class="btn btn-green" id="backSistema">
+                        <span class="fa fa-arrow-left"></span>&nbsp;Voltar ao sistema
+                    </button>                    
+                    <button class="btn btn-green" id="backSite">
+                        <span class="fa fa-arrow-left"></span>&nbsp;Voltar ao site
+                    </button>
+                </p>
             </div>
             <div class="row">
                 <div class="table-responsive">
@@ -95,8 +102,11 @@ final class Consulta
         tbody;
 
         init() {
-            document.getElementById('backConsulta').addEventListener('click', () => {
+            document.getElementById('backSite').addEventListener('click', () => {
                 location.href = './'
+            });
+            document.getElementById('backSistema').addEventListener('click', () => {
+                location.href = './#portal'
             });
             this.dadosApi = JSON.parse('<?= (new Consulta())->get("consulta&codigo={$_POST['codigo']}"); ?>');
             this.identificarDados();
