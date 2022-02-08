@@ -383,7 +383,6 @@ final class Index { use ApiRequest; }
         $requisicaoContent;
         $consultaContent;
         $violacaoContent;
-        $duvidasContent;
         
         showTime;
         buttonLabel;
@@ -419,8 +418,7 @@ final class Index { use ApiRequest; }
           this.$requisicaoContent = this.$form.find('#requisicaoContent');
           this.$consultaContent   = this.$form.find('#consultaContent');
           this.$violacaoContent   = this.$form.find('#violacaoContent');
-          this.$duvidasContent    = this.$form.find('#duvidasContent');
-
+  
           switch($id){
             case(ID_PORTAL_REQUISICAO):
               this.setRequisicaoContent();
@@ -448,7 +446,6 @@ final class Index { use ApiRequest; }
           
           this.clearConsultaContent();
           this.clearViolacaoContent();
-          this.clearDuvidasContent();
         }
 
         getRequisicaoContent()
