@@ -182,7 +182,7 @@ final class Index { use ApiRequest; }
       $('#linkPaginaPoliticaModal').click(function(){ self.showPolicyContent(2000, self); });
       $('#linkPaginaPoliticaLgpd').click(function(){ self.showPolicyContent(2000, self); });
       $('#linkPaginaContatoLgpd').click(function(){ self.showContatoLgpdContent(400, self); });
-      $('#linkPaginaPortalLgpd').click(function(){ self.showPortalLgpdContent(400, self); });
+      $('#linkPaginaPortalLgpd, #backSistema').click(function(){ self.showPortalLgpdContent(400, self); });
       $('#backLgpd').click(function(){ window.location.hash = ''; window.location.reload(); });      
       $('.topMenu').click(function() { 
         self.hidePolicyContent(this); 
