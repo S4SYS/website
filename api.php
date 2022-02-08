@@ -13,6 +13,8 @@ require_once 'app/File.php';
 
 final class Api
 {
+    private static $params;
+
     /**
      * @param array $requestParams
      * 
@@ -20,7 +22,9 @@ final class Api
      */
     public static function setAction(array $requestParams): void
     {
-        switch ($requestParams['acao']) {
+        self::$params = $requestParams;
+
+        switch (self::$params['acao']) {
             case ('index'):
                 echo json_encode([
                     'setor' => (new SetorController())->get(),
@@ -30,13 +34,13 @@ final class Api
 
             case ('requisicao'):
                 $arquivo = $_FILES['arquivo'];
-                $requestParams['arquivo'] = $arquivo['name'];
+                self::$params['arquivo'] = $arquivo['name'];
                 if ($arquivo['size'] > 0) {
                     $upload = File::upload($arquivo);
                     if (!$upload['success']) die($upload['message']);
                 }
 
-                $response = (new RequisicaoController())->save($requestParams);
+                $response = (new RequisicaoController())->save(self::$params);
                 if (!$response['success']) die($response['message']);
 
                 $requisicao = $response['data'];
@@ -49,20 +53,20 @@ final class Api
 
             case ('consulta'):
                 echo json_encode([
-                    'requisicao' => (new RequisicaoController())->getByCode($requestParams),
-                    'violacao'   => (new ViolacaoController())->getByCode($requestParams)
+                    'requisicao' => (new RequisicaoController())->getByCode(self::$params),
+                    'violacao'   => (new ViolacaoController())->getByCode(self::$params)
                 ]);
                 break;
 
             case ('violacao'):
                 $arquivo = $_FILES['arquivo'];
-                $requestParams['arquivo'] = $arquivo['name'];
+                self::$params['arquivo'] = $arquivo['name'];
                 if($arquivo['size'] > 0){
                     $upload = File::upload($arquivo);
                     if(!$upload['success']) die($upload['message']); 
                 }
                           
-                $response = (new ViolacaoController())->save($requestParams);
+                $response = (new ViolacaoController())->save(self::$params);
                 if(!$response['success']) die($response['message']); 
                 
                 $violacao = $response['data'];
@@ -73,11 +77,34 @@ final class Api
                 echo "<script>location.href='./#success';</script>";
                 break;
 
+            case('emailConsulta'):
+                echo self::getConsultaPostRedirect();
+                break;    
+
             default:
                 echo "<script>location.href='./';</script>";
                 break;
         }
-    }    
+    }
+    
+    /**
+     * @param string $param
+     * 
+     * @return string
+     */
+    private static function getConsultaPostRedirect(): string
+    {        
+        $codigo = self::$params['codigo'];
+
+        return implode('', [
+            "<form id=\"formConsulta\" action=\"consulta.php\" method=\"post\">",
+            "<input type=\"hidden\" name=\"codigo\" value=\"{$codigo}\">",
+            "</form>",
+            "<script>",
+            "document.getElementById('formConsulta').submit();",
+            "</script>"
+        ]);
+    }
 }
 
 $request = (isset($_POST['acao']) && !empty($_POST)) ? $_POST : $_GET;

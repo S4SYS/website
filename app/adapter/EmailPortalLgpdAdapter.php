@@ -2,9 +2,12 @@
 
 require_once 'app/AbstractEmail.php';
 require_once 'app/model/AbstractModel.php';
+require_once 'app/ApiRequest.php';
 
 final class EmailPortalLgpdAdapter extends AbstractEmail
 {
+    use ApiRequest;
+
     private $codigo;
 
     /**
@@ -41,7 +44,7 @@ final class EmailPortalLgpdAdapter extends AbstractEmail
             "<td>",
             "<p>",
             "A S4SYS agradece o seu contato, segue o c&oacute;digo para consultar sua requisi&ccedil;&atilde;o:",
-            "<h4>{$this->codigo}</h4>",
+            "<h4><a href=\"{$this->url}?acao=emailConsulta&codigo={$this->codigo}\">{$this->codigo}</a></h4>",
             "</p>",
             "</td>",
             "</tr>",
