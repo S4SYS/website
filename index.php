@@ -470,7 +470,7 @@ final class Index { use ApiRequest; }
           this.options = this.dadosApi.tipo_requisicao.data;
           
           return [
-            '<div class="col-md-12">',
+            '<div class="col-md-12 col-xs-12">',
             '<select name="tipoRequisicao" id="tipoRequisicao" class="form-control required">',
             ...this.getHtmlOptions(),
             '</select>',
@@ -483,7 +483,7 @@ final class Index { use ApiRequest; }
           this.options = this.dadosApi.setor.data; 
           
           return [
-            '<div class="col-md-12">',
+            '<div class="col-md-12 col-xs-12">',
             '<label for="setor">Setor</label>',
             '<select name="setor" id="setor" class="form-control required">',
             '<option value="">Selecione o setor que deseja encaminhar a solicita&ccedil;&atilde;o</option>',
@@ -497,7 +497,7 @@ final class Index { use ApiRequest; }
         getCampoPedido()
         {
           return [
-            '<div class="col-md-12">',
+            '<div class="col-md-12 col-xs-12">',
             '<label for="pedido">Pedido<label>',
             '&nbsp;<span style="font-weight:normal !important;">',
             'Informe abaixo a descri&ccedil;&atilde;o da sua requisi&ccedil;&atilde;o:',
@@ -512,7 +512,7 @@ final class Index { use ApiRequest; }
         getCampoCpf()
         {
           return [
-            '<div class="col-md-4">',
+            '<div class="col-md-4 col-xs-12">',
             '<label for="cpf">CPF<label>',
             '<input type="text" name="cpf" id="cpf" class="form-control required" maxlength="14" onKeyUp="Helper.getCpfMask(this);">',
             '</div>'
@@ -523,7 +523,7 @@ final class Index { use ApiRequest; }
         getCampoNome()
         {
           return [
-            '<div class="col-md-4">',
+            '<div class="col-md-4 col-xs-12">',
             '<label for="nome">Nome Completo<label>',
             '<input type="text" name="nome" id="nome" class="form-control required">',
             '</div>'
@@ -534,7 +534,7 @@ final class Index { use ApiRequest; }
         getCampoTelefone()
         {
           return [
-            '<div class="col-md-4">',
+            '<div class="col-md-4 col-xs-12">',
             '<label for="cpf">Telefone<label>',
             '<input type="text" name="telefone" id="telefone" class="form-control" maxlength="15" onKeyUp="Helper.getPhoneMask(this);">',
             '</div>'
@@ -544,7 +544,7 @@ final class Index { use ApiRequest; }
         getCampoEmail()
         {
           return [
-            '<div class="col-md-4">',
+            '<div class="col-md-4 col-xs-12">',
             '<label for="cpf">Email<label>',
             '<input type="text" name="email" id="email" class="form-control required">',
             '</div>'
@@ -554,7 +554,7 @@ final class Index { use ApiRequest; }
         getCampoArquivo()
         {
           return [
-            '<div class="col-md-6">',
+            '<div class="col-md-6 col-xs-12">',
             '<label for="arquivo">Anexar arquivo caso necess&aacute;rio<label>',
             '<input type="file" name="arquivo" id="arquivo" class="form-control">',
             '</div>'
@@ -564,7 +564,7 @@ final class Index { use ApiRequest; }
         getSendButton()
         {
           return [
-            '<div class="col-md-6 text-right">',
+            '<div class="col-md-12 col-xs-12 text-right">',
             '<button id="sendBtnPortalLgpd" class="btn btn-green">',
             this.buttonLabel,
             '</button>',
@@ -606,7 +606,7 @@ final class Index { use ApiRequest; }
         getCampoConsulta()
         {
           return [
-            '<div class="col-md-6">',
+            '<div class="col-md-12 col-xs-12">',
             '<label for="consulta">Consultar o andamento da minha requisi&ccedil;&atilde;o<label>',
             '<input type="text" class="form-control required" name="codigo" id="codigo" maxlength="14">',
             '</div>'
@@ -680,7 +680,7 @@ final class Index { use ApiRequest; }
         getCampoViolacao()
         {
           return [
-            '<div class="col-md-12">',
+            '<div class="col-md-12 col-xs-12">',
             '<label for="descricao">Reportar uma viola&ccedil;&atilde;o<label>',
             '<textarea class="form-control required" cols="100"  name="descricao" id="descricao">',
             '</textarea>',
