@@ -93,6 +93,10 @@ final class Index { use ApiRequest; }
   require_once 'views/success.php';
   echo '</span>';
 
+  echo '<span id="errorPage" style="display:none;">';
+  require_once 'views/error.php';
+  echo '</span>';
+
   require_once 'views/footer.php';
 
 
@@ -155,7 +159,7 @@ final class Index { use ApiRequest; }
           this.showPortalLgpdContent(400, this);
           break;  
         case('#error'):
-          alert('errrrouuu!!');
+          this.showErrorContent(400);
           break;
 
         default: return;  
@@ -165,8 +169,17 @@ final class Index { use ApiRequest; }
     showSuccessContent(delay)
     {
       $("html, body").animate({ scrollTop: 0 }, delay);
-      $('#mainPages, #contatoLgpdPage, #portalLgpdPage, #politicaPage').hide();
+      $('#mainPages, #contatoLgpdPage, #portalLgpdPage, #politicaPage, #errorPage').hide();
       $('#successPage').show();
+      $('.topMenu').closest('li').removeClass('active');
+      this.policyModal.modal('hide');
+    }
+
+    showErrorContent(delay)
+    {
+      $("html, body").animate({ scrollTop: 0 }, delay);
+      $('#mainPages, #contatoLgpdPage, #portalLgpdPage, #politicaPage, #successPage').hide();
+      $('#errorPage').show();
       $('.topMenu').closest('li').removeClass('active');
       this.policyModal.modal('hide');
     }
@@ -189,14 +202,14 @@ final class Index { use ApiRequest; }
         self.hideContatoLgpdContent(this); 
         self.hidePortalLgpdContent(this);
         window.location.hash = ''; 
-        $('#successPage').hide();
+        $('#successPage, #errorPage').hide();
       });
     }
 
     showPolicyContent(delay, elem)
     {
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #contatoLgpdPage, #portalLgpdPage, #successPage').hide();
+      $('#mainPages, #contatoLgpdPage, #portalLgpdPage, #successPage, #errorPage').hide();
       $('#politicaPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -214,7 +227,7 @@ final class Index { use ApiRequest; }
     showContatoLgpdContent(delay, elem)
     {      
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #politicaPage, #portalLgpdPage, #successPage').hide();
+      $('#mainPages, #politicaPage, #portalLgpdPage, #successPage, #errorPage').hide();
       $('#contatoLgpdPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -233,7 +246,7 @@ final class Index { use ApiRequest; }
     {
       window.location.hash = '';
       $("html, body").animate({ scrollTop: -100 }, delay);
-      $('#mainPages, #politicaPage, #contatoLgpdPage, #successPage').hide();
+      $('#mainPages, #politicaPage, #contatoLgpdPage, #successPage, #errorPage').hide();
       $('#portalLgpdPage').show();
       $('#linkPaginaPoliticaMenu').closest('li').addClass('active');      
       //$('.topMenu').closest('li').removeClass('active');
@@ -556,7 +569,7 @@ final class Index { use ApiRequest; }
           return [
             '<div class="col-md-6 col-xs-12">',
             '<label for="arquivo">Anexar arquivo caso necess&aacute;rio<label>',
-            '<input type="file" name="arquivo" id="arquivo" class="form-control">',
+            '<input type="file" name="arquivo" id="arquivo" class="form-control required">',
             '</div>'
           ];
         }        

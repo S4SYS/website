@@ -37,16 +37,28 @@ final class Api
                 self::$params['arquivo'] = $arquivo['name'];
                 if ($arquivo['size'] > 0) {
                     $upload = File::upload($arquivo);
-                    if (!$upload['success']) die($upload['message']);
+                    if (!$upload['success']){
+                        $_SESSION['error_message'] = $upload['message'];
+                        echo "<script>location.href='./#error';</script>";
+                        exit; 
+                    } 
                 }
 
                 $response = (new RequisicaoController())->save(self::$params);
-                if (!$response['success']) die($response['message']);
+                if (!$response['success']){
+                    $_SESSION['error_message'] = $response['message'];
+                    echo "<script>location.href='./#error';</script>";
+                    exit;
+                } 
 
                 $requisicao = $response['data'];
                 $mail = (new EmailPortalLgpdAdapter($requisicao))->init();
-                if (!$mail['success']) die('Falha no envio do email.');
-
+                if (!$mail['success']){
+                    $_SESSION['error_message'] = 'Falha no envio de email.';
+                    echo "<script>location.href='./#error';</script>";
+                    exit;
+                }
+                        
                 $_SESSION['codigo'] = $requisicao->codigo;
                 echo "<script>location.href='./#success';</script>";
                 break;
@@ -63,16 +75,28 @@ final class Api
                 self::$params['arquivo'] = $arquivo['name'];
                 if($arquivo['size'] > 0){
                     $upload = File::upload($arquivo);
-                    if(!$upload['success']) die($upload['message']); 
+                    if (!$upload['success']){
+                        $_SESSION['error_message'] = $upload['message'];
+                        echo "<script>location.href='./#error';</script>";
+                        exit; 
+                    } 
                 }
                           
                 $response = (new ViolacaoController())->save(self::$params);
-                if(!$response['success']) die($response['message']); 
+                if (!$response['success']){
+                    $_SESSION['error_message'] = $response['message'];
+                    echo "<script>location.href='./#error';</script>";
+                    exit;
+                } 
                 
                 $violacao = $response['data'];
                 $mail = (new EmailPortalLgpdAdapter($violacao))->init();
-                if(!$mail['success']) die('Falha no envio do email.');
-
+                if (!$mail['success']){
+                    $_SESSION['error_message'] = 'Falha no envio de email.';
+                    echo "<script>location.href='./#error';</script>";
+                    exit;
+                }
+           
                 $_SESSION['codigo'] = $violacao->codigo;
                 echo "<script>location.href='./#success';</script>";
                 break;

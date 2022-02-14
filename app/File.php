@@ -35,7 +35,7 @@ final class File
                 'file_size' => self::$size
             ];
         else 
-            return ['success' => false, 'message' => 'Falha ao enviar imagem.'];
+            return ['success' => false, 'message' => 'Falha ao enviar o arquivo.'];
 
     }
 
@@ -55,8 +55,8 @@ final class File
         if(self::$size > self::MAX_FILE_SIZE) 
             return ['success' => false, 'message' => 'O limite para o tamanho do arquivo &eacute; de 5 MB.'];
         
-        if (self::$extension != "jpg" && self::$extension != "png" && self::$extension != "jpeg" && self::$extension != "pdf")
-            return ['success' => false, 'message' => 'Por favor, envie uma arquivo em um nos seguintes formatos: JPG, JPEG, PNG ou PDF.'];
+        if (self::$extension != "pdf")
+            return ['success' => false, 'message' => 'Por favor, envie uma arquivo no formato PDF.'];
         
         return ['success' => true];    
     }

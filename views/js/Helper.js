@@ -110,6 +110,7 @@ class Helper {
             $formElement.find('#cpf').css('border', '1px solid red');
             return false;
         }
+        $formElement.find('button').attr('disabled', true).text('Aguarde...');
         return true;
     }
 
