@@ -56,7 +56,7 @@ final class File
             return ['success' => false, 'message' => 'O limite para o tamanho do arquivo &eacute; de 5 MB.'];
         
         if (self::$extension != "pdf")
-            return ['success' => false, 'message' => 'Por favor, envie uma arquivo no formato PDF.'];
+            return ['success' => false, 'message' => 'Por favor, envie um arquivo no formato PDF.'];
         
         return ['success' => true];    
     }
