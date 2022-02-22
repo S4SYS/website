@@ -8,6 +8,7 @@ require_once 'app/controller/SetorController.php';
 require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
 require_once 'app/controller/ViolacaoController.php';
+require_once 'app/controller/UsuarioController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 require_once 'app/File.php';
 
@@ -103,6 +104,22 @@ final class Api
 
             case('emailConsulta'):
                 echo self::getConsultaPostRedirect();
+                break;
+                
+            case('login'):
+                $dados = (new UsuarioController())->authenticate(self::$params);
+                if(!$dados['success']){
+                    $_SESSION['error_message'] = $dados['message'];
+                    die("<script>location.href='adm/login.php?auth=false';</script>");                    
+                }
+                if($dados['success'] && !$dados['data']){
+                    $_SESSION['error_message'] = 'Login / senha inv&aacute;lidos.';
+                    die("<script>location.href='adm/login.php?auth=false';</script>");
+                }
+                $usuario = $dados['data'];
+                $_SESSION['idUsuario']   = $usuario['id'];
+                $_SESSION['nomeUsuario'] = $usuario['nome'];
+                echo "<script>location.href='adm/';</script>";   
                 break;    
 
             default:

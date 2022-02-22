@@ -9,6 +9,8 @@ abstract class AbstractModel
     public $email;
     public $arquivo;
     public $nome;
+    public $descricao;
+    public $ativo;
 
     /**
      * @return int
@@ -144,4 +146,42 @@ abstract class AbstractModel
         $this->nome = $nome;
     }
 
+
+    /**
+     * @return string
+     */
+    public function getDescricao(): string
+    {
+        return $this->descricao;
+
+    }
+
+    /**
+     * @param string $email
+     * 
+     * @return void
+     */
+    public function setDescricao(string $descricao): void
+    {
+        $this->descricao = $descricao;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function getAtivo(): bool
+    {
+        return $this->ativo;
+    }
+
+    /**
+     * @param bool $ativo
+     * 
+     * @return void
+     */
+    public function setAtivo(bool $ativo): void
+    {
+        $this->ativo = $ativo;
+    }
 }

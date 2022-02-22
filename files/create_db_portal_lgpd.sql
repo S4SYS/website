@@ -68,7 +68,53 @@ CREATE TABLE violacao (
   PRIMARY KEY(id),
   KEY `violacao_FKIndex1` (`status_id`),
   CONSTRAINT `violacao_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+CREATE TABLE usuario (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(128) NOT NULL,
+  login VARCHAR(64) NOT NULL,
+  senha VARCHAR(128) NOT NULL,  
+  last_login TIMESTAMP NULL,
+  ativo BOOLEAN NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE acao (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(64) NOT NULL,
+  descricao TEXT NULL,
+  ativo BOOLEAN NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE usuario_acao (
+  usuario_id INTEGER UNSIGNED NOT NULL,
+  acao_id INTEGER UNSIGNED NOT NULL,
+  descricao TEXT NULL,
+  tabela VARCHAR(64) NULL,
+  atual_id INTEGER UNSIGNED NULL,
+  anterior_id INTEGER UNSIGNED NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY(usuario_id, acao_id),
+  INDEX usuario_acao_FKIndex1(usuario_id),
+  INDEX usuario_acao_FKIndex2(acao_id),
+  FOREIGN KEY(usuario_id)
+    REFERENCES usuario(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(acao_id)
+    REFERENCES acao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 INSERT INTO setor(nome) VALUES('Administrativo');
 INSERT INTO setor(nome) VALUES('Financeiro');
@@ -89,3 +135,10 @@ INSERT INTO tipo_requisicao(nome) VALUES('Ser informado sobre a possibilidade de
 INSERT INTO tipo_requisicao(nome) VALUES('Revogar o consentimento que forneci para alguma operação de tratamento com meus dados pessoais');
 
 INSERT INTO status(id, nome) VALUES(1, 'Em análise');
+
+INSERT INTO usuario (nome, login, senha) VALUES ('Administrador S4SYS', 'admin', SHA1('admin'));
+
+INSERT INTO acao(nome, descricao) VALUES ('create', 'Criar');
+INSERT INTO acao(nome, descricao) VALUES ('update', 'Atualizar');
+INSERT INTO acao(nome, descricao) VALUES ('deactivate', 'Desativar');
+INSERT INTO acao(nome, descricao) VALUES ('delete', 'Deletar');
