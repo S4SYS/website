@@ -46,7 +46,7 @@ if(!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</sc
                     <i class="fas fa-laugh-wink"></i>
                 </div-->
                 <div class="sidebar-brand-text mx-3">
-                    <img src="https://www.s4sys.com.br/images/logo_s4sys.png">
+                    <img src="http://www.s4sys.com.br/images/logo_s4sys.png">
                 </div>
             </a>
 
