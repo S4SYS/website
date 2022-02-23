@@ -120,7 +120,14 @@ final class Api
                 $_SESSION['idUsuario']   = $usuario['id'];
                 $_SESSION['nomeUsuario'] = $usuario['nome'];
                 echo "<script>location.href='adm/';</script>";   
-                break;    
+                break;
+            
+            case('logout'):
+                @session_destroy();
+                unset($_SESSION['idUsuario']);
+                unset($_SESSION['nomeUsuario']);
+                echo "<script>location.href='adm/';</script>";
+                break;                    
 
             default:
                 echo "<script>location.href='./';</script>";
