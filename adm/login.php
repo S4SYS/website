@@ -42,7 +42,7 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 mb-4">
-                                            <img src="http://www.s4sys.com.br/images/logo_s4sys.png">
+                                            <img src="../images/logo_s4sys.png">
                                         </h1>
                                     </div>
                                     <form class="user" id="formLogin" method="post" action="../api.php" onSubmit="return Login.validadeForm();">
