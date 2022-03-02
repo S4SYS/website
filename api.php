@@ -127,8 +127,12 @@ final class Api
                 unset($_SESSION['idUsuario']);
                 unset($_SESSION['nomeUsuario']);
                 echo "<script>location.href='adm/';</script>";
-                break;                    
+                break;
+            
+            // Solicitacoes do sys adm.    
+            case('get_requisicoes'): die(json_encode((new RequisicaoController())->get()));    
 
+            // Qualquer acao nao listada acima.
             default:
                 echo "<script>location.href='./';</script>";
                 break;

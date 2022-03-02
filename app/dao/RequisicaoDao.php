@@ -41,6 +41,30 @@ final class RequisicaoDao extends Connection
         }
     }
 
+    /**
+     * @return array
+     */
+    public function get(): array
+    {
+        $sql = "SELECT requisicao.*, 
+                       setor.nome AS nome_setor, 
+                       tipo_requisicao.nome AS nome_tipo_requisicao,
+                       status.nome AS nome_status  
+                FROM requisicao
+                INNER JOIN tipo_requisicao ON requisicao.tipo_requisicao_id = tipo_requisicao.id 
+                INNER JOIN setor ON requisicao.setor_id = setor.id
+                INNER JOIN status ON requisicao.status_id = status.id";                
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->execute();
+
+            return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
+    }
 
     /**
      * @param Requisicao $requisicao

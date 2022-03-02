@@ -41,6 +41,13 @@ final class RequisicaoController
         return $this->dao->save($requisicao);
     }
 
+    /**
+     * @return string
+     */
+    public function get(): array
+    {
+        return $this->dao->get();
+    }
 
     /**
      * @param array $requestData
