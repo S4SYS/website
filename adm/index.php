@@ -55,7 +55,7 @@ if(!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</sc
 
             <!-- Nav Item - Requisicao -->
             <li class="nav-item">
-                <a class="nav-link" data-hash="#requisicao">
+                <a class="nav-link sideMenu" data-hash="#requisicao">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Requisi&ccedil;&atilde;o</span>
                 </a>
@@ -66,7 +66,7 @@ if(!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</sc
 
             <!-- Nav Item - Violacao -->
             <li class="nav-item">
-                <a class="nav-link" data-hash="#violacao">
+                <a class="nav-link sideMenu" data-hash="#violacao">
                     <i class="fas fa-fw fa-ban"></i>
                     <span>Viola&ccedil;&atilde;o</span>
                 </a>
@@ -302,8 +302,11 @@ if(!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</sc
                     <!-- Page Heading -->
                     <h1 id="pageTitle" class="h3 mb-4 text-gray-800"></h1>
 
-                    <span id="loader" class="text-center"></span>
-
+                    <!-- Loader image -->
+                    <div class="mb-12 text-center">
+                        <span id="loader"></span>
+                    </div>                      
+     
                 </div>
                 <!-- /.container-fluid -->
 
@@ -362,6 +365,8 @@ if(!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</sc
     <script src="js/sb-admin-2.min.js"></script>
     
     <!-- Page Views -->
+    <script src="views/js/Requisicao.js"></script>
+    <script src="views/js/Violacao.js"></script>
     <script>
         const HASH_REQUISICAO = '#requisicao';
         const HASH_VIOLACAO   = '#violacao' ;
@@ -374,50 +379,54 @@ if(!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</sc
         {
             $main;
             $title;
+    
+            view;
 
             constructor()
             {
-                this.$main  = $('#main');
-                this.$title = this.$main.find('#pageTitle');
+                this.$main   = $('#main');
+                this.$title  = this.$main.find('#pageTitle');
             }
 
             init()
             {                
-                this.setLoader();
-                this.setContentByHash();                
+                this.setContent();                
+            }            
+
+            setContent()
+            {
+                let self = this;
+                let $loader = this.$main.find('#loader'); 
+                $loader.html('<img src="img/loading.gif" width="124" height="124"">');
+                $loader.delay(1000).fadeOut('slow', () => {
+                    self.getView(self).init();
+                });
             }
 
-            setContentByHash()
+            getView(self)
             {
                 switch(window.location.hash){
                     case(HASH_REQUISICAO):
-                        this.$title.html('Requisi&ccedil;&otilde;es'); 
-                        break; 
+                        self.$title.html('Requisi&ccedil;&otilde;es');
+                        return new Requisicao();
                     case(HASH_VIOLACAO):
-                        this.$title.html('Viola&ccedil;&otilde;es');   
-                        break;
-                    default: 
-                        this.$title.html('Requisi&ccedil;&otilde;es'); 
-                        break;
+                        self.$title.html('Viola&ccedil;&otilde;es');
+                        return new Violacao();   
+                    default:
+                        self.$title.html('Requisi&ccedil;&otilde;es');
+                        return new Requisicao();        
                 }
-            }
-
-            setLoader()
-            {
-                let $loader = this.$main.find('#loader'); 
-                $loader.html('<img src="img/loading.gif" width="124" height="124"">');
-                $loader.delay(1000).fadeOut("slow");
             }
         }
         
         let viewFactory = new ViewFactory(); 
         viewFactory.init();
 
-        $('.nav-link').click(function(){
+        $('.sideMenu').click(function(){
             window.location.hash = this.dataset.hash;
-            let viewFactory = new ViewFactory();
-            viewFactory.init();
+            window.location.reload(); 
         });
+        
     </script>
 
 
