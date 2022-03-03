@@ -5,10 +5,10 @@ class Requisicao
     init($content)
     {
         this.$content = $content;        
-        this.setDados();
+        this.setContent();
     }
 
-    setDados()
+    setContent()
     {
         let self = this;        
         $.get('../api.php', { acao : 'get_requisicoes'}, response => {          
@@ -112,12 +112,5 @@ class Requisicao
             '<tbody>',
             '</tbody>'
         ];
-    }
-
-    setDataTable()
-    {
-        $(document).ready(function() {
-            $('#dataTable').DataTable();
-        });
-    }
+    }    
 }

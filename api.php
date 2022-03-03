@@ -132,6 +132,8 @@ final class Api
             // Solicitacoes do sys adm.    
             case('get_requisicoes'): die(json_encode((new RequisicaoController())->get()));    
 
+            case('get_violacoes'):   die(json_encode((new ViolacaoController())->get()));
+
             // Qualquer acao nao listada acima.
             default:
                 echo "<script>location.href='./';</script>";

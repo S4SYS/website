@@ -1,8 +1,45 @@
 class Violacao
 {
+    $content;
+
     init($content)
     {
-        $content.html(this.getCard().join(''));    
+        this.$content = $content;
+        this.setContent();    
+    }
+
+    setContent()
+    {
+        let self = this;        
+        $.get('../api.php', { acao : 'get_violacoes'}, response => {          
+            self.$content
+            .html(self.getCard().join(''))
+            .find('table')
+            .find('tbody')
+            .html(self.getBodyContent(response.data).join(''));
+
+            self.$content.find('table').DataTable();
+          
+        }, 'json');
+    }
+
+    getBodyContent(dados)
+    {
+        return dados.map(row => { 
+            return `<tr>
+                        <td>${row.codigo}</td>
+                        <td>${row.cpf}</td>
+                        <td>${row.email}</td>
+                        <td>${row.nome}</td>
+                        <td>${row.telefone}</td>
+                        <td>${row.descricao}</td>
+                        <td>${row.created_at}</td>
+                        <td>
+                            <a href="../files/upload/${row.arquivo}" target="_blank">${row.arquivo}</a>
+                        </td>
+                        <td>${row.nome_status}</td>
+                    </tr>`; 
+        });
     }
 
     getCard()
@@ -51,7 +88,7 @@ class Violacao
             'C&oacute;digo',
             'CPF',
             'Email',
-            'Nome Completo',
+            'Nome',
             'Telefone',
             'Viola&ccedil;&atilde;o',
             'Data',

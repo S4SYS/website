@@ -39,6 +39,27 @@ final class ViolacaoDao extends Connection
         }
     }
 
+
+    /**
+     * @return array
+     */
+    public function get(): array
+    {
+        $sql = "SELECT violacao.*, status.nome AS nome_status 
+                FROM violacao
+                INNER JOIN status ON violacao.status_id = status.id";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->execute();
+
+            return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
+    }
+
     
     /**
      * @param Violacao $violacao

@@ -33,6 +33,14 @@ final class ViolacaoController
     }
 
     /**
+     * @return array
+     */
+    public function get(): array
+    {
+        return $this->dao->get();
+    }
+
+    /**
      * @param array $requestData
      * 
      * @return array
