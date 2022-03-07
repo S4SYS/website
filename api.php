@@ -8,6 +8,7 @@ require_once 'app/controller/SetorController.php';
 require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
 require_once 'app/controller/ViolacaoController.php';
+require_once 'app/controller/StatusController.php';
 require_once 'app/controller/UsuarioController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 require_once 'app/File.php';
@@ -132,7 +133,9 @@ final class Api
             // Solicitacoes do sys adm.    
             case('get_requisicoes'): die(json_encode((new RequisicaoController())->get()));    
 
-            case('get_violacoes'):   die(json_encode((new ViolacaoController())->get()));
+            case('get_violacoes')  : die(json_encode((new ViolacaoController())->get()));
+
+            case('get_status')     : die(json_encode((new StatusController())->get()));
 
             // Qualquer acao nao listada acima.
             default:

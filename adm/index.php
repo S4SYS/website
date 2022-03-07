@@ -81,6 +81,17 @@ require_once '../app/File.php';
             </li>
 
             <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Status -->
+            <li class="nav-item">
+                <a class="nav-link sideMenu" data-hash="#status">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <span>Status</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -272,9 +283,11 @@ require_once '../app/File.php';
     <!-- Page Views -->
     <script src="views/js/Requisicao.js"></script>
     <script src="views/js/Violacao.js"></script>
+    <script src="views/js/Status.js"></script>
     <script>
         const HASH_REQUISICAO = '#requisicao';
         const HASH_VIOLACAO   = '#violacao' ;
+        const HASH_STATUS     = '#status';
         const FILE_PATH = '<?=File::TARGET_DIR;?>';
 
         /*
@@ -319,7 +332,10 @@ require_once '../app/File.php';
                         return new Requisicao();
                     case(HASH_VIOLACAO):
                         self.$title.html('Viola&ccedil;&otilde;es');
-                        return new Violacao();   
+                        return new Violacao();
+                    case(HASH_STATUS):
+                        self.$title.html('Status');
+                        return new Status();       
                     default:
                         self.$title.html('Requisi&ccedil;&otilde;es');
                         return new Requisicao();        
