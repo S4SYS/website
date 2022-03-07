@@ -67,9 +67,9 @@ class Requisicao
     {
         return [
             '<div class="card-body">',
-            //'<div class="table-responsive">',
+            '<div class="table-responsive">',
             ...this.getTable(),
-            //'</div>',
+            '</div>',
             '</div>'
         ];
     }
