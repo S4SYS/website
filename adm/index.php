@@ -31,8 +31,11 @@ require_once '../app/File.php';
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Datatables -->
-    <link href="vendor/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!--link href="vendor/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="vendor/datatables/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet"-->
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
 
 </head>
@@ -257,9 +260,12 @@ require_once '../app/File.php';
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Datatables -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <!--script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="vendor/datatables/js/responsive.dataTables.min.js"></script>
+    <script src="vendor/datatables/js/responsive.dataTables.min.js"></script-->
+
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
     
