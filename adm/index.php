@@ -31,7 +31,8 @@ require_once '../app/File.php';
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Datatables -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="vendor/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="vendor/datatables/css/responsive.dataTables.min.css" rel="stylesheet">
 
 </head>
 
@@ -255,9 +256,9 @@ require_once '../app/File.php';
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Datatables -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/datatables/js/responsive.dataTables.min.js"></script>
     
     <!-- Page Views -->
     <script src="views/js/Requisicao.js"></script>

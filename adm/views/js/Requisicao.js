@@ -18,7 +18,7 @@ class Requisicao
             .find('tbody')
             .html(self.getBodyContent(response.data).join(''));
 
-            self.$content.find('table').DataTable();
+            self.$content.find('table').DataTable({responsive : true});
           
         }, 'json');
     }
@@ -67,9 +67,9 @@ class Requisicao
     {
         return [
             '<div class="card-body">',
-            '<div class="table-responsive">',
+            //'<div class="table-responsive">',
             ...this.getTable(),
-            '</div>',
+            //'</div>',
             '</div>'
         ];
     }
@@ -77,7 +77,8 @@ class Requisicao
     getTable()
     {
         return [
-            '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">',
+            //'<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">',
+            '<table class="table table-bordered table-responsive" id="dataTable">',
             ...this.getTableHead(),
             ...this.getTableBody(),
             '</table>'
