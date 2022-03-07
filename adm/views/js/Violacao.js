@@ -1,31 +1,39 @@
-class Violacao
-{
+class Violacao {
     $content;
 
-    init($content)
+    init($content) 
     {
         this.$content = $content;
-        this.setContent();    
+        this.setContent();
     }
 
-    setContent()
+    setContent() 
     {
-        let self = this;        
-        $.get('../api.php', { acao : 'get_violacoes'}, response => {          
+        let self = this;
+        $.get('../api.php', { acao: 'get_violacoes' }, response => {
             self.$content
-            .html(self.getCard().join(''))
-            .find('table')
-            .find('tbody')
-            .html(self.getBodyContent(response.data).join(''));
+                .html(self.getCard().join(''))
+                .find('table')
+                .find('tbody')
+                .html(self.getBodyContent(response.data).join(''));
 
-            self.$content.find('table').DataTable({responsive : true});
-          
+            self.$content.find('table')
+                .DataTable(
+                    {
+                        responsive: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'colvis'
+                        ]
+                    }
+                );
+
         }, 'json');
     }
 
-    getBodyContent(dados)
+    getBodyContent(dados) 
     {
-        return dados.map(row => { 
+        return dados.map(row => {
             return `<tr>
                         <td>${row.codigo}</td>
                         <td>${row.cpf}</td>
@@ -38,11 +46,11 @@ class Violacao
                             <a href="../files/upload/${row.arquivo}" target="_blank">${row.arquivo}</a>
                         </td>
                         <td>${row.nome_status}</td>
-                    </tr>`; 
+                    </tr>`;
         });
     }
 
-    getCard()
+    getCard() 
     {
         return [
             ...this.getCardHeader(),
@@ -50,7 +58,7 @@ class Violacao
         ];
     }
 
-    getCardHeader()
+    getCardHeader() 
     {
         return [
             '<div class="card-header py-3">',
@@ -61,7 +69,7 @@ class Violacao
         ];
     }
 
-    getCardBody()
+    getCardBody() 
     {
         return [
             '<div class="card-body">',
@@ -72,7 +80,7 @@ class Violacao
         ];
     }
 
-    getTable()
+    getTable() 
     {
         return [
             //'<table class="table table-bordered table-responsive" id="dataTable" width="100%" cellspacing="0">',
@@ -83,7 +91,7 @@ class Violacao
         ];
     }
 
-    getTableHead()
+    getTableHead() 
     {
         let titles = [
             'C&oacute;digo',
@@ -98,11 +106,11 @@ class Violacao
         ];
 
         let columns = titles.map(col => { return `<th>${col}</th>`; });
-        
+
         return ['<thead>', '<tr>', ...columns, '</tr>', '</thead>'];
     }
 
-    getTableBody()
+    getTableBody() 
     {
         return [
             '<tbody>',

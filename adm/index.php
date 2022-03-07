@@ -33,6 +33,7 @@ require_once '../app/File.php';
     <!-- Datatables -->
     <link href="vendor/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="vendor/datatables/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
 
 </head>
 
@@ -259,6 +260,8 @@ require_once '../app/File.php';
     <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="vendor/datatables/js/responsive.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
     
     <!-- Page Views -->
     <script src="views/js/Requisicao.js"></script>

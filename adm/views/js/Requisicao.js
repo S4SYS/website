@@ -18,7 +18,15 @@ class Requisicao
             .find('tbody')
             .html(self.getBodyContent(response.data).join(''));
 
-            self.$content.find('table').DataTable({responsive : true});
+            self.$content.find('table')
+            .DataTable(
+                {
+                    responsive : true,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'colvis'
+                    ]
+                });
           
         }, 'json');
     }
