@@ -84,7 +84,7 @@ class Violacao {
     {
         return [
             //'<table class="table table-bordered table-responsive" id="dataTable" width="100%" cellspacing="0">',
-            '<table class="table table-bordered table-responsive" id="dataTable">',
+            '<table class="table table-bordered display responsive nowrap" id="dataTable" width="100%">',
             ...this.getTableHead(),
             ...this.getTableBody(),
             '</table>'
