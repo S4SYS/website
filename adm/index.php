@@ -305,7 +305,7 @@ require_once '../app/File.php';
 
             init()
             {                
-                this.setContent();                
+                this.setContent();                                
             }            
 
             setContent()
@@ -329,11 +329,21 @@ require_once '../app/File.php';
                         return new Violacao();
                     case(HASH_STATUS):
                         self.$title.html('Status');
+                        self.$main.append(this.getAddButton().join(''));                        
                         return new Status();       
                     default:
                         self.$title.html('Requisi&ccedil;&otilde;es');
                         return new Requisicao();        
                 }
+            }
+
+            getAddButton()
+            {
+                return [
+                    `<button id="add" data-hash="${window.location.hash}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">`,
+                    'Adicionar',
+                    '</button>'
+                ];
             }
         }
         
@@ -343,7 +353,7 @@ require_once '../app/File.php';
         $('.sideMenu').click(function(){
             window.location.hash = this.dataset.hash;
             window.location.reload(); 
-        });
+        });        
 
     </script>
 

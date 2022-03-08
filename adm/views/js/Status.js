@@ -10,6 +10,10 @@ class Status extends Lista {
         this.requestBody     = this.getRequestBody();
         this.$content        = $content;
         this.setContent();
+
+        $('#add').click(function(){
+            alert(this.dataset.hash);
+        });
     }
 
     getRequestBody() 
@@ -33,4 +37,5 @@ class Status extends Lista {
             'Data de atualiza&ccedil;&atilde;o'            
         ];
     }
+    
 }
