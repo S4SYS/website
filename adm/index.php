@@ -46,7 +46,7 @@ require_once '../app/File.php';
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <!--div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div-->
@@ -200,8 +200,10 @@ require_once '../app/File.php';
                 <div id="main" class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 id="pageTitle" class="h3 mb-4 text-gray-800"></h1>
-
+                    <div id="pageHeading" class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 id="pageTitle" class="h3 mb-4 text-gray-800"></h1>
+                    </div>
+                    
                     <!-- Loader image -->
                     <div class="mb-12 text-center">
                         <span id="loader"></span>
@@ -340,7 +342,7 @@ require_once '../app/File.php';
             getAddButton()
             {
                 return [
-                    `<button id="add" data-hash="${window.location.hash}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">`,
+                    `<button id="add" data-hash="${window.location.hash}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">`,
                     'Adicionar',
                     '</button>'
                 ];
