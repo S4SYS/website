@@ -4,6 +4,7 @@ class Status extends Lista {
 
     init($content) 
     {
+        this.cardTitle       = 'Lista de Status';
         this.tableHeadTitles = this.getTitles();
         this.actionName      = 'get_status';
         this.requestBody     = this.getRequestBody();

@@ -4,6 +4,7 @@ class Violacao extends Lista {
 
     init($content) 
     {
+        this.cardTitle       = 'Lista de Viola&ccedil;&otilde;es';
         this.tableHeadTitles = this.getTitles();
         this.actionName      = 'get_violacoes';
         this.requestBody     = this.getRequestBody();

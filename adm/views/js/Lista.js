@@ -50,7 +50,7 @@ class Lista
         return [
             '<div class="card-header py-3">',
             '<h6 class="m-0 font-weight-bold text-primary">',
-            'Lista de Requisi&ccedil;&otilde;es',
+            this.cardTitle,
             '</h6>',
             '</div>'
         ];

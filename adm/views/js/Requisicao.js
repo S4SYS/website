@@ -4,10 +4,11 @@ class Requisicao extends Lista {
 
     init($content) 
     {
+        this.cardTitle       = 'Lista de Requisi&ccedil;&otilde;es';
         this.tableHeadTitles = this.getTitles();
-        this.actionName = 'get_requisicoes';
-        this.requestBody = this.getRequestBody();
-        this.$content = $content;
+        this.actionName      = 'get_requisicoes';
+        this.requestBody     = this.getRequestBody();
+        this.$content        = $content;
         this.setContent();
     }
 
