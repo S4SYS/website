@@ -274,6 +274,7 @@ require_once '../app/File.php';
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
         
     <!-- Page Views -->
+    <script src="views/js/Lista.js"></script>
     <script src="views/js/Requisicao.js"></script>
     <script src="views/js/Violacao.js"></script>
     <script src="views/js/Status.js"></script>
