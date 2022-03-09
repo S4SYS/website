@@ -346,7 +346,7 @@ require_once '../app/File.php';
                     'Adicionar',
                     '</button>'
                 ];
-            }
+            }            
         }
         
         let viewFactory = new ViewFactory(); 

@@ -6,6 +6,7 @@ class Lista
     actionName;
     requestBody;
 
+
     setContent()
     {
         let self = this;        

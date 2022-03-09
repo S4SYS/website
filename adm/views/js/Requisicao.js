@@ -29,6 +29,14 @@ class Requisicao extends Lista {
                     <a href="../files/upload/${row.arquivo}" target="_blank">${row.arquivo}</a>
                     </td>
                     <td>${row.nome_status}</td>
+                    <td>
+                    <button data-hash="${window.location.hash}" data-id="${row.id}" class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+                    Editar
+                    </button>
+                    <button data-hash="${window.location.hash}" data-id="${row.id}" class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                    Desativar
+                    </button>
+                    </td>
                     </tr>`;
         }
     }
@@ -46,7 +54,8 @@ class Requisicao extends Lista {
             'Setor',
             'Data',
             'Arquivo',
-            'Status'
+            'Status',
+            'A&ccedil;&otilde;es'
         ];
     }
 }
