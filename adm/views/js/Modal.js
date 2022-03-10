@@ -36,6 +36,9 @@ class Modal
             case ('#status'):
                 this.setStatusContentByAction();
                 break;
+            default:
+                this.setRequisicaoContentByAction();
+                break;    
         }
     }
 
