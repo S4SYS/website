@@ -17,22 +17,29 @@ class Status extends Lista {
     }
 
     getRequestBody() 
-    {
+    {        
         return row => {
-            return `<tr>
-                    <td>${row.id}</td>
-                    <td>${row.nome}</td>
-                    <td>${row.created_at}</td>
-                    <td>${row.updated_at}</td>
-                    <td>
-                    <button data-hash="${window.location.hash}" data-id="${row.id}" class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
-                    Editar
-                    </button>
-                    <button data-hash="${window.location.hash}" data-id="${row.id}" class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                    Desativar
-                    </button>
-                    </td>
-                    </tr>`;
+            return `
+            <tr>
+            <td>${row.id}</td>
+            <td>${row.nome}</td>
+            <td>${row.created_at}</td>
+            <td>${row.updated_at}</td>
+            <td>
+            <button data-hash="${window.location.hash}" 
+            onClick="${this.getActionModal()}" 
+            data-id="${row.id}" data-action="edit" 
+            class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+            Editar
+            </button>
+            <button data-hash="${window.location.hash}" 
+            onClick="${this.getActionModal()}" 
+            data-id="${row.id}" data-action="deactivate" 
+            class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+            Desativar
+            </button>
+            </td>
+            </tr>`;
         }
     }
 

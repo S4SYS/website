@@ -92,4 +92,16 @@ class Lista
             '</tbody>'
         ];
     }
+    
+    getActionModal()
+    {
+        return `
+        $('#actionModal').modal('show')
+        .find('#btnSalvar')
+        .attr('data-hash', this.dataset.hash)
+        .attr('data-id', this.dataset.id)
+        .attr('data-action', this.dataset.action);
+        `;
+    }
+
 }

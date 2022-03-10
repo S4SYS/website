@@ -239,21 +239,23 @@ require_once '../app/File.php';
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Modal Padrão -->
+    <div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">Ã—</span>
+                        <span aria-hidden="true">x</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">
+                    Select "Logout" below if you are ready to end your current session.
+                </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <!--button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button-->
+                    <a class="btn btn-primary" style="cursor:pointer;" id="btnSalvar">Salvar</a>
                 </div>
             </div>
         </div>
@@ -346,7 +348,7 @@ require_once '../app/File.php';
                     'Adicionar',
                     '</button>'
                 ];
-            }            
+            }           
         }
         
         let viewFactory = new ViewFactory(); 
@@ -356,6 +358,10 @@ require_once '../app/File.php';
             window.location.hash = this.dataset.hash;
             window.location.reload(); 
         });        
+
+        $('#actionModal').find('#btnSalvar').click(function(){
+            alert(this.dataset.action +' - '+ this.dataset.id +' - ' +this.dataset.hash);
+        });
 
     </script>
 

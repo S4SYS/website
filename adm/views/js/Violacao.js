@@ -28,10 +28,16 @@ class Violacao extends Lista {
                     </td>
                     <td>${row.nome_status}</td>
                     <td>
-                    <button data-hash="${window.location.hash}" data-id="${row.id}" class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+                    <button data-hash="${window.location.hash}" 
+                    onClick="${this.getActionModal()}" 
+                    data-id="${row.id}" data-action="edit" 
+                    class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
                     Editar
                     </button>
-                    <button data-hash="${window.location.hash}" data-id="${row.id}" class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                    <button data-hash="${window.location.hash}" 
+                    onClick="${this.getActionModal()}" 
+                    data-id="${row.id}" data-action="deactivate" 
+                    class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
                     Desativar
                     </button>
                     </td>
