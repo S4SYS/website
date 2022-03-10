@@ -103,5 +103,4 @@ class Lista
         .attr('data-action', this.dataset.action);
         `;
     }
-
 }

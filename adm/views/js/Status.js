@@ -9,15 +9,11 @@ class Status extends Lista {
         this.actionName      = 'get_status';
         this.requestBody     = this.getRequestBody();
         this.$content        = $content;
-        this.setContent();
-     
-        $('#add').click(function(){
-            alert(this.dataset.hash);
-        });        
+        this.setContent();   
     }
 
     getRequestBody() 
-    {        
+    {      
         return row => {
             return `
             <tr>
@@ -27,13 +23,13 @@ class Status extends Lista {
             <td>${row.updated_at}</td>
             <td>
             <button data-hash="${window.location.hash}" 
-            onClick="${this.getActionModal()}" 
+            onClick="Modal.init(this)" 
             data-id="${row.id}" data-action="edit" 
             class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
             Editar
             </button>
             <button data-hash="${window.location.hash}" 
-            onClick="${this.getActionModal()}" 
+            onClick="Modal.init(this)" 
             data-id="${row.id}" data-action="deactivate" 
             class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
             Desativar
@@ -52,6 +48,6 @@ class Status extends Lista {
             'Data de atualiza&ccedil;&atilde;o',
             'A&ccedil;&otilde;es'            
         ];
-    }
-    
+    }  
+   
 }

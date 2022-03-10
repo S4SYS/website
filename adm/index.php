@@ -117,7 +117,7 @@ require_once '../app/File.php';
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Procurar..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -251,7 +251,6 @@ require_once '../app/File.php';
                     </button>
                 </div>
                 <div class="modal-body">
-                    Select "Logout" below if you are ready to end your current session.
                 </div>
                 <div class="modal-footer">
                     <!--button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button-->
@@ -278,6 +277,7 @@ require_once '../app/File.php';
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
         
     <!-- Page Views -->
+    <script src="views/js/Modal.js"></script>
     <script src="views/js/Lista.js"></script>
     <script src="views/js/Requisicao.js"></script>
     <script src="views/js/Violacao.js"></script>
@@ -344,7 +344,7 @@ require_once '../app/File.php';
             getAddButton()
             {
                 return [
-                    `<button id="add" data-hash="${window.location.hash}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">`,
+                    `<button id="add" data-hash="${window.location.hash}" data-action="add" onClick="Modal.init(this);" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">`,
                     'Adicionar',
                     '</button>'
                 ];
@@ -357,12 +357,12 @@ require_once '../app/File.php';
         $('.sideMenu').click(function(){
             window.location.hash = this.dataset.hash;
             window.location.reload(); 
-        });        
+        });     
 
         $('#actionModal').find('#btnSalvar').click(function(){
             alert(this.dataset.action +' - '+ this.dataset.id +' - ' +this.dataset.hash);
         });
-
+        
     </script>
 
 
