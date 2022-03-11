@@ -130,12 +130,14 @@ final class Api
                 echo "<script>location.href='adm/';</script>";
                 break;
             
-            // Solicitacoes do sys adm.    
+            // Submits do sys adm.    
             case('get_requisicoes'): die(json_encode((new RequisicaoController())->get()));    
 
             case('get_violacoes')  : die(json_encode((new ViolacaoController())->get()));
 
             case('get_status')     : die(json_encode((new StatusController())->get()));
+
+            case('add_status')     : die(json_encode((new StatusController())->save($_POST)));
 
             // Qualquer acao nao listada acima.
             default:

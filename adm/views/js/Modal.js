@@ -74,11 +74,27 @@ class Modal
                 break;
             case ('add'):
                 self.$title.html('Adicionar Status');
+                self.$body.html(this.getAddStatusBodyContent().join(''));
                 break;
             case ('deactivate'):
                 self.$title.html('Desativar Status');
                 break;
         }
+    }
+
+    static getAddStatusBodyContent()
+    {
+        return [
+            '<form>',
+            '<div class="form-group">',
+            '<label for="id">ID</label>',
+            '<input type="number" name="id" id="id" class="form-control required">',            
+            '<label for="nome">Nome</label>',
+            '<input type="text" name="nome" id="nome" class="form-control required">',
+            '<input type="hidden" name="acao" value="add_status">',            
+            '</div>',
+            '</form>'
+        ];
     }
 
 }

@@ -354,15 +354,42 @@ require_once '../app/File.php';
         let viewFactory = new ViewFactory(); 
         viewFactory.init();
 
+         
+  
         $('.sideMenu').click(function(){
             window.location.hash = this.dataset.hash;
             window.location.reload(); 
         });     
 
         $('#actionModal').find('#btnSalvar').click(function(){
-            alert(this.dataset.action +' - '+ this.dataset.id +' - ' +this.dataset.hash);
+            //alert(this.dataset.action +' - '+ this.dataset.id +' - ' +this.dataset.hash);
+            let $form = $('#actionModal').find('form');
+
+            let counter = 0;
+            $form.find('.required').each(function(){
+                if(!$(this).val()){
+                    counter++;
+                    $(this).focus();
+                }
+            });
+
+            if(counter === 0) sendForm($form);
         });
-        
+
+        function sendForm($form)
+        {
+            $.ajax({
+                type: "POST",
+                url: "../api.php",
+                data: $form.serialize(),
+                processData: false,
+                dataType : "json",                
+                success: function(data) {
+                    if(data['success'] == true) window.location.reload();
+                } 
+            });
+        }
+
     </script>
 
 
