@@ -71,6 +71,7 @@ class Modal
         switch (self.$domElement.dataset.action) {
             case ('edit'):
                 self.$title.html('Editar Status');
+                this.getStatusByCode();
                 break;
             case ('add'):
                 self.$title.html('Adicionar Status');
@@ -97,4 +98,30 @@ class Modal
         ];
     }
 
+    static getStatusByCode()
+    {
+        let elem = this;
+     
+        $.get('../api.php', { 
+            id   : self.$domElement.dataset.id,
+            acao : 'get_status_by_code' 
+        }, function(response){
+            self.$body.html(elem.getEditStatusBodyContent(response.data).join(''));
+        }, 'json');
+    }
+
+    static getEditStatusBodyContent(dados)
+    {
+        return [
+            '<form>',
+            '<div class="form-group">',
+            '<label for="id">ID</label>',
+            `<input type="number" name="id" id="id" class="form-control required" value="${dados.id}">`,            
+            '<label for="nome">Nome</label>',
+            `<input type="text" name="nome" id="nome" class="form-control required" value="${dados.nome}">`,
+            '<input type="hidden" name="acao" value="edit_status">',            
+            '</div>',
+            '</form>'
+        ];
+    }
 }

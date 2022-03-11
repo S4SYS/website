@@ -23,6 +23,28 @@ final class StatusDao extends Connection
         }
     }
 
+
+    /**
+     * @param Status $status
+     * 
+     * @return array
+     */
+    public function getByCode(Status $status): array
+    {
+        $sql = "SELECT * FROM status WHERE id = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $status->getId());
+            $p_sql->execute();
+
+            return ['success' => true, 'data' => $p_sql->fetch(PDO::FETCH_ASSOC)];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
+    }
+
     /**
      * @param Status $status
      * 

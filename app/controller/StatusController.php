@@ -27,6 +27,19 @@ final class StatusController
      * 
      * @return array
      */
+    public function getByCode(array $requestData): array
+    {
+        $status = new Status();
+        $status->setId($requestData['id']);
+
+        return $this->dao->getByCode($status);
+    }
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
     public function save(array $requestData): array
     {
         $status = new Status();
