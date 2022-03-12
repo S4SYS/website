@@ -139,8 +139,7 @@ final class Api
 
             case('add_status')     : die(json_encode((new StatusController())->save($_POST)));
 
-            // TODO:
-            case('edit_status')    : die($_POST);
+            case('edit_status')    : die(json_encode((new StatusController())->update($_POST)));
 
             case('get_status_by_code') : die(json_encode((new StatusController())->getByCode($_GET)));
 

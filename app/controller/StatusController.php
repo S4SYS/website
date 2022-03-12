@@ -48,4 +48,18 @@ final class StatusController
 
         return $this->dao->save($status);
     }
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function update(array $requestData): array
+    {
+        $status = new Status();
+        $status->setId($requestData['id']);
+        $status->setNome($requestData['nome']);
+
+        return $this->dao->update($status);
+    }
 }

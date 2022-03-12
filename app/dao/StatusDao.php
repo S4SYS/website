@@ -71,4 +71,27 @@ final class StatusDao extends Connection
             return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
+
+    /**
+     * @param Status $status
+     * 
+     * @return array
+     */
+    public function update(Status $status): array
+    {
+        $sql = "UPDATE status SET nome = ? WHERE id = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $status->getNome());
+            $p_sql->bindValue(2, $status->getId());
+     
+            return [
+                'success' => $p_sql->execute(), 
+                'data'    => $status
+            ];
+        } catch(Exception $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
+    }
 }

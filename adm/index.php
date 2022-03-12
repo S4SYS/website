@@ -362,7 +362,6 @@ require_once '../app/File.php';
         });     
 
         $('#actionModal').find('#btnSalvar').click(function(){
-            //alert(this.dataset.action +' - '+ this.dataset.id +' - ' +this.dataset.hash);
             let $form = $('#actionModal').find('form');
 
             let counter = 0;
@@ -377,17 +376,17 @@ require_once '../app/File.php';
         });
 
         function sendForm($form)
-        {
+        {   
             $.ajax({
                 type: "POST",
                 url: "../api.php",
                 data: $form.serialize(),
                 processData: false,
                 dataType : "json",                
-                success: function(data) {
-                    if(data['success'] == true) window.location.reload();
+                success: function(response) {
+                    if(response['success'] == true) window.location.reload();
                 } 
-            });
+            });            
         }
 
     </script>

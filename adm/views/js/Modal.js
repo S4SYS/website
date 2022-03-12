@@ -116,7 +116,7 @@ class Modal
             '<form>',
             '<div class="form-group">',
             '<label for="id">ID</label>',
-            `<input type="number" name="id" id="id" class="form-control required" value="${dados.id}">`,            
+            `<input type="number" name="id" id="id" class="form-control" readonly value="${dados.id}">`,            
             '<label for="nome">Nome</label>',
             `<input type="text" name="nome" id="nome" class="form-control required" value="${dados.nome}">`,
             '<input type="hidden" name="acao" value="edit_status">',            
