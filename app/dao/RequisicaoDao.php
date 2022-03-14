@@ -94,4 +94,51 @@ final class RequisicaoDao extends Connection
             return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
+
+
+    /**
+     * @param Requisicao $requisicao
+     * 
+     * @return array
+     */
+    public function getStatusByCode(Requisicao $requisicao): array
+    {
+        $sql = "SELECT status.*
+                FROM requisicao
+                INNER JOIN status ON requisicao.status_id = status.id
+                WHERE requisicao.id = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $requisicao->getId());
+            $p_sql->execute();
+
+            return ['success' => true, 'data' => $p_sql->fetch(PDO::FETCH_ASSOC)];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }        
+    }
+
+
+    /**
+     * @param Requisicao $requisicao
+     * 
+     * @return array
+     */
+    public function updateStatusRequisicao(Requisicao $requisicao): array
+    {
+        $sql = "UPDATE requisicao SET status_id = ? WHERE id = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $requisicao->getStatus()->id);
+            $p_sql->bindValue(2, $requisicao->getId());
+            
+            return ['success' => $p_sql->execute(), 'data' => $requisicao];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
+    }
 }

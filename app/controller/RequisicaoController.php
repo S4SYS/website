@@ -4,6 +4,7 @@ require_once 'app/dao/RequisicaoDao.php';
 require_once 'app/model/Requisicao.php';
 require_once 'app/model/Setor.php';
 require_once 'app/model/TipoRequisicao.php';
+require_once 'app/model/Status.php';
 
 final class RequisicaoController
 {
@@ -62,4 +63,34 @@ final class RequisicaoController
         return $this->dao->getByCode($requisicao);
     }    
     
+    
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function getStatusByCode(array $requestData): array
+    {
+        $requisicao = new Requisicao();
+        $requisicao->setId($requestData['id']);
+
+        return $this->dao->getStatusByCode($requisicao);
+    }
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function updateStatusRequisicao(array $requestData): array
+    {
+        $requisicao = new Requisicao();
+        $status = new Status();
+
+        $requisicao->setId($requestData['id']);
+        $status->id = $requestData['id_status'];
+        $requisicao->setStatus($status);
+
+        return $this->dao->updateStatusRequisicao($requisicao);
+    }
 }

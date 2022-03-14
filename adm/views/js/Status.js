@@ -1,6 +1,9 @@
 class Status extends Lista {
     
     $content;
+    modal;
+    dataSets;
+
 
     init($content) 
     {
@@ -48,6 +51,71 @@ class Status extends Lista {
             'Data de atualiza&ccedil;&atilde;o',
             'A&ccedil;&otilde;es'            
         ];
-    }  
-   
+    }
+    
+    
+    /*
+    * Particularidades do Modal referentes a Status.
+    */
+    setModalContentByAction(elem) 
+    {
+        this.modal = elem;
+        this.dataSets = this.modal.$domElement.dataset;
+
+        switch (this.dataSets.action) {
+            case ('edit'):
+                this.modal.$title.html('Editar Status');
+                this.getByCode();
+                break;
+            case ('add'):
+                this.modal.$title.html('Adicionar Status');
+                this.modal.$body.html(this.getAddBodyContent().join(''));
+                break;
+            case ('deactivate'):
+                this.modal.$title.html('Desativar Status');
+                break;
+        }
+    }
+
+    getAddBodyContent()
+    {
+        return [
+            '<form>',
+            '<div class="form-group">',
+            '<label for="id">ID</label>',
+            '<input type="number" name="id" id="id" class="form-control required">',            
+            '<label for="nome">Nome</label>',
+            '<input type="text" name="nome" id="nome" class="form-control required">',
+            '<input type="hidden" name="acao" value="add_status">',            
+            '</div>',
+            '</form>'
+        ];
+    }
+
+    getByCode()
+    {
+        let self = this;
+     
+        $.get('../api.php', { 
+            id   : this.dataSets.id,
+            acao : 'get_status_by_code' 
+        }, function(response){
+            self.modal.$body.html(self.getEditBodyContent(response.data).join(''));
+        }, 'json');
+    }
+
+    getEditBodyContent(dados)
+    {
+        return [
+            '<form>',
+            '<div class="form-group">',
+            '<label for="id">ID</label>',
+            `<input type="number" name="id" id="id" class="form-control" readonly value="${dados.id}">`,            
+            '<label for="nome">Nome</label>',
+            `<input type="text" name="nome" id="nome" class="form-control required" value="${dados.nome}">`,
+            '<input type="hidden" name="acao" value="edit_status">',            
+            '</div>',
+            '</form>'
+        ];
+    }   
 }

@@ -26,33 +26,30 @@ class Modal
     }
 
     static setContentByHash() {
+
+        let requisicao;
+
         switch (self.$domElement.dataset.hash) {
             case ('#requisicao'):
-                this.setRequisicaoContentByAction();
+                requisicao = new Requisicao();
+                requisicao.setModalContentByAction(self);
                 break;
             case ('#violacao'):
-                this.setViolacaoContentByAction();
+                //this.setViolacaoContentByAction();
                 break;
             case ('#status'):
-                this.setStatusContentByAction();
+                let status = new Status();
+                status.setModalContentByAction(self);
                 break;
             default:
-                this.setRequisicaoContentByAction();
+                requisicao = new Requisicao();
+                requisicao.setModalContentByAction(self);
                 break;    
         }
     }
 
-    static setRequisicaoContentByAction() 
-    {
-        switch (self.$domElement.dataset.action) {
-            case ('edit'):
-                self.$title.html('Editar Requisicao');
-                break;
-            case ('deactivate'):
-                self.$title.html('Desativar Requisicao');
-                break;
-        }
-    }
+
+    /*    
 
     static setViolacaoContentByAction() 
     {
@@ -64,64 +61,6 @@ class Modal
                 self.$title.html('Desativar Violacao');
                 break;
         }
-    }
-
-    static setStatusContentByAction() 
-    {
-        switch (self.$domElement.dataset.action) {
-            case ('edit'):
-                self.$title.html('Editar Status');
-                this.getStatusByCode();
-                break;
-            case ('add'):
-                self.$title.html('Adicionar Status');
-                self.$body.html(this.getAddStatusBodyContent().join(''));
-                break;
-            case ('deactivate'):
-                self.$title.html('Desativar Status');
-                break;
-        }
-    }
-
-    static getAddStatusBodyContent()
-    {
-        return [
-            '<form>',
-            '<div class="form-group">',
-            '<label for="id">ID</label>',
-            '<input type="number" name="id" id="id" class="form-control required">',            
-            '<label for="nome">Nome</label>',
-            '<input type="text" name="nome" id="nome" class="form-control required">',
-            '<input type="hidden" name="acao" value="add_status">',            
-            '</div>',
-            '</form>'
-        ];
-    }
-
-    static getStatusByCode()
-    {
-        let elem = this;
-     
-        $.get('../api.php', { 
-            id   : self.$domElement.dataset.id,
-            acao : 'get_status_by_code' 
-        }, function(response){
-            self.$body.html(elem.getEditStatusBodyContent(response.data).join(''));
-        }, 'json');
-    }
-
-    static getEditStatusBodyContent(dados)
-    {
-        return [
-            '<form>',
-            '<div class="form-group">',
-            '<label for="id">ID</label>',
-            `<input type="number" name="id" id="id" class="form-control" readonly value="${dados.id}">`,            
-            '<label for="nome">Nome</label>',
-            `<input type="text" name="nome" id="nome" class="form-control required" value="${dados.nome}">`,
-            '<input type="hidden" name="acao" value="edit_status">',            
-            '</div>',
-            '</form>'
-        ];
-    }
+    } 
+    */   
 }

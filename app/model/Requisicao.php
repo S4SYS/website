@@ -3,12 +3,14 @@
 require_once 'AbstractModel.php';
 require_once 'Setor.php';
 require_once 'TipoRequisicao.php';
+require_once 'Status.php';
 
 final class Requisicao extends AbstractModel
 {
     public $pedido;
     public $setor;
     public $tipoRequisicao;
+    public $status;
 
     /**
      * @return string
@@ -64,4 +66,21 @@ final class Requisicao extends AbstractModel
         $this->tipoRequisicao = $tipoRequisicao;
     }
 
+    /**
+     * @return Status
+     */
+    public function getStatus(): Status
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param Status $status
+     * 
+     * @return void
+     */
+    public function setStatus(Status $status): void
+    {
+        $this->status = $status;
+    }
 }
