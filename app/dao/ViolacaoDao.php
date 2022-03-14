@@ -84,6 +84,51 @@ final class ViolacaoDao extends Connection
             return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
+
+    /**
+     * @param Violacao $violacao
+     * 
+     * @return array
+     */
+    public function getStatusByCode(Violacao $violacao): array
+    {
+        $sql = "SELECT status.*
+                FROM violacao
+                INNER JOIN status ON violacao.status_id = status.id
+                WHERE violacao.id = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $violacao->getId());
+            $p_sql->execute();
+
+            return ['success' => true, 'data' => $p_sql->fetch(PDO::FETCH_ASSOC)];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }        
+    }
+
+    /**
+     * @param Violacao $violacao
+     * 
+     * @return array
+     */
+    public function updateStatus(Violacao $violacao): array
+    {
+        $sql = "UPDATE violacao SET status_id = ? WHERE id = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $violacao->getStatus()->id);
+            $p_sql->bindValue(2, $violacao->getId());
+            
+            return ['success' => $p_sql->execute(), 'data' => $violacao];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
+    }
 }
 
 

@@ -35,7 +35,8 @@ class Modal
                 requisicao.setModalContentByAction(self);
                 break;
             case ('#violacao'):
-                //this.setViolacaoContentByAction();
+                let violacao = new Violacao();
+                violacao.setModalContentByAction(self);
                 break;
             case ('#status'):
                 let status = new Status();
@@ -46,21 +47,5 @@ class Modal
                 requisicao.setModalContentByAction(self);
                 break;    
         }
-    }
-
-
-    /*    
-
-    static setViolacaoContentByAction() 
-    {
-        switch (self.$domElement.dataset.action) {
-            case ('edit'):
-                self.$title.html('Editar Violacao');
-                break;
-            case ('deactivate'):
-                self.$title.html('Desativar Violacao');
-                break;
-        }
-    } 
-    */   
+    }  
 }

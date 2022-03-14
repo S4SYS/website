@@ -60,4 +60,62 @@ class Violacao extends Lista {
             'A&ccedil;&otilde;es'
         ];
     }
+
+    /*
+    * Particularidades do Modal referentes a Requisicao.
+    */
+    setModalContentByAction(elem) 
+    {
+        this.modal = elem;
+        this.dataSets = this.modal.$domElement.dataset;
+
+        switch (this.dataSets.action) {
+            case ('edit'):
+                this.modal.$title.html('Editar Viola&ccedil;&atilde;o');
+                this.getByCode();
+                break;
+            case ('deactivate'):
+                this.modal.$title.html('Desativar Viola&ccedil;&atilde;o');
+                break;
+        }
+    }
+    
+    getByCode()
+    {
+        let self = this;
+     
+        $.get('../api.php', { 
+            id   : this.dataSets.id,
+            acao : 'get_status_violacao' 
+        }, function(response){
+            self.modal.$body.html(self.getEditBodyContent(response).join(''));
+        }, 'json');
+    }
+
+    getEditBodyContent(dados)
+    {
+        this.idStatus = dados.current.data.id;
+
+        return [
+            '<form>',
+            '<div class="form-group">',
+            '<label for="status">Status</label>',
+            '<select name="id_status" id="id_status" class="form-control required">',
+            ...this.getStatusOptions(dados.all.data),
+            '</select>',
+            '<input type="hidden" name="acao" value="edit_violacao_status">',
+            `<input type="hidden" name="id" value="${this.dataSets.id}">`,            
+            '</div>',
+            '</form>'
+        ];
+    }
+
+    getStatusOptions(dados)
+    {
+        let selected;
+        return dados.map(row => {
+            selected = (row.id === this.idStatus) ? 'selected' : '';
+            return `<option value="${row.id}" ${selected}>${row.nome}</option>`;
+        });
+    }
 }

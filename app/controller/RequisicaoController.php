@@ -82,7 +82,7 @@ final class RequisicaoController
      * 
      * @return array
      */
-    public function updateStatusRequisicao(array $requestData): array
+    public function updateStatus(array $requestData): array
     {
         $requisicao = new Requisicao();
         $status = new Status();
@@ -91,6 +91,6 @@ final class RequisicaoController
         $status->id = $requestData['id_status'];
         $requisicao->setStatus($status);
 
-        return $this->dao->updateStatusRequisicao($requisicao);
+        return $this->dao->updateStatus($requisicao);
     }
 }

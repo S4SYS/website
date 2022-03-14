@@ -2,6 +2,7 @@
 
 require_once 'app/dao/ViolacaoDao.php';
 require_once 'app/model/Violacao.php';
+require_once 'app/model/Status.php';
 
 final class ViolacaoController
 {
@@ -52,5 +53,34 @@ final class ViolacaoController
 
         return $this->dao->getByCode($violacao);
     }
-    
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function getStatusByCode(array $requestData): array
+    {
+        $violacao = new Violacao();
+        $violacao->setId($requestData['id']);
+
+        return $this->dao->getStatusByCode($violacao);
+    }
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function updateStatus(array $requestData): array
+    {
+        $violacao = new Violacao();
+        $status = new Status();
+
+        $violacao->setId($requestData['id']);
+        $status->id = $requestData['id_status'];
+        $violacao->setStatus($status);
+
+        return $this->dao->updateStatus($violacao);
+    }
 }

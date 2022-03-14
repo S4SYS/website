@@ -126,7 +126,7 @@ final class RequisicaoDao extends Connection
      * 
      * @return array
      */
-    public function updateStatusRequisicao(Requisicao $requisicao): array
+    public function updateStatus(Requisicao $requisicao): array
     {
         $sql = "UPDATE requisicao SET status_id = ? WHERE id = ?";
 

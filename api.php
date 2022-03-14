@@ -149,8 +149,16 @@ final class Api
                     'all'     => (new StatusController())->get()
                 ]));
 
-            case('edit_requisicao_status') : die(json_encode((new RequisicaoController)->updateStatusRequisicao($_POST)));    
+            case('get_status_violacao') : 
+                die(json_encode([
+                    'current' => (new ViolacaoController())->getStatusByCode($_GET),
+                    'all'     => (new StatusController())->get()
+                ]));   
+
+            case('edit_requisicao_status') : die(json_encode((new RequisicaoController)->updateStatus($_POST)));    
      
+            case('edit_violacao_status') : die(json_encode((new ViolacaoController)->updateStatus($_POST)));    
+
             // Qualquer acao nao listada acima.
             default:
                 echo "<script>location.href='./';</script>";
