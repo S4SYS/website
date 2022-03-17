@@ -103,7 +103,12 @@ class Violacao extends Lista {
             '<select name="id_status" id="id_status" class="form-control required">',
             ...this.getStatusOptions(dados.all.data),
             '</select>',
+            '</div>',
+            '<div class="form-group">',
+            '<label for="comentario">Coment&aacute;rio</label>',
+            '<textarea name="comentario" id="comentario" class="form-control required"></textarea>',
             '<input type="hidden" name="acao" value="edit_violacao_status">',
+            `<input type="hidden" name="current_status_id" value="${this.idStatus}">`,
             `<input type="hidden" name="id" value="${this.dataSets.id}">`,            
             '</div>',
             '</form>'

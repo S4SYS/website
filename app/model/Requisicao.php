@@ -7,6 +7,8 @@ require_once 'Status.php';
 
 final class Requisicao extends AbstractModel
 {
+    const TABLE = 'requisicao';
+
     public $pedido;
     public $setor;
     public $tipoRequisicao;

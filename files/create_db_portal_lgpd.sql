@@ -94,15 +94,17 @@ CREATE TABLE acao (
 
 
 CREATE TABLE usuario_acao (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   usuario_id INTEGER UNSIGNED NOT NULL,
   acao_id INTEGER UNSIGNED NOT NULL,
   descricao TEXT NULL,
+  comentario TEXT NULL,
   tabela VARCHAR(64) NULL,
   atual_id INTEGER UNSIGNED NULL,
   anterior_id INTEGER UNSIGNED NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY(usuario_id, acao_id),
+  PRIMARY KEY(id),
   INDEX usuario_acao_FKIndex1(usuario_id),
   INDEX usuario_acao_FKIndex2(acao_id),
   FOREIGN KEY(usuario_id)

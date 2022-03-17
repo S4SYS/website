@@ -4,12 +4,16 @@ if (!isset($_POST['acao']) && !isset($_GET['acao'])) die("<script>location.href=
 
 @session_start();
 
+require_once 'app/model/Requisicao.php';
+require_once 'app/model/Violacao.php';
+require_once 'app/model/Status.php';
 require_once 'app/controller/SetorController.php';
 require_once 'app/controller/TipoRequisicaoController.php';
 require_once 'app/controller/RequisicaoController.php';
 require_once 'app/controller/ViolacaoController.php';
 require_once 'app/controller/StatusController.php';
 require_once 'app/controller/UsuarioController.php';
+require_once 'app/controller/UsuarioAcaoController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 require_once 'app/File.php';
 
@@ -155,7 +159,24 @@ final class Api
                     'all'     => (new StatusController())->get()
                 ]));   
 
-            case('edit_requisicao_status') : die(json_encode((new RequisicaoController)->updateStatus($_POST)));    
+            case('edit_requisicao_status') : 
+                $id            = $_POST['id'];
+                $idStatusAtual = $_POST['current_status_id'];
+                $idNovoStatus  = $_POST['id_status'];
+                $nomeUsuario   = $_SESSION['nomeUsuario'];
+                echo json_encode([
+                    'success' => true,
+                    'edit_requisicao_status' => (new RequisicaoController())->updateStatus($_POST),
+                    'log' => (new UsuarioAcaoController())->save([
+                        'user_id'     => $_SESSION['idUsuario'],
+                        'comentario'  => $_POST['comentario'],
+                        'tabela'      => Requisicao::TABLE,
+                        'atual_id'    => $idNovoStatus,
+                        'anterior_id' => $idStatusAtual,
+                        'descricao'   => "Status da Requisicao id {$id} alterado de {$idStatusAtual} para {$idNovoStatus} por {$nomeUsuario}." 
+                    ])
+                ]);
+                break;
      
             case('edit_violacao_status') : die(json_encode((new ViolacaoController)->updateStatus($_POST)));    
 

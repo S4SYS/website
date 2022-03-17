@@ -384,7 +384,7 @@ require_once '../app/File.php';
                 processData: false,
                 dataType : "json",                
                 success: function(response) {
-                    if(response['success'] == true) window.location.reload();
+                    if(response['success'] == true) window.location.reload();                    
                 } 
             });            
         }

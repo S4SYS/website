@@ -5,9 +5,10 @@ require_once 'Status.php';
 
 final class Violacao extends AbstractModel
 {
+    const TABLE = 'violacao';
+
     public $descricao;
     public $status;
-
 
     /**
      * @return string
