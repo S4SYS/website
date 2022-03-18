@@ -160,10 +160,6 @@ final class Api
                 ]));   
 
             case('edit_requisicao_status') : 
-                $id            = $_POST['id'];
-                $idStatusAtual = $_POST['current_status_id'];
-                $idNovoStatus  = $_POST['id_status'];
-                $nomeUsuario   = $_SESSION['nomeUsuario'];
                 echo json_encode([
                     'success' => true,
                     'edit_requisicao_status' => (new RequisicaoController())->updateStatus($_POST),
@@ -171,9 +167,10 @@ final class Api
                         'user_id'     => $_SESSION['idUsuario'],
                         'comentario'  => $_POST['comentario'],
                         'tabela'      => Requisicao::TABLE,
-                        'atual_id'    => $idNovoStatus,
-                        'anterior_id' => $idStatusAtual,
-                        'descricao'   => "Status da Requisicao id {$id} alterado de {$idStatusAtual} para {$idNovoStatus} por {$nomeUsuario}." 
+                        'atual_id'    => $_POST['id_status'],
+                        'anterior_id' => $_POST['current_status_id'],
+                        'nome_usuario'=> $_SESSION['nomeUsuario'],
+                        'id_solicitacao' => $_POST['id']
                     ])
                 ]);
                 break;

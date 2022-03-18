@@ -8,6 +8,8 @@ require_once 'app/dao/UsuarioAcaoDao.php';
 final class UsuarioAcaoController
 {
     private $dao;
+    private $idTabela;
+    private $nomeUsuario;
 
     /**
      */
@@ -32,11 +34,28 @@ final class UsuarioAcaoController
         $usuarioAcao->setUsuario($usuario);
         $usuarioAcao->setAcao($acao);
         $usuarioAcao->setComentario($requestData['comentario']);
-        $usuarioAcao->setDescricao($requestData['descricao']);
         $usuarioAcao->setTabela($requestData['tabela']);
         $usuarioAcao->setAtualId($requestData['atual_id']);
         $usuarioAcao->setAnteriorId($requestData['anterior_id']);
         
+        $this->idTabela = $requestData['id_solicitacao'];
+        $this->nomeUsuario = $requestData['nome_usuario'];
+        $usuarioAcao->setDescricao($this->getLogDescripton($usuarioAcao));
+
         return $this->dao->save($usuarioAcao);
+    }
+
+    
+    /**
+     * @param UsuarioAcao $usuarioAcao
+     * 
+     * @return string
+     */
+    private function getLogDescripton(UsuarioAcao $usuarioAcao): string
+    {
+        $idAnterior = $usuarioAcao->getAnteriorId();
+        $idAtual    = $usuarioAcao->getAtualId();
+
+        return "Status da Requisicao id {$this->idTabela} alterado de {$idAnterior} para {$idAtual} por {$this->nomeUsuario}.";
     }
 }
