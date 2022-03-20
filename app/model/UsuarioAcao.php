@@ -4,6 +4,7 @@ require_once 'AbstractModel.php';
 require_once 'Usuario.php';
 require_once 'Acao.php';
 
+
 final class UsuarioAcao extends AbstractModel
 {
     public $usuario;
@@ -120,4 +121,5 @@ final class UsuarioAcao extends AbstractModel
     {
         $this->anterior_id = $anterior_id;
     }
+    
 }

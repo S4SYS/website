@@ -4,6 +4,7 @@ require_once 'app/model/Usuario.php';
 require_once 'app/model/Acao.php';
 require_once 'app/model/UsuarioAcao.php';
 require_once 'app/dao/UsuarioAcaoDao.php';
+require_once 'app/controller/StatusController.php';
 
 final class UsuarioAcaoController
 {
@@ -53,9 +54,31 @@ final class UsuarioAcaoController
      */
     private function getLogDescripton(UsuarioAcao $usuarioAcao): string
     {
-        $idAnterior = $usuarioAcao->getAnteriorId();
-        $idAtual    = $usuarioAcao->getAtualId();
+        $tabela = $usuarioAcao->getTabela();
+        $statusData = $this->getStatusDataIdAnteriorAtual($usuarioAcao);
+        $nomeStatusAnterior = $statusData['anterior']['data']['nome'];
+        $nomeStatusAtual = $statusData['atual']['data']['nome']; 
 
-        return "Status da Requisicao id {$this->idTabela} alterado de {$idAnterior} para {$idAtual} por {$this->nomeUsuario}.";
+        return implode('', [
+            "Status da {$tabela} id {$this->idTabela} alterado ",
+            "de {$nomeStatusAnterior} para {$nomeStatusAtual} ",
+            "por {$this->nomeUsuario}."
+        ]);
+    }
+
+    
+    /**
+     * @param UsuarioAcao $usuarioAcao
+     * 
+     * @return array
+     */
+    private function getStatusDataIdAnteriorAtual(UsuarioAcao $usuarioAcao): array
+    {
+        $statusController = new StatusController();
+
+        return [
+            'anterior' => $statusController->getByCode(['id' => $usuarioAcao->getAnteriorId()]),
+            'atual'    => $statusController->getByCode(['id' => $usuarioAcao->getAtualId()])
+        ];
     }
 }

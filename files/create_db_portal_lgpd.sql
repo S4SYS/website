@@ -99,7 +99,7 @@ CREATE TABLE usuario_acao (
   acao_id INTEGER UNSIGNED NOT NULL,
   descricao TEXT NULL,
   comentario TEXT NULL,
-  tabela VARCHAR(64) NULL,
+  tabela VARCHAR(64) NULL,  
   atual_id INTEGER UNSIGNED NULL,
   anterior_id INTEGER UNSIGNED NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
@@ -113,6 +113,42 @@ CREATE TABLE usuario_acao (
       ON UPDATE NO ACTION,
   FOREIGN KEY(acao_id)
     REFERENCES acao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE requisicao_usuario_acao (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  requisicao_id INTEGER UNSIGNED NOT NULL,
+  usuario_acao_id INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  INDEX requisicao_has_usuario_acao_FKIndex1(requisicao_id),
+  INDEX requisicao_has_usuario_acao_FKIndex2(usuario_acao_id),
+  FOREIGN KEY(requisicao_id)
+    REFERENCES requisicao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(usuario_acao_id)
+    REFERENCES usuario_acao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE violacao_usuario_acao (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  violacao_id INTEGER UNSIGNED NOT NULL,
+  usuario_acao_id INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  INDEX requisicao_has_usuario_acao_FKIndex1(violacao_id),
+  INDEX requisicao_has_usuario_acao_FKIndex2(usuario_acao_id),
+  FOREIGN KEY(violacao_id)
+    REFERENCES violacao(id)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(usuario_acao_id)
+    REFERENCES usuario_acao(id)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

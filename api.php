@@ -14,6 +14,7 @@ require_once 'app/controller/ViolacaoController.php';
 require_once 'app/controller/StatusController.php';
 require_once 'app/controller/UsuarioController.php';
 require_once 'app/controller/UsuarioAcaoController.php';
+require_once 'app/controller/RequisicaoUsuarioAcaoController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 require_once 'app/File.php';
 
@@ -160,18 +161,25 @@ final class Api
                 ]));   
 
             case('edit_requisicao_status') : 
+                $updateRequisicao = (new RequisicaoController())->updateStatus($_POST);
+                $saveUsuarioAcao = (new UsuarioAcaoController())->save([
+                    'user_id'     => $_SESSION['idUsuario'],
+                    'comentario'  => $_POST['comentario'],
+                    'tabela'      => Requisicao::TABLE,
+                    'atual_id'    => $_POST['id_status'],
+                    'anterior_id' => $_POST['current_status_id'],
+                    'nome_usuario'=> $_SESSION['nomeUsuario'],
+                    'id_solicitacao' => $_POST['id']
+                ]);
+                $saveRequisicaoUsuarioAcao = (new RequisicaoUsuarioAcaoController())->save([
+                    'id_requisicao' => $_POST['id'],
+                    'id_usuario_acao' => $saveUsuarioAcao['data']->id
+                ]);
                 echo json_encode([
                     'success' => true,
-                    'edit_requisicao_status' => (new RequisicaoController())->updateStatus($_POST),
-                    'log' => (new UsuarioAcaoController())->save([
-                        'user_id'     => $_SESSION['idUsuario'],
-                        'comentario'  => $_POST['comentario'],
-                        'tabela'      => Requisicao::TABLE,
-                        'atual_id'    => $_POST['id_status'],
-                        'anterior_id' => $_POST['current_status_id'],
-                        'nome_usuario'=> $_SESSION['nomeUsuario'],
-                        'id_solicitacao' => $_POST['id']
-                    ])
+                    'upsate_requisicao' => $updateRequisicao,
+                    'save_usuario_acao' => $saveUsuarioAcao,
+                    'save_requisicao_usuario_acao' => $saveRequisicaoUsuarioAcao
                 ]);
                 break;
      
