@@ -40,6 +40,12 @@ class Requisicao extends Lista {
                     Editar
                     </button>
                     <button data-hash="${window.location.hash}" 
+                    onClick="location.href='timeline.php?ref=${window.location.hash}&id=${row.id}'" 
+                    data-id="${row.id}" data-action="timeline" 
+                    class="timeline d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    Detalhes
+                    </button>
+                    <button data-hash="${window.location.hash}" 
                     onClick="Modal.init(this)" 
                     data-id="${row.id}" data-action="deactivate" 
                     class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">

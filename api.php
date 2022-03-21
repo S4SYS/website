@@ -15,6 +15,7 @@ require_once 'app/controller/StatusController.php';
 require_once 'app/controller/UsuarioController.php';
 require_once 'app/controller/UsuarioAcaoController.php';
 require_once 'app/controller/RequisicaoUsuarioAcaoController.php';
+require_once 'app/controller/ViolacaoUsuarioAcaoController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 require_once 'app/File.php';
 
@@ -183,7 +184,28 @@ final class Api
                 ]);
                 break;
      
-            case('edit_violacao_status') : die(json_encode((new ViolacaoController)->updateStatus($_POST)));    
+            case('edit_violacao_status') : 
+                $updateViolacao = (new ViolacaoController)->updateStatus($_POST);
+                $saveUsuarioAcao = (new UsuarioAcaoController())->save([
+                    'user_id'     => $_SESSION['idUsuario'],
+                    'comentario'  => $_POST['comentario'],
+                    'tabela'      => Violacao::TABLE,
+                    'atual_id'    => $_POST['id_status'],
+                    'anterior_id' => $_POST['current_status_id'],
+                    'nome_usuario'=> $_SESSION['nomeUsuario'],
+                    'id_solicitacao' => $_POST['id']
+                ]);
+                $saveViolacaoUsuarioAcao = (new ViolacaoUsuarioAcaoController())->save([
+                    'id_violacao' => $_POST['id'],
+                    'id_usuario_acao' => $saveUsuarioAcao['data']->id
+                ]);
+                echo json_encode([
+                    'success' => true,
+                    'upsate_violacao' => $updateViolacao,
+                    'save_usuario_acao' => $saveUsuarioAcao,
+                    'save_violacao_usuario_acao' => $saveViolacaoUsuarioAcao
+                ]);
+                break;    
 
             // Qualquer acao nao listada acima.
             default:

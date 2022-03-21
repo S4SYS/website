@@ -28,4 +28,23 @@ final class ViolacaoUsuarioAcao extends AbstractModel
     {
         $this->violacao = $violacao;
     }
+
+
+    /**
+     * @return UsuarioAcao
+     */
+    public function getUsuarioAcao(): UsuarioAcao
+    {
+        return $this->usuarioAcao;
+    }
+
+    /**
+     * @param UsuarioAcao $usuarioAcao
+     * 
+     * @return void
+     */
+    public function setUsuarioAcao(UsuarioAcao $usuarioAcao): void
+    {
+        $this->usuarioAcao = $usuarioAcao;
+    }
 }
