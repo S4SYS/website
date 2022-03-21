@@ -103,4 +103,28 @@ class Lista
         .attr('data-action', this.dataset.action);
         `;
     }
+
+    getButtons(id, reference)
+    {  
+        return [
+            `<button data-hash="${window.location.hash}"`, 
+            ' onClick="Modal.init(this)"', 
+            ` data-id="${id}" data-action="edit"`, 
+            ' class="edit d-sm-inline-block btn btn-sm btn-success shadow-sm">',
+            'Editar',
+            '</button>',
+            ` <button data-hash="${window.location.hash}"`, 
+            ` onClick="location.href='timeline.php?ref=${reference}&id=${id}'"`, 
+            ` data-id="${id}" data-action="timeline"`, 
+            ' class="timeline d-sm-inline-block btn btn-sm btn-secondary shadow-sm">',
+            'Detalhes',
+            '</button>',
+            ` <button data-hash="${window.location.hash}"`, 
+            ' onClick="Modal.init(this)"', 
+            ` data-id="${id}" data-action="deactivate"`, 
+            'class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">',
+            'Desativar',
+            '</button>'
+        ].join('');
+    }
 }

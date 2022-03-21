@@ -1,6 +1,10 @@
 class Violacao extends Lista {
     
     $content;
+    modal;
+    dataSets;
+    idStatus;
+    id;
 
     init($content) 
     {
@@ -14,6 +18,7 @@ class Violacao extends Lista {
 
     getRequestBody() 
     {
+        let reference = window.location.hash.replace('#', '');
         return row => {
             return `<tr>
                     <td>${row.codigo}</td>
@@ -28,18 +33,7 @@ class Violacao extends Lista {
                     </td>
                     <td>${row.nome_status}</td>
                     <td>
-                    <button data-hash="${window.location.hash}" 
-                    onClick="Modal.init(this)" 
-                    data-id="${row.id}" data-action="edit" 
-                    class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
-                    Editar
-                    </button>
-                    <button data-hash="${window.location.hash}" 
-                    onClick="Modal.init(this)" 
-                    data-id="${row.id}" data-action="deactivate" 
-                    class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                    Desativar
-                    </button>
+                    ${super.getButtons(row.id, reference)}
                     </td>
                     </tr>`;
         }
@@ -123,4 +117,12 @@ class Violacao extends Lista {
             return `<option value="${row.id}" ${selected}>${row.nome}</option>`;
         });
     }
+
+    /*
+  * Particularidades da Timeline referente a Violacao.
+  */
+   timeline($content, id)
+   {
+     this.id = id;
+   }
 }

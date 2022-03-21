@@ -4,6 +4,7 @@ class Requisicao extends Lista {
     modal;
     dataSets;
     idStatus;
+    id;
 
     init($content) 
     {
@@ -17,6 +18,7 @@ class Requisicao extends Lista {
 
     getRequestBody() 
     {
+        let reference = window.location.hash.replace('#', '');
         return row => {
             return `<tr>
                     <td>${row.codigo}</td>
@@ -33,24 +35,7 @@ class Requisicao extends Lista {
                     </td>
                     <td>${row.nome_status}</td>
                     <td>
-                    <button data-hash="${window.location.hash}" 
-                    onClick="Modal.init(this)" 
-                    data-id="${row.id}" data-action="edit" 
-                    class="edit d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
-                    Editar
-                    </button>
-                    <button data-hash="${window.location.hash}" 
-                    onClick="location.href='timeline.php?ref=${window.location.hash}&id=${row.id}'" 
-                    data-id="${row.id}" data-action="timeline" 
-                    class="timeline d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                    Detalhes
-                    </button>
-                    <button data-hash="${window.location.hash}" 
-                    onClick="Modal.init(this)" 
-                    data-id="${row.id}" data-action="deactivate" 
-                    class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                    Desativar
-                    </button>
+                    ${super.getButtons(row.id, reference)}
                     </td>
                     </tr>`;
         }
@@ -137,4 +122,12 @@ class Requisicao extends Lista {
         });
     }
 
+
+  /*
+  * Particularidades da Timeline referente a Requisicao.
+  */
+   timeline($content, id)
+   {
+     this.id = id;
+   }
 }
