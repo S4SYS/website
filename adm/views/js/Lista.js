@@ -110,7 +110,7 @@ class Lista
             `<button data-hash="${window.location.hash}"`, 
             ' onClick="Modal.init(this)"', 
             ` data-id="${id}" data-action="edit"`, 
-            ' class="edit d-sm-inline-block btn btn-sm btn-success shadow-sm">',
+            ' class="edit d-sm-inline-block btn btn-sm btn-primary shadow-sm">',
             'Editar',
             '</button>',
             ` <button data-hash="${window.location.hash}"`, 

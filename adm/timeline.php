@@ -169,6 +169,7 @@ require_once '../app/File.php';
 
             getItems(dados) 
             {
+                if(dados.length === 0) return ['<li>','N&atilde;o h&aacute; dados para exibir.','</li>'];
                 return dados.map(row => {
                     return `
                         <li>
