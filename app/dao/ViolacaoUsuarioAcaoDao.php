@@ -33,4 +33,34 @@ final class ViolacaoUsuarioAcaoDao extends Connection
             return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
+
+    /**
+     * @param ViolacaoUsuarioAcao $violacaoUsuarioAcao
+     * 
+     * @return array
+     */
+    public function getByCode(ViolacaoUsuarioAcao $violacaoUsuarioAcao): array
+    {
+        $sql = "SELECT 
+                usuario_acao.descricao,
+                usuario_acao.comentario,
+                usuario_acao.created_at,
+                usuario.nome 
+                FROM usuario_acao
+                INNER JOIN usuario ON usuario_acao.usuario_id = usuario.id 
+                INNER JOIN acao ON usuario_acao.acao_id = acao.id
+                INNER JOIN violacao_usuario_acao ON violacao_usuario_acao.usuario_acao_id = usuario_acao.id
+                WHERE violacao_usuario_acao.violacao_id = ?";
+
+        try{
+            $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $violacaoUsuarioAcao->getViolacao()->id);
+            $p_sql->execute();
+            
+            return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
+
+        } catch(PDOException $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }     
+    }
 }

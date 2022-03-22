@@ -5,6 +5,11 @@ require_once 'app/model/UsuarioAcao.php';
 
 final class UsuarioAcaoDao extends Connection
 {
+    /**
+     * @param UsuarioAcao $usuarioAcao
+     * 
+     * @return array
+     */
     public function save(UsuarioAcao $usuarioAcao): array
     {
         $sql = "INSERT INTO usuario_acao(usuario_id, acao_id, descricao, comentario, tabela, atual_id, anterior_id)
@@ -29,4 +34,5 @@ final class UsuarioAcaoDao extends Connection
             return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
+    
 }

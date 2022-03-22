@@ -33,4 +33,20 @@ final class RequisicaoUsuarioAcaoController
 
         return $this->dao->save($requisicaoUsuarioAcao);
     }
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function getByCode(array $requestData): array
+    {
+        $requisicao = new Requisicao();
+        $requisicaoUsuarioAcao = new RequisicaoUsuarioAcao();
+
+        $requisicao->id  = $requestData['id'];
+        $requisicaoUsuarioAcao->setRequisicao($requisicao);
+
+        return $this->dao->getByCode($requisicaoUsuarioAcao);
+    }
 }

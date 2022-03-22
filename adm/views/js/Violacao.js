@@ -124,5 +124,17 @@ class Violacao extends Lista {
    timeline($content, id)
    {
      this.id = id;
+     this.$content = $content;
+     this.getLog();
+   }
+
+   getLog()
+   {
+       $.get('../api.php', {
+           id_violacao : this.id,
+           acao : 'get_violacao_log'
+       }, function(response){
+            alert(JSON.stringify(response));
+       });
    }
 }

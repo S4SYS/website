@@ -40,7 +40,7 @@ require_once '../app/File.php';
 <body id="page-top">
 
     <?php require_once 'views/wrapper.php'; ?>
-    
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -192,7 +192,6 @@ require_once '../app/File.php';
                 dataType : "json",                
                 success: function(response) {
                     if(response['success'] == true) window.location.reload();
-                    //alert(JSON.stringify(response));                    
                 } 
             });            
         }

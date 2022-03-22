@@ -25,15 +25,19 @@ require_once '../app/File.php';
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Css for timeline -->
+    <link href="css/timeline.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
     <?php require_once 'views/wrapper.php'; ?>
-    
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -56,72 +60,142 @@ require_once '../app/File.php';
 
     <script>
         const REF_REQUISICAO = 'requisicao';
-        const REF_VIOLACAO   = 'violacao' ;
-        const REF_STATUS     = 'status';
+        const REF_VIOLACAO = 'violacao';
+        const REF_STATUS = 'status';
 
         const urlParams = new URLSearchParams(window.location.search);
- 
-        class TimelineFactory
+
+        class TimelineFactory 
         {
             id;
+            acao;
             reference;
             $main;
             $title;
             $content;
-    
-            constructor()
+
+            constructor() 
             {
-                this.id        = urlParams.get('id');
+                this.id = urlParams.get('id');
                 this.reference = urlParams.get('ref');
-                this.$main     = $('#main');
-                this.$title    = this.$main.find('#pageTitle');
-                this.$content  = this.$main.find('#bodyContent'); 
+                this.$main = $('#main');
+                this.$title = this.$main.find('#pageTitle');
+                this.$content = this.$main.find('#bodyContent');
             }
 
-            init()
+            init() 
             {
                 this.setContent();
             }
 
-            setContent()
+            setContent() 
             {
                 let self = this;
-                let $loader = this.$main.find('#loader'); 
+                let $loader = this.$main.find('#loader');
                 $loader.html('<img src="img/loading.gif" width="124" height="124"">');
                 $loader.delay(1000).fadeOut('slow', () => {
-                    self.getView(self).timeline(self.$content, self.id);
+                    self.getView(self).getLog(self);
                 });
             }
-
-            getView(self)
+            
+            getView(self) 
             {
-                switch(self.reference){
-                    case(REF_REQUISICAO):
+                switch (self.reference) {
+                    case (REF_REQUISICAO):
                         self.$title.html(`Timeline - Requisi&ccedil;&atilde;o #${self.id}`);
-                        return new Requisicao();
-                    case(REF_VIOLACAO):
+                        self.acao = 'get_requisicao_log';
+                        return self.getLog(self); 
+                    case (REF_VIOLACAO):
                         self.$title.html(`Timeline - Viola&ccedil;&atilde;o #${self.id}`);
-                        return new Violacao();
-                    case(REF_STATUS):
+                        self.acao = 'get_violacao_log';
+                        return self.getLog(self);
+                    case (REF_STATUS):
                         self.$title.html(`Timeline - Status #${self.id}`);
-                        return new Status();    
-                    default: 
+                        self.acao = 'get_status_log';
+                        return self.getLog(self);
+                    default:
                         self.$title.html(`Timeline - Requisi&ccedil;&atilde;o #${self.id}`);
-                        return new Requisicao();             
+                        self.acao = 'get_requisicao_log';
+                        return self.getLog(self);
                 }
+            }                      
+
+            getLog(self) 
+            {
+                $.get('../api.php', {
+                    id: self.id,
+                    acao: self.acao
+                }, function(response) {
+                    self.$content.html(self.getCard(response.data).join(''));
+                }, 'json');
+            }
+
+            getCard(dados) 
+            {
+                return [
+                    ...this.getCardHeader(),
+                    ...this.getCardBody(dados),
+                ];
+            }
+
+            getCardHeader() 
+            {
+                return [
+                    '<div class="card-header py-3">',
+                    '<h6 class="m-0 font-weight-bold text-primary">',
+                    'Timeline',
+                    '</h6>',
+                    '</div>'
+                ];
+            }
+
+            getCardBody(dados) 
+            {
+                return [
+                    '<div class="card-body">',
+                    ...this.getList(dados),
+                    '</div>'
+                ];
+            }
+
+            getList(dados) 
+            {
+                return [
+                    '<ul class="timeline">',
+                    ...this.getItems(dados),
+                    '</ul>'
+                ];
+            }
+
+            getItems(dados) 
+            {
+                return dados.map(row => {
+                    return `
+                        <li>
+                        <div class="timeline-badge info"><i class="fa fa-check"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">${row.comentario}</h4>
+                                <p><small class="text-muted"><i class="fa fa-clock"></i> ${row.created_at}</small></p>
+                            </div>
+                            <div class="timeline-body">
+                                <p>${row.descricao}</p>
+                            </div>
+                        </div>
+                    </li>`;
+                });
             }
         }
 
-        timeline = new TimelineFactory();
+        let timeline = new TimelineFactory();
         timeline.init();
-     
 
-        $('.sideMenu').click(function() {        
+
+        $('.sideMenu').click(function() {
             window.location.href = `../adm/${this.dataset.hash}`;
         });
     </script>
-  
+
 </body>
 
 </html>
-

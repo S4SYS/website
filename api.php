@@ -205,7 +205,11 @@ final class Api
                     'save_usuario_acao' => $saveUsuarioAcao,
                     'save_violacao_usuario_acao' => $saveViolacaoUsuarioAcao
                 ]);
-                break;    
+                break;  
+                
+                // Timeline
+                case('get_requisicao_log'): die(json_encode((new RequisicaoUsuarioAcaoController())->getByCode($_GET)));
+                case('get_violacao_log'):   die(json_encode((new ViolacaoUsuarioAcaoController())->getByCode($_GET)));
 
             // Qualquer acao nao listada acima.
             default:

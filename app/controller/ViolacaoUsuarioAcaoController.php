@@ -33,4 +33,20 @@ final class ViolacaoUsuarioAcaoController
 
         return $this->dao->save($violacaoUsuarioAcao);
     }
+
+    /**
+     * @param array $requestData
+     * 
+     * @return array
+     */
+    public function getByCode(array $requestData): array
+    {
+        $violacao = new Violacao();
+        $violacaoUsuarioAcao = new ViolacaoUsuarioAcao();
+
+        $violacao->id  = $requestData['id'];
+        $violacaoUsuarioAcao->setViolacao($violacao);
+
+        return $this->dao->getByCode($violacaoUsuarioAcao);
+    }
 }

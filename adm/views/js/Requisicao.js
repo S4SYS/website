@@ -1,18 +1,19 @@
-class Requisicao extends Lista {
-    
+class Requisicao extends Lista 
+{
     $content;
     modal;
     dataSets;
     idStatus;
     id;
+    dados;
 
     init($content) 
     {
-        this.cardTitle       = 'Lista de Requisi&ccedil;&otilde;es';
+        this.cardTitle = 'Lista de Requisi&ccedil;&otilde;es';
         this.tableHeadTitles = this.getTitles();
-        this.actionName      = 'get_requisicoes';
-        this.requestBody     = this.getRequestBody();
-        this.$content        = $content;
+        this.actionName = 'get_requisicoes';
+        this.requestBody = this.getRequestBody();
+        this.$content = $content;
         this.setContent();
     }
 
@@ -77,20 +78,20 @@ class Requisicao extends Lista {
                 break;
         }
     }
-    
-    getByCode()
+
+    getByCode() 
     {
         let self = this;
-     
-        $.get('../api.php', { 
-            id   : this.dataSets.id,
-            acao : 'get_status_requisicao' 
-        }, function(response){
+
+        $.get('../api.php', {
+            id: this.dataSets.id,
+            acao: 'get_status_requisicao'
+        }, function (response) {
             self.modal.$body.html(self.getEditBodyContent(response).join(''));
         }, 'json');
     }
 
-    getEditBodyContent(dados)
+    getEditBodyContent(dados) 
     {
         this.idStatus = dados.current.data.id;
 
@@ -107,13 +108,13 @@ class Requisicao extends Lista {
             '<textarea name="comentario" id="comentario" class="form-control required"></textarea>',
             '<input type="hidden" name="acao" value="edit_requisicao_status">',
             `<input type="hidden" name="current_status_id" value="${this.idStatus}">`,
-            `<input type="hidden" name="id" value="${this.dataSets.id}">`,            
+            `<input type="hidden" name="id" value="${this.dataSets.id}">`,
             '</div>',
             '</form>'
         ];
     }
 
-    getStatusOptions(dados)
+    getStatusOptions(dados) 
     {
         let selected;
         return dados.map(row => {
@@ -121,13 +122,5 @@ class Requisicao extends Lista {
             return `<option value="${row.id}" ${selected}>${row.nome}</option>`;
         });
     }
-
-
-  /*
-  * Particularidades da Timeline referente a Requisicao.
-  */
-   timeline($content, id)
-   {
-     this.id = id;
-   }
+    
 }
