@@ -50,7 +50,8 @@ final class ViolacaoUsuarioAcaoDao extends Connection
                 INNER JOIN usuario ON usuario_acao.usuario_id = usuario.id 
                 INNER JOIN acao ON usuario_acao.acao_id = acao.id
                 INNER JOIN violacao_usuario_acao ON violacao_usuario_acao.usuario_acao_id = usuario_acao.id
-                WHERE violacao_usuario_acao.violacao_id = ?";
+                WHERE violacao_usuario_acao.violacao_id = ?
+                ORDER BY violacao_usuario_acao.id DESC";
 
         try{
             $p_sql = $this->getInstance()->prepare($sql);

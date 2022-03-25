@@ -153,6 +153,7 @@ require_once '../app/File.php';
             {
                 return [
                     '<div class="card-body">',
+                    '<button class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">Reenviar Notifica&ccedil;&atilde;o</button>',
                     ...this.getList(dados),
                     '</div>'
                 ];
@@ -170,6 +171,7 @@ require_once '../app/File.php';
             getItems(dados) 
             {
                 if(dados.length === 0) return ['<li>','N&atilde;o h&aacute; dados para exibir.','</li>'];
+
                 return dados.map(row => {
                     return `
                         <li>

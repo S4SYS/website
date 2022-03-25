@@ -49,7 +49,8 @@ final class RequisicaoUsuarioAcaoDao extends Connection
                 INNER JOIN usuario ON usuario_acao.usuario_id = usuario.id 
                 INNER JOIN acao ON usuario_acao.acao_id = acao.id
                 INNER JOIN requisicao_usuario_acao ON requisicao_usuario_acao.usuario_acao_id = usuario_acao.id
-                WHERE requisicao_usuario_acao.requisicao_id = ?";
+                WHERE requisicao_usuario_acao.requisicao_id = ?
+                ORDER BY requisicao_usuario_acao.id DESC";
 
         try{
             $p_sql = $this->getInstance()->prepare($sql);
