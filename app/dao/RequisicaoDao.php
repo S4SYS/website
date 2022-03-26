@@ -103,7 +103,7 @@ final class RequisicaoDao extends Connection
      */
     public function getStatusByCode(Requisicao $requisicao): array
     {
-        $sql = "SELECT status.*
+        $sql = "SELECT status.*, requisicao.email 
                 FROM requisicao
                 INNER JOIN status ON requisicao.status_id = status.id
                 WHERE requisicao.id = ?";

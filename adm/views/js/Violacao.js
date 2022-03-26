@@ -103,7 +103,8 @@ class Violacao extends Lista {
             '<textarea name="comentario" id="comentario" class="form-control required"></textarea>',
             '<input type="hidden" name="acao" value="edit_violacao_status">',
             `<input type="hidden" name="current_status_id" value="${this.idStatus}">`,
-            `<input type="hidden" name="id" value="${this.dataSets.id}">`,            
+            `<input type="hidden" name="id" value="${this.dataSets.id}">`,
+            `<input type="hidden" name="email" value="${dados.current.data.email}"`,
             '</div>',
             '</form>'
         ];
@@ -116,25 +117,5 @@ class Violacao extends Lista {
             selected = (row.id === this.idStatus) ? 'selected' : '';
             return `<option value="${row.id}" ${selected}>${row.nome}</option>`;
         });
-    }
-
-    /*
-  * Particularidades da Timeline referente a Violacao.
-  */
-   timeline($content, id)
-   {
-     this.id = id;
-     this.$content = $content;
-     this.getLog();
-   }
-
-   getLog()
-   {
-       $.get('../api.php', {
-           id_violacao : this.id,
-           acao : 'get_violacao_log'
-       }, function(response){
-            alert(JSON.stringify(response));
-       });
-   }
+    }   
 }

@@ -94,7 +94,8 @@ require_once '../app/File.php';
                 let $loader = this.$main.find('#loader');
                 $loader.html('<img src="img/loading.gif" width="124" height="124"">');
                 $loader.delay(1000).fadeOut('slow', () => {
-                    self.getView(self).getLog(self);
+                    self.getView(self);
+                    self.getLog(self);
                 });
             }
             
@@ -104,19 +105,19 @@ require_once '../app/File.php';
                     case (REF_REQUISICAO):
                         self.$title.html(`Timeline - Requisi&ccedil;&atilde;o #${self.id}`);
                         self.acao = 'get_requisicao_log';
-                        return self.getLog(self); 
+                        break; 
                     case (REF_VIOLACAO):
                         self.$title.html(`Timeline - Viola&ccedil;&atilde;o #${self.id}`);
                         self.acao = 'get_violacao_log';
-                        return self.getLog(self);
+                        break;
                     case (REF_STATUS):
                         self.$title.html(`Timeline - Status #${self.id}`);
                         self.acao = 'get_status_log';
-                        return self.getLog(self);
+                        break;
                     default:
                         self.$title.html(`Timeline - Requisi&ccedil;&atilde;o #${self.id}`);
                         self.acao = 'get_requisicao_log';
-                        return self.getLog(self);
+                        break;
                 }
             }                      
 

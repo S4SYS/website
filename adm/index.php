@@ -179,7 +179,10 @@ require_once '../app/File.php';
                 }
             });
 
-            if(counter === 0) sendForm($form);
+            if(counter === 0){
+                $(this).addClass('disabled').text('Aguarde...');
+                sendForm($form);
+            } 
         });
 
         function sendForm($form)
@@ -191,7 +194,7 @@ require_once '../app/File.php';
                 processData: false,
                 dataType : "json",                
                 success: function(response) {
-                    if(response['success'] == true) window.location.reload();
+                    window.location.reload();                    
                 } 
             });            
         }

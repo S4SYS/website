@@ -17,6 +17,7 @@ require_once 'app/controller/UsuarioAcaoController.php';
 require_once 'app/controller/RequisicaoUsuarioAcaoController.php';
 require_once 'app/controller/ViolacaoUsuarioAcaoController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
+require_once 'app/adapter/EmailStatusChangeAdapter.php';
 require_once 'app/File.php';
 
 final class Api
@@ -176,11 +177,14 @@ final class Api
                     'id_requisicao' => $_POST['id'],
                     'id_usuario_acao' => $saveUsuarioAcao['data']->id
                 ]);
+                $usuarioAcao = $saveUsuarioAcao['data'];
+                $usuarioAcao->email = $_POST['email'];
                 echo json_encode([
                     'success' => true,
                     'upsate_requisicao' => $updateRequisicao,
                     'save_usuario_acao' => $saveUsuarioAcao,
-                    'save_requisicao_usuario_acao' => $saveRequisicaoUsuarioAcao
+                    'save_requisicao_usuario_acao' => $saveRequisicaoUsuarioAcao,
+                    'email_status_change' => (new EmailStatusChangeAdapter($usuarioAcao))->init()
                 ]);
                 break;
      
@@ -199,11 +203,14 @@ final class Api
                     'id_violacao' => $_POST['id'],
                     'id_usuario_acao' => $saveUsuarioAcao['data']->id
                 ]);
+                $usuarioAcao = $saveUsuarioAcao['data'];
+                $usuarioAcao->email = $_POST['email'];
                 echo json_encode([
                     'success' => true,
                     'upsate_violacao' => $updateViolacao,
                     'save_usuario_acao' => $saveUsuarioAcao,
-                    'save_violacao_usuario_acao' => $saveViolacaoUsuarioAcao
+                    'save_violacao_usuario_acao' => $saveViolacaoUsuarioAcao,
+                    'email_status_change' => (new EmailStatusChangeAdapter($usuarioAcao))->init()
                 ]);
                 break;  
                 
