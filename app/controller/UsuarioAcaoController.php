@@ -5,11 +5,15 @@ require_once 'app/model/Acao.php';
 require_once 'app/model/UsuarioAcao.php';
 require_once 'app/dao/UsuarioAcaoDao.php';
 require_once 'app/controller/StatusController.php';
+require_once 'app/ApiRequest.php';
 
 final class UsuarioAcaoController
 {
+    use ApiRequest;
+
     private $dao;
     private $idTabela;
+    private $codigo;
     private $nomeUsuario;
 
     /**
@@ -40,12 +44,12 @@ final class UsuarioAcaoController
         $usuarioAcao->setAnteriorId($requestData['anterior_id']);
         
         $this->idTabela = $requestData['id_solicitacao'];
+        $this->codigo   = $requestData['codigo'];
         $this->nomeUsuario = $requestData['nome_usuario'];
         $usuarioAcao->setDescricao($this->getLogDescripton($usuarioAcao));
 
         return $this->dao->save($usuarioAcao);
     }
-
     
     /**
      * @param UsuarioAcao $usuarioAcao
@@ -62,7 +66,10 @@ final class UsuarioAcaoController
         return implode('', [
             "Status da {$tabela} id {$this->idTabela} alterado ",
             "de {$nomeStatusAnterior} para {$nomeStatusAtual} ",
-            "por {$this->nomeUsuario}."
+            "por {$this->nomeUsuario}.",
+            "<br>",
+            "C&oacute;digo da {$tabela}: ",
+            "<a href=\"{$this->url}?acao=emailConsulta&codigo={$this->codigo}\">{$this->codigo}</a>"
         ]);
     }
 

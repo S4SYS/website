@@ -3,6 +3,7 @@ class Modal
     $modal
     $title;
     $body;
+    $footer;
     $domElement;
 
     static init(elem) 
@@ -10,6 +11,7 @@ class Modal
         self.$modal = $('#actionModal');
         self.$title = self.$modal.find('.modal-header').find('.modal-title');
         self.$body = self.$modal.find('.modal-body');
+        self.$footer = self.$modal.find('.modal-footer');
         self.$domElement = elem;
 
         this.startModal();        
@@ -42,6 +44,10 @@ class Modal
                 let status = new Status();
                 status.setModalContentByAction(self);
                 break;
+            case('#usuarioacao'):
+                let usuarioAcao = new UsuarioAcao();
+                usuarioAcao.setModalContent(self);
+                break;    
             default:
                 requisicao = new Requisicao();
                 requisicao.setModalContentByAction(self);

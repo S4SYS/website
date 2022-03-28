@@ -171,7 +171,8 @@ final class Api
                     'atual_id'    => $_POST['id_status'],
                     'anterior_id' => $_POST['current_status_id'],
                     'nome_usuario'=> $_SESSION['nomeUsuario'],
-                    'id_solicitacao' => $_POST['id']
+                    'id_solicitacao' => $_POST['id'],
+                    'codigo' => $_POST['codigo']
                 ]);
                 $saveRequisicaoUsuarioAcao = (new RequisicaoUsuarioAcaoController())->save([
                     'id_requisicao' => $_POST['id'],
@@ -197,14 +198,15 @@ final class Api
                     'atual_id'    => $_POST['id_status'],
                     'anterior_id' => $_POST['current_status_id'],
                     'nome_usuario'=> $_SESSION['nomeUsuario'],
-                    'id_solicitacao' => $_POST['id']
+                    'id_solicitacao' => $_POST['id'],
+                    'codigo' => $_POST['codigo']
                 ]);
                 $saveViolacaoUsuarioAcao = (new ViolacaoUsuarioAcaoController())->save([
                     'id_violacao' => $_POST['id'],
                     'id_usuario_acao' => $saveUsuarioAcao['data']->id
                 ]);
                 $usuarioAcao = $saveUsuarioAcao['data'];
-                $usuarioAcao->email = $_POST['email'];
+                $usuarioAcao->email  = $_POST['email'];
                 echo json_encode([
                     'success' => true,
                     'upsate_violacao' => $updateViolacao,
@@ -217,6 +219,19 @@ final class Api
                 // Timeline
                 case('get_requisicao_log'): die(json_encode((new RequisicaoUsuarioAcaoController())->getByCode($_GET)));
                 case('get_violacao_log'):   die(json_encode((new ViolacaoUsuarioAcaoController())->getByCode($_GET)));
+
+                // Reenvio email de alteracao de status para requisicao/violacao
+                case('resend_email'):
+                    if($_GET['reference'] === 'violacao') 
+                        $dados = (new ViolacaoUsuarioAcaoController())->getByCode($_GET)['data'][0];
+                    else
+                        $dados = (new RequisicaoUsuarioAcaoController())->getByCode($_GET)['data'][0];
+
+                    $usuarioAcao = new UsuarioAcao();
+                    $usuarioAcao->email = $dados['email'];
+                    $usuarioAcao->descricao = $dados['descricao'];                    
+                    echo json_encode((new EmailStatusChangeAdapter($usuarioAcao))->init());
+                    break;
 
             // Qualquer acao nao listada acima.
             default:

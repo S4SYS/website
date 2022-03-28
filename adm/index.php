@@ -46,27 +46,8 @@ require_once '../app/File.php';
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Modal Padrão -->
-    <div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <!--button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button-->
-                    <a class="btn btn-primary" style="cursor:pointer;" id="btnSalvar">Salvar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <?php require_once 'views/modal.php'; ?>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -194,7 +175,10 @@ require_once '../app/File.php';
                 processData: false,
                 dataType : "json",                
                 success: function(response) {
-                    window.location.reload();                    
+                    //window.location.reload();
+                    let reference = window.location.hash.replace('#', '');
+                    let id = document.getElementById('btnSalvar').dataset.id;
+                    window.location.href = `timeline.php?ref=${reference}&id=${id}`;                    
                 } 
             });            
         }

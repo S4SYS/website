@@ -33,6 +33,6 @@ final class UsuarioAcaoDao extends Connection
         } catch(PDOException $exception){
             return ['success' => false, 'message' => $exception->getMessage()];
         }
-    }
+    }    
     
 }

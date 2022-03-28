@@ -104,6 +104,7 @@ class Violacao extends Lista {
             '<input type="hidden" name="acao" value="edit_violacao_status">',
             `<input type="hidden" name="current_status_id" value="${this.idStatus}">`,
             `<input type="hidden" name="id" value="${this.dataSets.id}">`,
+            `<input type="hidden" name="codigo" value="${dados.current.data.codigo}">`,
             `<input type="hidden" name="email" value="${dados.current.data.email}"`,
             '</div>',
             '</form>'

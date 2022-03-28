@@ -44,11 +44,13 @@ final class RequisicaoUsuarioAcaoDao extends Connection
                 usuario_acao.descricao,
                 usuario_acao.comentario,
                 usuario_acao.created_at,
-                usuario.nome 
+                usuario.nome,
+                requisicao.email 
                 FROM usuario_acao
                 INNER JOIN usuario ON usuario_acao.usuario_id = usuario.id 
                 INNER JOIN acao ON usuario_acao.acao_id = acao.id
                 INNER JOIN requisicao_usuario_acao ON requisicao_usuario_acao.usuario_acao_id = usuario_acao.id
+                INNER JOIN requisicao ON requisicao_usuario_acao.requisicao_id = requisicao.id
                 WHERE requisicao_usuario_acao.requisicao_id = ?
                 ORDER BY requisicao_usuario_acao.id DESC";
 

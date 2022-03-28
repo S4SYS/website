@@ -45,11 +45,13 @@ final class ViolacaoUsuarioAcaoDao extends Connection
                 usuario_acao.descricao,
                 usuario_acao.comentario,
                 usuario_acao.created_at,
-                usuario.nome 
+                usuario.nome,
+                violacao.email 
                 FROM usuario_acao
                 INNER JOIN usuario ON usuario_acao.usuario_id = usuario.id 
                 INNER JOIN acao ON usuario_acao.acao_id = acao.id
                 INNER JOIN violacao_usuario_acao ON violacao_usuario_acao.usuario_acao_id = usuario_acao.id
+                INNER JOIN violacao ON violacao_usuario_acao.violacao_id = violacao.id
                 WHERE violacao_usuario_acao.violacao_id = ?
                 ORDER BY violacao_usuario_acao.id DESC";
 

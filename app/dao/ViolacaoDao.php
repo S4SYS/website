@@ -92,7 +92,7 @@ final class ViolacaoDao extends Connection
      */
     public function getStatusByCode(Violacao $violacao): array
     {
-        $sql = "SELECT status.*, violacao.email 
+        $sql = "SELECT status.*, violacao.email, violacao.codigo 
                 FROM violacao
                 INNER JOIN status ON violacao.status_id = status.id
                 WHERE violacao.id = ?";

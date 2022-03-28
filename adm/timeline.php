@@ -43,6 +43,8 @@ require_once '../app/File.php';
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <?php require_once 'views/modal.php'; ?>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -57,6 +59,8 @@ require_once '../app/File.php';
     <script src="views/js/Lista.js"></script>
     <script src="views/js/Requisicao.js"></script>
     <script src="views/js/Violacao.js"></script>
+    <script src="views/js/UsuarioAcao.js"></script>
+    <script src="views/js/Modal.js"></script>
 
     <script>
         const REF_REQUISICAO = 'requisicao';
@@ -95,7 +99,7 @@ require_once '../app/File.php';
                 $loader.html('<img src="img/loading.gif" width="124" height="124"">');
                 $loader.delay(1000).fadeOut('slow', () => {
                     self.getView(self);
-                    self.getLog(self);
+                    self.getLog(self);                    
                 });
             }
             
@@ -151,10 +155,14 @@ require_once '../app/File.php';
             }
 
             getCardBody(dados) 
-            {
+            {                
                 return [
                     '<div class="card-body">',
-                    //'<button class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">Reenviar Notifica&ccedil;&atilde;o</button>',
+                    '<button class="resendEmail d-sm-inline-block btn btn-sm btn-primary shadow-sm"', 
+                    ' onClick="Modal.init(this)"', 
+                    ` data-id="${this.id}" data-hash="#usuarioacao" data-reference="${this.reference}" data-action="resend_email">`,
+                    'Reenviar Notifica&ccedil;&atilde;o ao Solicitante',
+                    '</button>',
                     ...this.getList(dados),
                     '</div>'
                 ];
@@ -194,10 +202,31 @@ require_once '../app/File.php';
         let timeline = new TimelineFactory();
         timeline.init();
 
-
         $('.sideMenu').click(function() {
             window.location.href = `../adm/${this.dataset.hash}`;
         });
+
+        $('#actionModal').find('#btnSalvar').click(function(){
+            let $form = $('#actionModal').find('form');
+            $(this).addClass('disabled').text('Aguarde...');
+            sendForm($form); 
+        });
+
+        function sendForm($form)
+        {   
+            $.ajax({
+                type: "GET",
+                url: "../api.php",
+                data: $form.serialize(),
+                processData: false,
+                dataType : "json",                
+                success: function(response) {
+                   alert('Email reenviado com sucesso');
+                   $('#actionModal').modal('hide');
+                } 
+            });            
+        }
+                
     </script>
 
 </body>
