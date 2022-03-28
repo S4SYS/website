@@ -154,7 +154,7 @@ require_once '../app/File.php';
             {
                 return [
                     '<div class="card-body">',
-                    '<button class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">Reenviar Notifica&ccedil;&atilde;o</button>',
+                    //'<button class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">Reenviar Notifica&ccedil;&atilde;o</button>',
                     ...this.getList(dados),
                     '</div>'
                 ];
