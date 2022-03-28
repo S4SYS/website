@@ -12,9 +12,12 @@ abstract class AbstractEmail
     const SMTP_DEBUG    = false;
     const SMTP_DO_DEBUG = 0;
     
-    const MAIL_USER = 'contato@s4sys.com.br';
-    const MAIL_PASS = 'XFTj@phwZxEQuh{EUp';
-    const MAIL_FROM = 'contato@s4sys.com.br';
+    //const MAIL_USER = 'contato@s4sys.com.br';
+    const MAIL_USER = 'freitasfabio811@outlook.com';
+    //const MAIL_PASS = 'XFTj@phwZxEQuh{EUp';
+        const MAIL_PASS = 'uska#galo2021';
+    //const MAIL_FROM = 'contato@s4sys.com.br';
+    const MAIL_FROM = 'freitasfabio811@outlook.com';
     const MAIL_COPY = 'deployment@s4sys.com.br';    
   
     protected $mailTo;
@@ -45,7 +48,7 @@ abstract class AbstractEmail
         $this->mailer->Subject = $this->assunto;
         $this->mailer->Body = $this->getEmailMessage();
         $this->mailer->AddAddress($this->mailTo);
-        $this->mailer->addCC(self::MAIL_COPY);
+        //$this->mailer->addCC(self::MAIL_COPY);
         $this->mailer->addReplyTo($this->replyTo);
 
         $response = $this->mailer->Send();

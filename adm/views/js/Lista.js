@@ -119,12 +119,14 @@ class Lista
             ' class="timeline d-sm-inline-block btn btn-sm btn-secondary shadow-sm">',
             'Detalhes',
             '</button>',
+            /*
             ` <button data-hash="${window.location.hash}"`, 
             ' onClick="Modal.init(this)"', 
             ` data-id="${id}" data-action="deactivate"`, 
             'class="deactivate d-sm-inline-block btn btn-sm btn-danger shadow-sm">',
             'Desativar',
             '</button>'
+            */
         ].join('');
     }
 }
