@@ -76,7 +76,8 @@ class Status extends Lista {
             '<input type="number" name="id" id="id" class="form-control required">',            
             '<label for="nome">Nome</label>',
             '<input type="text" name="nome" id="nome" class="form-control required">',
-            '<input type="hidden" name="acao" value="add_status">',            
+            '<input type="hidden" name="acao" value="add_status">',
+            `<input type="hidden" name="token" value="${Config.TOKEN}">`,            
             '</div>',
             '</form>'
         ];
@@ -86,9 +87,10 @@ class Status extends Lista {
     {
         let self = this;
      
-        $.get('../api.php', { 
-            id   : this.dataSets.id,
-            acao : 'get_status_by_code' 
+        $.get(Config.API_URL, { 
+            id    : this.dataSets.id,
+            acao  : 'get_status_by_code',
+            token : Config.TOKEN  
         }, function(response){
             self.modal.$body.html(self.getEditBodyContent(response.data).join(''));
         }, 'json');
@@ -103,7 +105,8 @@ class Status extends Lista {
             `<input type="number" name="id" id="id" class="form-control" readonly value="${dados.id}">`,            
             '<label for="nome">Nome</label>',
             `<input type="text" name="nome" id="nome" class="form-control required" value="${dados.nome}">`,
-            '<input type="hidden" name="acao" value="edit_status">',            
+            '<input type="hidden" name="acao" value="edit_status">',
+            `<input type="hidden" name="token" value="${Config.TOKEN}">`,            
             '</div>',
             '</form>'
         ];

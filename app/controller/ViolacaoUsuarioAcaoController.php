@@ -44,7 +44,8 @@ final class ViolacaoUsuarioAcaoController
         $violacao = new Violacao();
         $violacaoUsuarioAcao = new ViolacaoUsuarioAcao();
 
-        $violacao->id  = $requestData['id'];
+        $violacao->setId($requestData['id']);
+        $violacao->setCliente($requestData['cliente']);
         $violacaoUsuarioAcao->setViolacao($violacao);
 
         return $this->dao->getByCode($violacaoUsuarioAcao);

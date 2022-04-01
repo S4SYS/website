@@ -78,9 +78,10 @@ class Violacao extends Lista {
     {
         let self = this;
      
-        $.get('../api.php', { 
+        $.get(Config.API_URL, { 
             id   : this.dataSets.id,
-            acao : 'get_status_violacao' 
+            acao : 'get_status_violacao',
+            token : Config.TOKEN 
         }, function(response){
             self.modal.$body.html(self.getEditBodyContent(response).join(''));
         }, 'json');
@@ -105,7 +106,8 @@ class Violacao extends Lista {
             `<input type="hidden" name="current_status_id" value="${this.idStatus}">`,
             `<input type="hidden" name="id" value="${this.dataSets.id}">`,
             `<input type="hidden" name="codigo" value="${dados.current.data.codigo}">`,
-            `<input type="hidden" name="email" value="${dados.current.data.email}"`,
+            `<input type="hidden" name="email" value="${dados.current.data.email}">`,
+            `<input type="hidden" name="token" value="${Config.TOKEN}">`,
             '</div>',
             '</form>'
         ];

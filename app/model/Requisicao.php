@@ -5,6 +5,7 @@ require_once 'Setor.php';
 require_once 'TipoRequisicao.php';
 require_once 'Status.php';
 
+
 final class Requisicao extends AbstractModel
 {
     const TABLE = 'requisicao';
@@ -85,4 +86,5 @@ final class Requisicao extends AbstractModel
     {
         $this->status = $status;
     }
+    
 }

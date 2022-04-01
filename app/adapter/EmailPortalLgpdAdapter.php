@@ -9,6 +9,7 @@ final class EmailPortalLgpdAdapter extends AbstractEmail
     use ApiRequest;
 
     private $codigo;
+    private $cliente;
 
     /**
      * @param AbstractModel $model
@@ -17,8 +18,9 @@ final class EmailPortalLgpdAdapter extends AbstractEmail
     {
         $this->codigo   = $model->codigo;
         $this->mailTo   = $model->email;
+        $this->cliente  = $model->cliente;
         $this->assunto  = 'Código para consulta';
-        $this->nameFrom = 'Portal LGPD - S4SYS';
+        $this->nameFrom = "Portal LGPD - {$this->cliente->nome}";
     }
 
     public function init(): array
@@ -43,9 +45,10 @@ final class EmailPortalLgpdAdapter extends AbstractEmail
             "<tr>",
             "<td>",
             "<p>",
-            "A S4SYS agradece o seu contato, segue o c&oacute;digo para consultar sua requisi&ccedil;&atilde;o:",
+            "A {$this->cliente->nome} agradece o seu contato, segue o c&oacute;digo para consultar sua requisi&ccedil;&atilde;o:",
             "<h4><a href=\"{$this->url}?acao=emailConsulta&codigo={$this->codigo}\">{$this->codigo}</a></h4>",
             "</p>",
+            "<p><a href=\"{$this->cliente->dominio}\">{$this->cliente->dominio}</a></p>",
             "</td>",
             "</tr>",
             "</table>"

@@ -53,11 +53,13 @@ final class ViolacaoUsuarioAcaoDao extends Connection
                 INNER JOIN violacao_usuario_acao ON violacao_usuario_acao.usuario_acao_id = usuario_acao.id
                 INNER JOIN violacao ON violacao_usuario_acao.violacao_id = violacao.id
                 WHERE violacao_usuario_acao.violacao_id = ?
+                AND violacao.cliente_id = ?
                 ORDER BY violacao_usuario_acao.id DESC";
 
         try{
             $p_sql = $this->getInstance()->prepare($sql);
             $p_sql->bindValue(1, $violacaoUsuarioAcao->getViolacao()->id);
+            $p_sql->bindValue(2, $violacaoUsuarioAcao->getViolacao()->cliente->id);
             $p_sql->execute();
             
             return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];

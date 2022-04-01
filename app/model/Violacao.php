@@ -9,7 +9,7 @@ final class Violacao extends AbstractModel
 
     public $descricao;
     public $status;
-
+ 
     /**
      * @return string
      */
@@ -45,4 +45,5 @@ final class Violacao extends AbstractModel
     {
         $this->status = $status;
     }
+    
 }

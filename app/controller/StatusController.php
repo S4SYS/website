@@ -14,12 +14,17 @@ final class StatusController
         $this->dao = new StatusDao();
     }
 
+    
     /**
+     * @param array $requestData
+     * 
      * @return array
      */
-    public function get(): array
+    public function get(array $requestData): array
     {
-        return $this->dao->get();
+        $status = new Status();
+        $status->setCliente($requestData['cliente']);
+        return $this->dao->get($status);
     }
 
     /**
@@ -31,6 +36,7 @@ final class StatusController
     {
         $status = new Status();
         $status->setId($requestData['id']);
+        $status->setCliente($requestData['cliente']);
 
         return $this->dao->getByCode($status);
     }
@@ -45,6 +51,7 @@ final class StatusController
         $status = new Status();
         $status->setId($requestData['id']);
         $status->setNome($requestData['nome']);
+        $status->setCliente($requestData['cliente']);
 
         return $this->dao->save($status);
     }
@@ -59,6 +66,7 @@ final class StatusController
         $status = new Status();
         $status->setId($requestData['id']);
         $status->setNome($requestData['nome']);
+        $status->setCliente($requestData['cliente']);
 
         return $this->dao->update($status);
     }

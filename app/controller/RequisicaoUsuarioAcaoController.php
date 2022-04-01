@@ -44,7 +44,8 @@ final class RequisicaoUsuarioAcaoController
         $requisicao = new Requisicao();
         $requisicaoUsuarioAcao = new RequisicaoUsuarioAcao();
 
-        $requisicao->id  = $requestData['id'];
+        $requisicao->setId($requestData['id']);
+        $requisicao->setCliente($requestData['cliente']);
         $requisicaoUsuarioAcao->setRequisicao($requisicao);
 
         return $this->dao->getByCode($requisicaoUsuarioAcao);

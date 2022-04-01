@@ -3,6 +3,19 @@ DROP DATABASE if EXISTS `portal_lgpd`;
 CREATE DATABASE IF NOT EXISTS `portal_lgpd`;
 USE `portal_lgpd`;
 
+CREATE TABLE IF NOT EXISTS cliente (
+  id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(128) NULL,
+  dominio VARCHAR(128) NOT NULL,
+  token VARCHAR(64) NOT NULL,
+  ultimo_acesso TIMESTAMP NULL,
+  ativo BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT current_timestamp(),
+  updated_at TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+
 CREATE TABLE IF NOT EXISTS `setor` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(128) NOT NULL,
@@ -24,9 +37,12 @@ CREATE TABLE IF NOT EXISTS `tipo_requisicao` (
 CREATE TABLE IF NOT EXISTS `status` (
   `id` int(10) unsigned NOT NULL,
   `nome` varchar(128) NOT NULL,
+  cliente_id int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `requisicao_FKIndex1` (`cliente_id`),
+  CONSTRAINT `requisicao_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -35,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `requisicao` (
   `setor_id` int(10) unsigned NOT NULL,
   `tipo_requisicao_id` int(10) unsigned NOT NULL,
   `status_id` int(10) unsigned NOT NULL DEFAULT 1,
+   cliente_id int(10) UNSIGNED NOT NULL,
   `codigo` varchar(128) DEFAULT NULL,
   `pedido` text DEFAULT NULL,
   `nome` varchar(128) NOT NULL,
@@ -48,14 +65,17 @@ CREATE TABLE IF NOT EXISTS `requisicao` (
   KEY `requisicao_FKIndex1` (`tipo_requisicao_id`),
   KEY `requisicao_FKIndex2` (`setor_id`),
   KEY `requisicao_FKIndex3` (`status_id`),
+  KEY `requisicao_FKIndex4` (`cliente_id`),
   CONSTRAINT `requisicao_ibfk_1` FOREIGN KEY (`tipo_requisicao_id`) REFERENCES `tipo_requisicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `requisicao_ibfk_2` FOREIGN KEY (`setor_id`) REFERENCES `setor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `requisicao_ibfk_3` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `requisicao_ibfk_3` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `requisicao_ibfk_4` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE violacao (
   id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   `status_id` int(10) unsigned NOT NULL DEFAULT 1,
+  cliente_id int(10) UNSIGNED NOT NULL,
   codigo VARCHAR(128) NULL,
   cpf varchar(32) DEFAULT NULL,
   `nome` varchar(128) NOT NULL,
@@ -67,7 +87,9 @@ CREATE TABLE violacao (
   updated_at TIMESTAMP NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY(id),
   KEY `violacao_FKIndex1` (`status_id`),
-  CONSTRAINT `violacao_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `violacao_FKIndex2` (`cliente_id`),
+  CONSTRAINT `violacao_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `violacao_ibfk_2` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE usuario (
@@ -184,3 +206,8 @@ INSERT INTO acao(nome, descricao) VALUES ('create', 'Criar');
 INSERT INTO acao(nome, descricao) VALUES ('update', 'Atualizar');
 INSERT INTO acao(nome, descricao) VALUES ('deactivate', 'Desativar');
 INSERT INTO acao(nome, descricao) VALUES ('delete', 'Deletar');
+
+INSERT INTO cliente(nome, dominio, token) 
+VALUES ('Site S4sys', 's4sys.com.br', TO_BASE64(SHA1(CONCAT('Site S4sys', NOW())))),
+('Site Porto Virtual', 'portovirtual.com.br', TO_BASE64(SHA1(CONCAT('Site Porto Virtual', NOW())))),
+('Site 4sr', '4sr.com.br', TO_BASE64(SHA1(CONCAT('Site 4sr', NOW()))));

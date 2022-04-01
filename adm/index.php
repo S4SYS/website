@@ -6,6 +6,7 @@
 if(!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</script>");
 
 require_once '../app/File.php';
+require_once '../app/Config.php';
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +35,7 @@ require_once '../app/File.php';
     <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
-
+    
 </head>
 
 <body id="page-top">
@@ -65,6 +66,13 @@ require_once '../app/File.php';
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
         
     <!-- Page Views -->
+    <script>
+        class Config
+        {
+            static API_URL = '<?=Config::URL_API;?>';
+            static TOKEN = '<?=Config::TOKEN;?>';
+        }
+    </script>
     <script src="views/js/Modal.js"></script>
     <script src="views/js/Lista.js"></script>
     <script src="views/js/Requisicao.js"></script>
@@ -74,8 +82,7 @@ require_once '../app/File.php';
         const HASH_REQUISICAO = '#requisicao';
         const HASH_VIOLACAO   = '#violacao' ;
         const HASH_STATUS     = '#status';
-        const FILE_PATH = '<?=File::TARGET_DIR;?>';
-
+        
         /*
         * Classe que trata o carregamento do conteudo interno, ao carregar a pagina e 
         * de acordo com o menu selecionado.

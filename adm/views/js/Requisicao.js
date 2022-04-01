@@ -83,9 +83,10 @@ class Requisicao extends Lista
     {
         let self = this;
 
-        $.get('../api.php', {
-            id: this.dataSets.id,
-            acao: 'get_status_requisicao'
+        $.get(Config.API_URL, {
+            id    : this.dataSets.id,
+            acao  : 'get_status_requisicao',
+            token : Config.TOKEN
         }, function (response) {
             self.modal.$body.html(self.getEditBodyContent(response).join(''));
         }, 'json');
@@ -110,7 +111,8 @@ class Requisicao extends Lista
             `<input type="hidden" name="current_status_id" value="${this.idStatus}">`,
             `<input type="hidden" name="id" value="${this.dataSets.id}">`,
             `<input type="hidden" name="codigo" value="${dados.current.data.codigo}">`,
-            `<input type="hidden" name="email" value="${dados.current.data.email}"`,
+            `<input type="hidden" name="email" value="${dados.current.data.email}">`,
+            `<input type="hidden" name="token" value="${Config.TOKEN}">`,
             '</div>',
             '</form>'
         ];

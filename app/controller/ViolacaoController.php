@@ -3,6 +3,7 @@
 require_once 'app/dao/ViolacaoDao.php';
 require_once 'app/model/Violacao.php';
 require_once 'app/model/Status.php';
+require_once 'app/model/Cliente.php';
 
 final class ViolacaoController
 {
@@ -29,16 +30,22 @@ final class ViolacaoController
         $violacao->setTelefone($requestData['telefone']);
         $violacao->setDescricao($requestData['descricao']);
         $violacao->setArquivo($requestData['arquivo']);
+        $violacao->setCliente($requestData['cliente']);
 
         return $this->dao->save($violacao);
     }
 
+    
     /**
+     * @param array $requestData
+     * 
      * @return array
      */
-    public function get(): array
+    public function get(array $requestData): array
     {
-        return $this->dao->get();
+        $violacao = new Violacao();
+        $violacao->setCliente($requestData['cliente']);
+        return $this->dao->get($violacao);
     }
 
     /**
@@ -63,6 +70,7 @@ final class ViolacaoController
     {
         $violacao = new Violacao();
         $violacao->setId($requestData['id']);
+        $violacao->setCliente($requestData['cliente']);
 
         return $this->dao->getStatusByCode($violacao);
     }

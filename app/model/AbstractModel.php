@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Cliente.php';
+
 abstract class AbstractModel
 {
     public $id;
@@ -11,6 +13,7 @@ abstract class AbstractModel
     public $nome;
     public $descricao;
     public $ativo;
+    public $cliente;
 
     /**
      * @return int
@@ -183,5 +186,23 @@ abstract class AbstractModel
     public function setAtivo(bool $ativo): void
     {
         $this->ativo = $ativo;
+    }
+
+    /**
+     * @return Cliente
+     */
+    public function getCliente(): Cliente
+    {
+        return $this->cliente;
+    }
+
+    /**
+     * @param Cliente $cliente
+     * 
+     * @return void
+     */
+    public function setCliente(Cliente $cliente): void
+    {
+        $this->cliente = $cliente;
     }
 }

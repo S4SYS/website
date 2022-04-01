@@ -1,5 +1,7 @@
 <?php
 @session_start();
+
+require_once '../app/Config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +47,7 @@
                                             <img src="../images/logo_s4sys.png">
                                         </h1>
                                     </div>
-                                    <form class="user" id="formLogin" method="post" action="../api.php" onSubmit="return Login.validadeForm();">
+                                    <form class="user" id="formLogin" method="post" action="<?=Config::URL_API;?>" onSubmit="return Login.validadeForm();">
                                         <div class="form-group">
                                             <input type="text" class="required form-control form-control-user" id="login" name="login" aria-describedby="emailHelp" placeholder="login">
                                         </div>

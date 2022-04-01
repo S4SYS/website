@@ -6,6 +6,7 @@
 if (!isset($_SESSION['idUsuario'])) die("<script>location.href = 'login.php';</script>");
 
 require_once '../app/File.php';
+require_once '../app/Config.php';
 
 ?>
 <!DOCTYPE html>
@@ -56,6 +57,13 @@ require_once '../app/File.php';
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page Views -->
+    <script>
+        class Config
+        {
+            static API_URL = '<?=Config::URL_API;?>';
+            static TOKEN = '<?=Config::TOKEN;?>';
+        }
+    </script>
     <script src="views/js/Lista.js"></script>
     <script src="views/js/Requisicao.js"></script>
     <script src="views/js/Violacao.js"></script>
@@ -74,6 +82,7 @@ require_once '../app/File.php';
             id;
             acao;
             reference;
+            dataCount;
             $main;
             $title;
             $content;
@@ -127,9 +136,10 @@ require_once '../app/File.php';
 
             getLog(self) 
             {
-                $.get('../api.php', {
-                    id: self.id,
-                    acao: self.acao
+                $.get(Config.API_URL, {
+                    id    : self.id,
+                    acao  : self.acao,
+                    token : Config.TOKEN
                 }, function(response) {
                     self.$content.html(self.getCard(response.data).join(''));
                 }, 'json');
@@ -137,6 +147,8 @@ require_once '../app/File.php';
 
             getCard(dados) 
             {
+                this.dataCount = dados.length;
+
                 return [
                     ...this.getCardHeader(),
                     ...this.getCardBody(dados),
@@ -155,16 +167,21 @@ require_once '../app/File.php';
             }
 
             getCardBody(dados) 
-            {                
+            {
+                if(this.dataCount === 0)                                
+                    return ['<div class="card-body">', ...this.getList(dados), '</div>'];
+                    
+                return ['<div class="card-body">', ...this.getResendButton(), ...this.getList(dados), '</div>'];
+            }
+
+            getResendButton()
+            {
                 return [
-                    '<div class="card-body">',
                     '<button class="resendEmail d-sm-inline-block btn btn-sm btn-primary shadow-sm"', 
                     ' onClick="Modal.init(this)"', 
                     ` data-id="${this.id}" data-hash="#usuarioacao" data-reference="${this.reference}" data-action="resend_email">`,
                     'Reenviar Notifica&ccedil;&atilde;o ao Solicitante',
-                    '</button>',
-                    ...this.getList(dados),
-                    '</div>'
+                    '</button>'
                 ];
             }
 
@@ -179,7 +196,7 @@ require_once '../app/File.php';
 
             getItems(dados) 
             {
-                if(dados.length === 0) return ['<li>','N&atilde;o h&aacute; dados para exibir.','</li>'];
+                if(this.dataCount === 0) return ['<li>','N&atilde;o h&aacute; dados para exibir.','</li>'];
 
                 return dados.map(row => {
                     return `
@@ -188,7 +205,7 @@ require_once '../app/File.php';
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">${row.comentario}</h4>
-                                <p><small class="text-muted"><i class="fa fa-clock"></i> ${row.created_at}</small></p>
+                                <p><small class="text-muted">${row.created_at}</small></p>
                             </div>
                             <div class="timeline-body">
                                 <p>${row.descricao}</p>
@@ -216,7 +233,7 @@ require_once '../app/File.php';
         {   
             $.ajax({
                 type: "GET",
-                url: "../api.php",
+                url: Config.API_URL,
                 data: $form.serialize(),
                 processData: false,
                 dataType : "json",                

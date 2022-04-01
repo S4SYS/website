@@ -3,12 +3,14 @@
 require_once 'app/AbstractEmail.php';
 require_once 'app/model/AbstractModel.php';
 require_once 'app/ApiRequest.php';
+require_once 'app/Config.php';
 
 final class EmailStatusChangeAdapter extends AbstractEmail
 {
     use ApiRequest;
 
     private $texto;
+    private $cliente;
 
     /**
      * @param AbstractModel $model
@@ -17,8 +19,9 @@ final class EmailStatusChangeAdapter extends AbstractEmail
     {
         $this->mailTo   = $model->email;
         $this->texto    = $model->descricao;
+        $this->cliente  = $model->cliente;
         $this->assunto  = 'Atualização de Status';
-        $this->nameFrom = 'Portal LGPD - S4SYS';
+        $this->nameFrom = "Portal LGPD - {$this->cliente->nome}";
     }
 
     public function init(): array

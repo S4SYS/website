@@ -24,11 +24,9 @@ final class RequisicaoController
     {
         $requisicao     = new Requisicao();
         $setor          = new Setor();
-        $tipoRequisicao = new TipoRequisicao();
-
+        $tipoRequisicao = new TipoRequisicao();   
         $setor->id = $requestData['setor'];
         $tipoRequisicao->id = $requestData['tipoRequisicao'];
-
         $requisicao->setCodigo(date('YmdHis'));
         $requisicao->setPedido($requestData['pedido']);
         $requisicao->setCpf($requestData['cpf']);
@@ -38,16 +36,21 @@ final class RequisicaoController
         $requisicao->setArquivo($requestData['arquivo']);
         $requisicao->setSetor($setor);
         $requisicao->setTipoRequisicao($tipoRequisicao);
+        $requisicao->setCliente($requestData['cliente']);
 
         return $this->dao->save($requisicao);
     }
-
+        
+    
     /**
-     * @return string
+     * @param array $requestData
+     * 
+     * @return array
      */
-    public function get(): array
-    {
-        return $this->dao->get();
+    public function get(array $requestData): array
+    {   $requisicao = new Requisicao();
+        $requisicao->setCliente($requestData['cliente']);
+        return $this->dao->get($requisicao);
     }
 
     /**
@@ -73,6 +76,7 @@ final class RequisicaoController
     {
         $requisicao = new Requisicao();
         $requisicao->setId($requestData['id']);
+        $requisicao->setCliente($requestData['cliente']);
 
         return $this->dao->getStatusByCode($requisicao);
     }

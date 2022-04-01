@@ -6,6 +6,8 @@ require_once 'app/ApiRequest.php';
 
 final class Index { use ApiRequest; }
 
+$index = new Index();
+
 ?>
 
 <!doctype html>
@@ -410,7 +412,7 @@ final class Index { use ApiRequest; }
 
         init()
         {
-          this.dadosApi = $.parseJSON('<?=(new Index())->get('index');?>');
+          this.dadosApi = $.parseJSON('<?=$index->get('index');?>');
           this.showTime = 2000;
           this.setCheckboxChangeEvent();    
         }

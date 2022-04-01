@@ -13,9 +13,8 @@ final class RequisicaoDao extends Connection
      */
     public function save(Requisicao $requisicao): array 
     {
-        $sql = "INSERT INTO requisicao(codigo, pedido, cpf, nome, telefone, email, arquivo, setor_id, tipo_requisicao_id) 
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        $sql = "INSERT INTO requisicao(codigo, pedido, cpf, nome, telefone, email, arquivo, setor_id, tipo_requisicao_id, cliente_id) 
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             $p_sql = $this->getInstance()->prepare($sql);
             $p_sql->bindValue(1, $requisicao->getCodigo());
@@ -27,24 +26,23 @@ final class RequisicaoDao extends Connection
             $p_sql->bindValue(7, $requisicao->getArquivo());
             $p_sql->bindValue(8, $requisicao->getSetor()->id);
             $p_sql->bindValue(9, $requisicao->getTipoRequisicao()->id);
+            $p_sql->bindValue(10, $requisicao->getCliente()->id);
             $p_sql->execute();
-
-            $requisicao->setId($this->getInstance()->lastInsertId());
-            
-            return [
-                'success' => true, 
-                'data'    => $requisicao
-            ];
+            $requisicao->setId($this->getInstance()->lastInsertId());            
+            return ['success' => true, 'data' => $requisicao];
 
         } catch(PDOException $exception){
             return ['success' => false, 'message' => $exception->getMessage()];
         }
     }
 
+    
     /**
+     * @param Requisicao $requisicao
+     * 
      * @return array
      */
-    public function get(): array
+    public function get(Requisicao $requisicao): array
     {
         $sql = "SELECT requisicao.*, 
                        setor.nome AS nome_setor, 
@@ -53,10 +51,12 @@ final class RequisicaoDao extends Connection
                 FROM requisicao
                 INNER JOIN tipo_requisicao ON requisicao.tipo_requisicao_id = tipo_requisicao.id 
                 INNER JOIN setor ON requisicao.setor_id = setor.id
-                INNER JOIN status ON requisicao.status_id = status.id";                
+                INNER JOIN status ON requisicao.status_id = status.id
+                WHERE requisicao.cliente_id = ?";                
 
         try{
             $p_sql = $this->getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $requisicao->getCliente()->id);
             $p_sql->execute();
 
             return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
@@ -106,11 +106,13 @@ final class RequisicaoDao extends Connection
         $sql = "SELECT status.*, requisicao.email, requisicao.codigo  
                 FROM requisicao
                 INNER JOIN status ON requisicao.status_id = status.id
-                WHERE requisicao.id = ?";
+                WHERE requisicao.id = ?
+                AND requisicao.cliente_id = ?";
 
         try{
             $p_sql = $this->getInstance()->prepare($sql);
             $p_sql->bindValue(1, $requisicao->getId());
+            $p_sql->bindValue(2, $requisicao->getCliente()->id);
             $p_sql->execute();
 
             return ['success' => true, 'data' => $p_sql->fetch(PDO::FETCH_ASSOC)];

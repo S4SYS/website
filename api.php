@@ -4,6 +4,7 @@ if (!isset($_POST['acao']) && !isset($_GET['acao'])) die("<script>location.href=
 
 @session_start();
 
+require_once 'app/Config.php';
 require_once 'app/model/Requisicao.php';
 require_once 'app/model/Violacao.php';
 require_once 'app/model/Status.php';
@@ -16,6 +17,7 @@ require_once 'app/controller/UsuarioController.php';
 require_once 'app/controller/UsuarioAcaoController.php';
 require_once 'app/controller/RequisicaoUsuarioAcaoController.php';
 require_once 'app/controller/ViolacaoUsuarioAcaoController.php';
+require_once 'app/controller/ClienteController.php';
 require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 require_once 'app/adapter/EmailStatusChangeAdapter.php';
 require_once 'app/File.php';
@@ -42,21 +44,27 @@ final class Api
                 break;
 
             case ('requisicao'):
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                $cliente = $dadosCliente['data'];
+         
                 $arquivo = $_FILES['arquivo'];
                 self::$params['arquivo'] = $arquivo['name'];
                 if ($arquivo['size'] > 0) {
                     $upload = File::upload($arquivo);
                     if (!$upload['success']){
                         $_SESSION['error_message'] = $upload['message'];
-                        echo "<script>location.href='./#error';</script>";
+                        echo "<script>location.href='".Config::URL_SISTEMA."/#error';</script>";
                         exit; 
                     } 
                 }
 
+                self::$params['cliente'] = $cliente;
                 $response = (new RequisicaoController())->save(self::$params);
                 if (!$response['success']){
                     $_SESSION['error_message'] = $response['message'];
-                    echo "<script>location.href='./#error';</script>";
+                    echo "<script>location.href='".Config::URL_SISTEMA."/#error';</script>";
                     exit;
                 } 
 
@@ -64,12 +72,12 @@ final class Api
                 $mail = (new EmailPortalLgpdAdapter($requisicao))->init();
                 if (!$mail['success']){
                     $_SESSION['error_message'] = 'Falha no envio de email.';
-                    echo "<script>location.href='./#error';</script>";
+                    echo "<script>location.href='".Config::URL_SISTEMA."/#error';</script>";
                     exit;
                 }
                         
                 $_SESSION['codigo'] = $requisicao->codigo;
-                echo "<script>location.href='./#success';</script>";
+                echo "<script>location.href='".Config::URL_SISTEMA."/#success';</script>";
                 break;
 
             case ('consulta'):
@@ -80,34 +88,40 @@ final class Api
                 break;
 
             case ('violacao'):
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                $cliente = $dadosCliente['data'];
+            
                 $arquivo = $_FILES['arquivo'];
                 self::$params['arquivo'] = $arquivo['name'];
                 if($arquivo['size'] > 0){
                     $upload = File::upload($arquivo);
                     if (!$upload['success']){
                         $_SESSION['error_message'] = $upload['message'];
-                        echo "<script>location.href='./#error';</script>";
+                        echo "<script>location.href='".Config::URL_SISTEMA."/#error';</script>";
                         exit; 
                     } 
                 }
-                          
+                
+                self::$params['cliente'] = $cliente;
                 $response = (new ViolacaoController())->save(self::$params);
                 if (!$response['success']){
                     $_SESSION['error_message'] = $response['message'];
-                    echo "<script>location.href='./#error';</script>";
+                    echo "<script>location.href='".Config::URL_SISTEMA."/#error';</script>";
                     exit;
                 } 
                 
-                $violacao = $response['data'];
+                $violacao = $response['data'];          
                 $mail = (new EmailPortalLgpdAdapter($violacao))->init();
                 if (!$mail['success']){
                     $_SESSION['error_message'] = 'Falha no envio de email.';
-                    echo "<script>location.href='./#error';</script>";
+                    echo "<script>location.href='".Config::URL_SISTEMA."/#error';</script>";
                     exit;
                 }
            
                 $_SESSION['codigo'] = $violacao->codigo;
-                echo "<script>location.href='./#success';</script>";
+                echo "<script>location.href='".Config::URL_SISTEMA."/#success';</script>";
                 break;
 
             case('emailConsulta'):
@@ -138,31 +152,90 @@ final class Api
                 break;
             
             // Submits do sys adm.    
-            case('get_requisicoes'): die(json_encode((new RequisicaoController())->get()));    
+            case('get_requisicoes'): 
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                echo json_encode((new RequisicaoController())->get(['cliente' => $dadosCliente['data']]));
+                break;    
 
-            case('get_violacoes')  : die(json_encode((new ViolacaoController())->get()));
+            case('get_violacoes'): 
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                echo json_encode((new ViolacaoController())->get(['cliente' => $dadosCliente['data']]));
+                break;
 
-            case('get_status')     : die(json_encode((new StatusController())->get()));
+            case('get_status'):
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                echo json_encode((new StatusController())->get(['cliente' => $dadosCliente['data']]));
+                break;
 
-            case('add_status')     : die(json_encode((new StatusController())->save($_POST)));
-
-            case('edit_status')    : die(json_encode((new StatusController())->update($_POST)));
-
-            case('get_status_by_code') : die(json_encode((new StatusController())->getByCode($_GET)));
-
-            case('get_status_requisicao') : 
-                die(json_encode([
-                    'current' => (new RequisicaoController())->getStatusByCode($_GET),
-                    'all'     => (new StatusController())->get()
+            case('add_status'):
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente)); 
+                echo json_encode((new StatusController())->save([
+                    'id' => $_POST['id'],
+                    'nome' => $_POST['nome'],
+                    'cliente' => $dadosCliente['data']
                 ]));
+                break;
 
-            case('get_status_violacao') : 
-                die(json_encode([
-                    'current' => (new ViolacaoController())->getStatusByCode($_GET),
-                    'all'     => (new StatusController())->get()
-                ]));   
+            case('edit_status'):
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                echo json_encode((new StatusController())->update([
+                    'id' => $_POST['id'],
+                    'nome' => $_POST['nome'],
+                    'cliente' => $dadosCliente['data']
+                ]));
+                break;
 
-            case('edit_requisicao_status') : 
+            case('get_status_by_code') :
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente)); 
+                echo json_encode((new StatusController())->getByCode([
+                    'id' => $_GET['id'],
+                    'cliente' => $dadosCliente['data']
+                ]));
+                break;
+
+            case('get_status_requisicao'):
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                echo json_encode([
+                    'current' => (new RequisicaoController())->getStatusByCode([
+                        'id' => $_GET['id'],
+                        'cliente' => $dadosCliente['data']
+                    ]),
+                    'all' => (new StatusController())->get(['cliente' => $dadosCliente['data']])
+                ]);
+                break;
+
+            case('get_status_violacao'): 
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                echo json_encode([
+                    'current' => (new ViolacaoController())->getStatusByCode([
+                        'id' => $_GET['id'],
+                        'cliente' => $dadosCliente['data']
+                    ]),
+                    'all' => (new StatusController())->get(['cliente' => $dadosCliente['data']])
+                ]);
+                break;   
+
+            case('edit_requisicao_status'):
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                $cliente = $dadosCliente['data']; 
                 $updateRequisicao = (new RequisicaoController())->updateStatus($_POST);
                 $saveUsuarioAcao = (new UsuarioAcaoController())->save([
                     'user_id'     => $_SESSION['idUsuario'],
@@ -172,7 +245,8 @@ final class Api
                     'anterior_id' => $_POST['current_status_id'],
                     'nome_usuario'=> $_SESSION['nomeUsuario'],
                     'id_solicitacao' => $_POST['id'],
-                    'codigo' => $_POST['codigo']
+                    'codigo' => $_POST['codigo'],
+                    'cliente' => $cliente
                 ]);
                 $saveRequisicaoUsuarioAcao = (new RequisicaoUsuarioAcaoController())->save([
                     'id_requisicao' => $_POST['id'],
@@ -180,6 +254,7 @@ final class Api
                 ]);
                 $usuarioAcao = $saveUsuarioAcao['data'];
                 $usuarioAcao->email = $_POST['email'];
+                $usuarioAcao->cliente = $cliente;
                 echo json_encode([
                     'success' => true,
                     'upsate_requisicao' => $updateRequisicao,
@@ -190,6 +265,10 @@ final class Api
                 break;
      
             case('edit_violacao_status') : 
+                $token = self::$params['token'];
+                $dadosCliente = (new ClienteController())->getByToken($token);
+                if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                $cliente = $dadosCliente['data']; 
                 $updateViolacao = (new ViolacaoController)->updateStatus($_POST);
                 $saveUsuarioAcao = (new UsuarioAcaoController())->save([
                     'user_id'     => $_SESSION['idUsuario'],
@@ -199,7 +278,8 @@ final class Api
                     'anterior_id' => $_POST['current_status_id'],
                     'nome_usuario'=> $_SESSION['nomeUsuario'],
                     'id_solicitacao' => $_POST['id'],
-                    'codigo' => $_POST['codigo']
+                    'codigo' => $_POST['codigo'],
+                    'cliente' => $cliente
                 ]);
                 $saveViolacaoUsuarioAcao = (new ViolacaoUsuarioAcaoController())->save([
                     'id_violacao' => $_POST['id'],
@@ -207,6 +287,7 @@ final class Api
                 ]);
                 $usuarioAcao = $saveUsuarioAcao['data'];
                 $usuarioAcao->email  = $_POST['email'];
+                $usuarioAcao->cliente = $cliente;
                 echo json_encode([
                     'success' => true,
                     'upsate_violacao' => $updateViolacao,
@@ -217,25 +298,54 @@ final class Api
                 break;  
                 
                 // Timeline
-                case('get_requisicao_log'): die(json_encode((new RequisicaoUsuarioAcaoController())->getByCode($_GET)));
-                case('get_violacao_log'):   die(json_encode((new ViolacaoUsuarioAcaoController())->getByCode($_GET)));
+                case('get_requisicao_log'):
+                    $token = self::$params['token'];
+                    $dadosCliente = (new ClienteController())->getByToken($token);
+                    if(!$dadosCliente['success']) die(json_encode($dadosCliente)); 
+                    echo json_encode((new RequisicaoUsuarioAcaoController())->getByCode([
+                        'id' => $_GET['id'],
+                        'cliente' => $dadosCliente['data']
+                    ]));
+                    break;
+
+                case('get_violacao_log'):
+                    $token = self::$params['token'];
+                    $dadosCliente = (new ClienteController())->getByToken($token);
+                    if(!$dadosCliente['success']) die(json_encode($dadosCliente)); 
+                    echo json_encode((new ViolacaoUsuarioAcaoController())->getByCode([
+                        'id' => $_GET['id'],
+                        'cliente' => $dadosCliente['data']
+                    ]));
+                    break;
 
                 // Reenvio email de alteracao de status para requisicao/violacao
                 case('resend_email'):
+                    $token = self::$params['token'];
+                    $dadosCliente = (new ClienteController())->getByToken($token);
+                    if(!$dadosCliente['success']) die(json_encode($dadosCliente));
+                    $cliente = $dadosCliente['data']; 
+                    
                     if($_GET['reference'] === 'violacao') 
-                        $dados = (new ViolacaoUsuarioAcaoController())->getByCode($_GET)['data'][0];
+                        $dados = (new ViolacaoUsuarioAcaoController())->getByCode([
+                            'id' => $_GET['id'],
+                            'cliente' => $cliente
+                        ])['data'][0];
                     else
-                        $dados = (new RequisicaoUsuarioAcaoController())->getByCode($_GET)['data'][0];
+                        $dados = (new RequisicaoUsuarioAcaoController())->getByCode([
+                            'id' => $_GET['id'],
+                            'cliente' => $cliente
+                        ])['data'][0];
 
                     $usuarioAcao = new UsuarioAcao();
                     $usuarioAcao->email = $dados['email'];
-                    $usuarioAcao->descricao = $dados['descricao'];                    
+                    $usuarioAcao->descricao = $dados['descricao'];
+                    $usuarioAcao->cliente = $cliente;                    
                     echo json_encode((new EmailStatusChangeAdapter($usuarioAcao))->init());
                     break;
 
             // Qualquer acao nao listada acima.
             default:
-                echo "<script>location.href='./';</script>";
+                echo "<script>location.href='".Config::URL_SISTEMA."';</script>";
                 break;
         }
     }

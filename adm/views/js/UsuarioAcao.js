@@ -21,6 +21,7 @@ class UsuarioAcao extends Lista
             `<input type="hidden" name="acao" value="${this.dataSets.action}">`,
             `<input type="hidden" name="id" value="${this.dataSets.id}">`,
             `<input type="hidden" name="reference" value="${this.dataSets.reference}">`,
+            `<input type="hidden" name="token" value="${Config.TOKEN}">`,
             '</form>'
         ];
     }

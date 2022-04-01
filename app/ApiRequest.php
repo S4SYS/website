@@ -1,16 +1,18 @@
 <?php
 
+require_once 'Config.php';
+
 trait ApiRequest
 {
-    //private $url = 'http://localhost/website/api.php';
-    private $url = 'https://s4sys.000webhostapp.com/api.php';
+    public $token = Config::TOKEN;
+    public $url   = Config::URL_API;
   
     public function get(string $actionParam = ''): string
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "{$this->url}?acao={$actionParam}",
+            CURLOPT_URL => "{$this->url}?token={$this->token}&acao={$actionParam}",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

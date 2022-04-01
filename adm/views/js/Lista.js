@@ -10,7 +10,7 @@ class Lista
     setContent()
     {
         let self = this;        
-        $.get('../api.php', { acao : this.actionName }, response => {          
+        $.get(Config.API_URL, { acao : this.actionName, token : Config.TOKEN }, response => {          
             self.$content
             .html(self.getCard().join(''))
             .find('table')

@@ -42,7 +42,8 @@ final class UsuarioAcaoController
         $usuarioAcao->setTabela($requestData['tabela']);
         $usuarioAcao->setAtualId($requestData['atual_id']);
         $usuarioAcao->setAnteriorId($requestData['anterior_id']);
-        
+        $usuarioAcao->setCliente($requestData['cliente']);
+
         $this->idTabela = $requestData['id_solicitacao'];
         $this->codigo   = $requestData['codigo'];
         $this->nomeUsuario = $requestData['nome_usuario'];
@@ -50,7 +51,7 @@ final class UsuarioAcaoController
 
         return $this->dao->save($usuarioAcao);
     }
-    
+
     /**
      * @param UsuarioAcao $usuarioAcao
      * 
@@ -61,7 +62,7 @@ final class UsuarioAcaoController
         $tabela = $usuarioAcao->getTabela();
         $statusData = $this->getStatusDataIdAnteriorAtual($usuarioAcao);
         $nomeStatusAnterior = $statusData['anterior']['data']['nome'];
-        $nomeStatusAtual = $statusData['atual']['data']['nome']; 
+        $nomeStatusAtual = $statusData['atual']['data']['nome'];
 
         return implode('', [
             "Status da {$tabela} id {$this->idTabela} alterado ",
@@ -73,7 +74,7 @@ final class UsuarioAcaoController
         ]);
     }
 
-    
+
     /**
      * @param UsuarioAcao $usuarioAcao
      * 
@@ -84,8 +85,8 @@ final class UsuarioAcaoController
         $statusController = new StatusController();
 
         return [
-            'anterior' => $statusController->getByCode(['id' => $usuarioAcao->getAnteriorId()]),
-            'atual'    => $statusController->getByCode(['id' => $usuarioAcao->getAtualId()])
+            'anterior' => $statusController->getByCode(['id' => $usuarioAcao->getAnteriorId(), 'cliente' => $usuarioAcao->getCliente()]),
+            'atual' => $statusController->getByCode(['id' => $usuarioAcao->getAtualId(), 'cliente' => $usuarioAcao->getCliente()])
         ];
     }
 }

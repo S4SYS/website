@@ -52,11 +52,13 @@ final class RequisicaoUsuarioAcaoDao extends Connection
                 INNER JOIN requisicao_usuario_acao ON requisicao_usuario_acao.usuario_acao_id = usuario_acao.id
                 INNER JOIN requisicao ON requisicao_usuario_acao.requisicao_id = requisicao.id
                 WHERE requisicao_usuario_acao.requisicao_id = ?
+                AND requisicao.cliente_id = ?
                 ORDER BY requisicao_usuario_acao.id DESC";
 
         try{
             $p_sql = $this->getInstance()->prepare($sql);
             $p_sql->bindValue(1, $requisicaoUsuarioAcao->getRequisicao()->id);
+            $p_sql->bindValue(2, $requisicaoUsuarioAcao->getRequisicao()->cliente->id);
             $p_sql->execute();
             
             return ['success' => true, 'data' => $p_sql->fetchAll(PDO::FETCH_ASSOC)];
