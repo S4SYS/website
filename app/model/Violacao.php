@@ -23,7 +23,7 @@ final class Violacao extends AbstractModel
      * 
      * @return void
      */
-    public function setDescricao(string $descricao): void
+    public function setDescricao(string $descricao)
     {
         $this->descricao = $descricao;
     }
@@ -41,7 +41,7 @@ final class Violacao extends AbstractModel
      * 
      * @return void
      */
-    public function setStatus(Status $status): void
+    public function setStatus(Status $status)
     {
         $this->status = $status;
     }

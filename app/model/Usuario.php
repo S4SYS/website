@@ -21,7 +21,7 @@ final class Usuario extends AbstractModel
      * 
      * @return void
      */
-    public function setLogin(string $login): void
+    public function setLogin(string $login)
     {
         $this->login = $login;
     }
@@ -40,7 +40,7 @@ final class Usuario extends AbstractModel
      * 
      * @return void
      */
-    public function setSenha(string $senha): void
+    public function setSenha(string $senha)
     {
         $this->senha = $senha;
     }
@@ -59,7 +59,7 @@ final class Usuario extends AbstractModel
      * 
      * @return void
      */
-    public function setLastLogin(string $last_login): void
+    public function setLastLogin(string $last_login)
     {
         $this->last_login = $last_login;
     }

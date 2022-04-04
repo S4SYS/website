@@ -27,7 +27,7 @@ final class UsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setUsuario(Usuario $usuario): void
+    public function setUsuario(Usuario $usuario)
     {
         $this->usuario = $usuario;
     }
@@ -45,7 +45,7 @@ final class UsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setAcao(Acao $acao): void
+    public function setAcao(Acao $acao)
     {
         $this->acao = $acao;
     }
@@ -63,7 +63,7 @@ final class UsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setComentario(string $comentario): void
+    public function setComentario(string $comentario)
     {
         $this->comentario = $comentario;
     }
@@ -81,7 +81,7 @@ final class UsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setTabela(string $tabela): void
+    public function setTabela(string $tabela)
     {
         $this->tabela = $tabela;
     }
@@ -99,7 +99,7 @@ final class UsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setAtualId(int $atual_id): void
+    public function setAtualId(int $atual_id)
     {
         $this->atual_id = $atual_id;
     }
@@ -117,7 +117,7 @@ final class UsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setAnteriorId(int $anterior_id): void
+    public function setAnteriorId(int $anterior_id)
     {
         $this->anterior_id = $anterior_id;
     }

@@ -1,5 +1,7 @@
 <?php
 
+//ini_set('display_errors', 1);
+
 if (!isset($_POST['acao']) && !isset($_GET['acao'])) die("<script>location.href='./';</script>");
 
 @session_start();
@@ -22,6 +24,7 @@ require_once 'app/adapter/EmailPortalLgpdAdapter.php';
 require_once 'app/adapter/EmailStatusChangeAdapter.php';
 require_once 'app/File.php';
 
+
 final class Api
 {
     private static $params;
@@ -31,7 +34,7 @@ final class Api
      * 
      * @return void
      */
-    public static function setAction(array $requestParams): void
+    public static function setAction(array $requestParams)
     {
         self::$params = $requestParams;
 
@@ -141,7 +144,7 @@ final class Api
                 $usuario = $dados['data'];
                 $_SESSION['idUsuario']   = $usuario['id'];
                 $_SESSION['nomeUsuario'] = $usuario['nome'];
-                echo "<script>location.href='adm/';</script>";   
+                echo "<script>location.href='adm/';</script>";
                 break;
             
             case('logout'):
@@ -371,5 +374,6 @@ final class Api
 }
 
 $request = (isset($_POST['acao']) && !empty($_POST)) ? $_POST : $_GET;
+
 
 Api::setAction($request);

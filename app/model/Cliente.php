@@ -21,7 +21,7 @@ final class Cliente extends AbstractModel
      * 
      * @return void
      */
-    public function setDominio(string $dominio): void
+    public function setDominio(string $dominio)
     {
         $this->dominio = $dominio;
     }
@@ -39,7 +39,7 @@ final class Cliente extends AbstractModel
      * 
      * @return void
      */
-    public function setToken(string $token): void
+    public function setToken(string $token)
     {
         $this->token = $token;
     }
@@ -57,7 +57,7 @@ final class Cliente extends AbstractModel
      * 
      * @return void
      */
-    public function setUltimoAcesso(string $ultimo_acesso): void
+    public function setUltimoAcesso(string $ultimo_acesso)
     {
         $this->ultimo_acesso = $ultimo_acesso;
     }

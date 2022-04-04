@@ -9,7 +9,7 @@ abstract class Connection
     /**
      * @return PDO|null
      */
-    protected function getInstance(): ?PDO
+    protected function getInstance()
     {
         if($this->connector === null){
             $this->connector = new PDO('mysql:host=' . Config::DB_HOST . ';dbname=' . Config::DB_NAME, Config::DB_USER, Config::DB_PASS);

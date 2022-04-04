@@ -22,7 +22,7 @@ final class RequisicaoUsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setRequisicao(Requisicao $requisicao): void
+    public function setRequisicao(Requisicao $requisicao)
     {
         $this->requisicao = $requisicao;
     }
@@ -41,7 +41,7 @@ final class RequisicaoUsuarioAcao extends AbstractModel
      * 
      * @return void
      */
-    public function setUsuarioAcao(UsuarioAcao $usuarioAcao): void
+    public function setUsuarioAcao(UsuarioAcao $usuarioAcao)
     {
         $this->usuarioAcao = $usuarioAcao;
     }

@@ -28,7 +28,7 @@ final class Requisicao extends AbstractModel
      * 
      * @return void
      */
-    public function setPedido(string $pedido): void
+    public function setPedido(string $pedido)
     {
         $this->pedido = $pedido;
     }
@@ -46,7 +46,7 @@ final class Requisicao extends AbstractModel
      * 
      * @return void
      */
-    public function setSetor(Setor $setor): void
+    public function setSetor(Setor $setor)
     {
         $this->setor = $setor;
     }
@@ -64,7 +64,7 @@ final class Requisicao extends AbstractModel
      * 
      * @return void
      */
-    public function setTipoRequisicao(TipoRequisicao $tipoRequisicao): void
+    public function setTipoRequisicao(TipoRequisicao $tipoRequisicao)
     {
         $this->tipoRequisicao = $tipoRequisicao;
     }
@@ -82,7 +82,7 @@ final class Requisicao extends AbstractModel
      * 
      * @return void
      */
-    public function setStatus(Status $status): void
+    public function setStatus(Status $status)
     {
         $this->status = $status;
     }

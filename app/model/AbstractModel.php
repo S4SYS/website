@@ -28,7 +28,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setId(int $id): void
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -47,7 +47,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setCodigo(string $codigo): void
+    public function setCodigo(string $codigo)
     {
         $this->codigo = $codigo;
     }
@@ -65,7 +65,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setCpf(string $cpf): void
+    public function setCpf(string $cpf)
     {
         $this->cpf = $cpf;
     }
@@ -84,7 +84,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setTelefone(string $telefone): void
+    public function setTelefone(string $telefone)
     {
         $this->telefone = $telefone;
     }
@@ -104,7 +104,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
@@ -113,7 +113,7 @@ abstract class AbstractModel
     /**
      * @return string|null
      */
-    public function getArquivo(): ?string
+    public function getArquivo()
     {
         return $this->arquivo;
 
@@ -125,7 +125,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setArquivo(?string $arquivo): void
+    public function setArquivo($arquivo)
     {
         $this->arquivo = $arquivo;
     }
@@ -144,7 +144,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setNome(string $nome): void
+    public function setNome(string $nome)
     {
         $this->nome = $nome;
     }
@@ -164,7 +164,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setDescricao(string $descricao): void
+    public function setDescricao(string $descricao)
     {
         $this->descricao = $descricao;
     }
@@ -183,7 +183,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setAtivo(bool $ativo): void
+    public function setAtivo(bool $ativo)
     {
         $this->ativo = $ativo;
     }
@@ -201,7 +201,7 @@ abstract class AbstractModel
      * 
      * @return void
      */
-    public function setCliente(Cliente $cliente): void
+    public function setCliente(Cliente $cliente)
     {
         $this->cliente = $cliente;
     }
